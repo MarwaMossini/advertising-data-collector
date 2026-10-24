@@ -47,3 +47,6 @@ Outputs go into `data/`, excluded from Git. The dependency is pinned to the loca
 - https://github.com/yt-dlp/yt-dlp
 - https://docs.github.com/en/actions/how-tos/manage-workflow-runs/download-workflow-artifacts
 - https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows
+
+## Strict eligibility update
+All four extracted counts (likes, comments, shares/reposts and views) are required and nonnegative. Detected disagreement with title view counts is rejected. Complete candidates go to complete_candidates.csv; older incomplete candidates.csv is retained separately. These checks do not replace manual verification. A run with no new complete candidates is marked failed after preserving its report. No daily schedule is enabled.

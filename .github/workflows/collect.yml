@@ -25,8 +25,10 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install -r requirements.txt
-          sudo apt-get update -qq
-          sudo apt-get install -y ffmpeg
+          if ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y ffmpeg
+          fi
       - name: Restore previous successful collection
         env:
           GH_TOKEN: ${{ github.token }}
@@ -47,9 +49,9 @@ jobs:
           from pathlib import Path
           report = json.loads(Path('data/latest_run.json').read_text())
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as f:
-              f.write(f"New candidates: {report['added']}\\n\\nTotal candidates: {report['total_candidates']}\\n\\n")
+              f.write(f"New candidates: {report['added']}\n\nTotal candidates: {report['total_candidates']}\n\n")
               for event in report['events']:
-                  f.write("- " + event.get('status', '') + ": " + event.get('error', event.get('reason', '')) + "\\n")
+                  f.write("- " + event.get('status', '') + ": " + event.get('error', event.get('reason', '')) + "\n")
           PY
       - name: Save cumulative collection
         uses: actions/upload-artifact@v4
@@ -59,3 +61,12 @@ jobs:
           retention-days: 90
           compression-level: 0
           if-no-files-found: error
+      - name: Require usable new records
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('data/latest_run.json').read_text())
+          if report['added'] == 0:
+              raise SystemExit('No usable new records: see collection report. Downloading alone is not success.')
+          PY
