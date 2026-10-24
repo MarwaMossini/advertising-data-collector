@@ -73,7 +73,7 @@ def run(config, out, limit):
                 urls=[source['url']]
             else:
                 with yt_dlp.YoutubeDL({**opts,'extract_flat':True}) as y:
-                    found=y.extract_info('ytsearchdate10:'+source['query'],download=False)
+                    found=y.extract_info('ytsearch10:'+source['query'],download=False)
                 urls=[e.get('url','') for e in found.get('entries',[]) if e]
             for url in urls:
                 if added>=limit or source['platform'] in blocked:break
@@ -116,3 +116,4 @@ def run(config, out, limit):
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--config',default='sources.json');parser.add_argument('--out',default='data');parser.add_argument('--limit',type=int,default=10)
     args=parser.parse_args();run(json.loads(Path(args.config).read_text()),Path(args.out),args.limit)
+
