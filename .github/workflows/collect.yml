@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['.github/workflows/collect.yml']
+    paths: ['.github/workflows/collect.yml', 'collector.py', 'sources.json']
 permissions:
   contents: read
   actions: read
@@ -40,6 +40,17 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Collect public candidates
         run: python collector.py --limit 10
+      - name: Show collection results
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          report = json.loads(Path('data/latest_run.json').read_text())
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as f:
+              f.write(f"New candidates: {report['added']}\\n\\nTotal candidates: {report['total_candidates']}\\n\\n")
+              for event in report['events']:
+                  f.write("- " + event.get('status', '') + ": " + event.get('error', event.get('reason', '')) + "\\n")
+          PY
       - name: Save cumulative collection
         uses: actions/upload-artifact@v4
         with:
