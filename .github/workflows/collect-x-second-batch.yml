@@ -1,0 +1,143 @@
+name: Verify and archive second batch of public X promotional posts
+on:
+  push:
+    paths:
+      - '.github/workflows/collect-x-second-batch.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies and media validators
+        run: |
+          python -m pip install -q requests Pillow
+          if ! command -v ffprobe >/dev/null; then
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          fi
+          ffprobe -version | head -1
+      - name: Download and verify new public X source posts
+        shell: bash
+        run: |
+          python - <<'PY'
+          import requests,hashlib,json,datetime,re,subprocess,io
+          from pathlib import Path
+          from urllib.parse import urlparse
+          from PIL import Image,ImageFile
+          Image.MAX_IMAGE_PIXELS=75000000
+          ImageFile.LOAD_TRUNCATED_IMAGES=False
+          candidates=[
+            ("WOLFpaktrust","2027594684504105097","WOLFpak","Accessories","Barbie collection, Shop Now",None),
+            ("Moddex_Dev","1913197577337528806","Moddex Development","Gaming digital products","Lewisham Police Station GTA roleplay asset preorder",None),
+            ("bang_dream_info","1756603983206940915","BanG Dream! / Bushiroad","Entertainment ticketing","Roselia Rosenchor Osaka streaming tickets",None),
+            ("WhitethornGames","1635673616032382979","Whitethorn Games","Video games","The Forest Cathedral on Steam, Epic and Xbox",None),
+            ("NARAKATHEGAME","2001668789654688228","NARAKA: BLADEPOINT","Video games","Under the Night character cosmetic collaboration",None),
+            ("TeamAriana","2061477914617536634","Team Ariana / Ariana Grande","Music merchandise","Physical music collection, shop now",None),
+            ("finalfantasyvii","1620512491393384452","Final Fantasy VII / Square Enix","Collectible merchandise","Zack Fair Play Arts Kai collectible preorder",None),
+            ("socceraid","2028742247349371140","Soccer Aid for UNICEF","Events ticketing","Soccer Aid anniversary tickets available",None),
+            ("TSTIndustries","1899159418299662390","TST Industries","Automotive accessories","Suzuki GSX-8R / 8S carbon-fiber tank extender",None),
+            ("Mix3Design","2031031753901519292","Mix 3D","Digital tools","KumoGen Blender procedural cloud generator for Patreon",None),
+            ("Atlus_West","2063697392734744898","ATLUS West","Video games","Persona 4 Revival Xbox preorder",None),
+            ("PharmacyEslam","2048090220864622769","Eslam Pharmacy","Pharmacy retail","Algesal cream sale / availability",None)
+          ]
+          root=Path("new_x_media");root.mkdir(exist_ok=True)
+          api=requests.Session();api.headers.update({"User-Agent":"Mozilla/5.0"})
+          results=[]
+          def choose(item):
+            typ=(item.get("type") or "").lower()
+            if typ in ("photo","image"):
+              return item.get("url") or item.get("media_url_https"),"image"
+            if typ in ("video","animated_gif","gif"):
+              opts=item.get("variants") or []
+              mp4=[a for a in opts if a.get("url") and
+                ("mp4" in str(a.get("content_type","")) or ".mp4" in str(a.get("url","")))]
+              mp4.sort(key=lambda x:int(x.get("bitrate") or 0),reverse=True)
+              if mp4:return mp4[0]["url"],"video"
+              if item.get("url") and ".mp4" in item["url"]:return item["url"],"video"
+            return None,typ or "unrecognized"
+          for handle,sid,brand,industry,offer,_ in candidates:
+            source=f"https://x.com/{handle}/status/{sid}"
+            record=dict(ad_id="X_"+sid,source_url=source,expected_handle=handle,brand=brand,
+                        industry=industry,offer=offer,status="rejected",retrieval_method="public FxTwitter API original X post")
+            files=[]
+            try:
+              r=api.get(f"https://api.fxtwitter.com/{handle}/status/{sid}",timeout=16)
+              record["api_http_status"]=r.status_code;r.raise_for_status()
+              rootpost=(r.json().get("tweet") or {})
+              if str(rootpost.get("id",""))!=sid:raise ValueError("Original source post ID mismatch")
+              author=rootpost.get("author") or {}
+              name=str(author.get("screen_name") or author.get("username") or "")
+              if name.casefold()!=handle.casefold():raise ValueError("Original publisher mismatch")
+              created=rootpost.get("created_at")
+              if not created:raise ValueError("Missing exact original publication time")
+              timestamp=datetime.datetime.strptime(created,"%a %b %d %H:%M:%S %z %Y")
+              if not (2021<=timestamp.year<=2026):raise ValueError("Out of requested 2021-2026 period")
+              record.update(published_date_utc=timestamp.date().isoformat(),
+                original_timestamp=created,platform="X / Twitter",author=name,caption=rootpost.get("text"),
+                likes=rootpost.get("likes"),comments=rootpost.get("replies"),shares=rootpost.get("retweets"),
+                views=rootpost.get("views"),saves=rootpost.get("bookmarks"),quotes=rootpost.get("quotes"),
+                collected_at=datetime.datetime.now(datetime.timezone.utc).isoformat())
+              media=(rootpost.get("media") or {}).get("all") or []
+              if not media or len(media)>4:raise ValueError("No original media or unreasonable attachment count")
+              for i,item in enumerate(media,1):
+                uri,typ=choose(item)
+                if not uri:raise ValueError("Native post media lacks complete source at index "+str(i))
+                url=urlparse(uri)
+                if url.scheme!="https" or not url.hostname or not (
+                  url.hostname.endswith("twimg.com") or url.hostname in ("api.fxtwitter.com",)):
+                  raise ValueError("Media host unrecognized: "+str(url.hostname))
+                content=b""
+                with api.get(uri,timeout=(8,40),stream=True) as response:
+                  response.raise_for_status()
+                  for chunk in response.iter_content(262144):
+                    if chunk:content+=chunk
+                    if len(content)>90000000:raise ValueError("File larger than 90MB limit")
+                if len(content)<4096:raise ValueError("File incomplete")
+                if typ=="image":
+                  im=Image.open(io.BytesIO(content));fmt=im.format;im.verify()
+                  if fmt not in ("JPEG","PNG","WEBP"):raise ValueError("Unsupported image format")
+                  ext={"JPEG":".jpg","PNG":".png","WEBP":".webp"}[fmt]
+                else:
+                  ext=".mp4"
+                  temp=root/("temp_"+sid+"_"+str(i)+ext)
+                  temp.write_bytes(content)
+                  p=subprocess.run(["ffprobe","-v","error","-show_entries","format=duration:stream=codec_type",
+                    "-of","json",str(temp)],capture_output=True,text=True,timeout=25,check=True)
+                  meta=json.loads(p.stdout)
+                  if not any(s.get("codec_type")=="video" for s in meta.get("streams",[])):
+                    raise ValueError("No valid video stream")
+                  duration=float(meta["format"]["duration"])
+                  if duration<=0:raise ValueError("Incomplete video: invalid duration")
+                  dec=subprocess.run(["ffmpeg","-v","error","-xerror","-i",str(temp),"-f","null","-"],
+                    capture_output=True,text=True,timeout=160)
+                  temp.unlink(missing_ok=True)
+                  if dec.returncode:raise ValueError("Full media decode failed")
+                  record.setdefault("video_durations",[]).append(duration)
+                out=root/(record["ad_id"]+"_"+str(i)+ext)
+                out.write_bytes(content);files.append(out)
+              record.update(status="media_verified_pending_visual_review",file_names=[x.name for x in files],
+                attachment_count=len(files),bytes_total=sum(x.stat().st_size for x in files),
+                sha256={x.name:hashlib.sha256(x.read_bytes()).hexdigest() for x in files})
+            except Exception as ex:
+              for p in files:p.unlink(missing_ok=True)
+              record["reason"]=str(ex)[:380]
+            results.append(record)
+            print(json.dumps({k:v for k,v in record.items() if k not in ("caption","sha256")},ensure_ascii=False))
+          (root/"validation_report.json").write_text(json.dumps(results,indent=2,ensure_ascii=False),encoding="utf-8")
+          print("VALIDATED_COUNT:",sum(i["status"]=="media_verified_pending_visual_review" for i in results))
+          PY
+      - name: Upload original media and validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-x-candidates-batch-two
+          path: new_x_media/
+          retention-days: 10
+          compression-level: 0
+          if-no-files-found: warn
