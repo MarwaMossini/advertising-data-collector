@@ -83,7 +83,6 @@ def run(config,out,limit=25):
                     industry=source.get('industry',''),promotion_type=source.get('promotion_type','brand promotion; review needed'),title=info.get('title') or '',
                     caption=info.get('description') or '',published_date=info.get('upload_date') or '',published_date_label=info.get('release_date') or '',
                     first_collected_at_utc=now,original_post_url=url,verification_status='needs_review',paid_status=source.get('paid_status','unknown'),notes='Metadata extractor output; verify against original post.')
-                ads.append(row);byid[aid]=row
             row['latest_observed_at_utc']=now
             metric={'likes':('like_count',),'comments':('comment_count',),'shares':('share_count','repost_count'),'reposts':('repost_count',),
                     'views':('view_count',),'followers':('channel_follower_count','uploader_follower_count'),'saves':('save_count',)}
@@ -101,6 +100,8 @@ def run(config,out,limit=25):
                     else:row['media_type']='image'
                     digest=hashlib.sha256(f.read_bytes()).hexdigest();dest=media/(aid+f.suffix.lower());shutil.move(str(f),dest)
                     row['media_path']='media/'+dest.name;row['sha256']=digest
+            if is_new:
+                ads.append(row);byid[aid]=row
             save_csv(out/'ads.csv',AD_FIELDS,ads);save_csv(out/'engagement_snapshots.csv',SNAPSHOT_FIELDS,snaps)
             if is_new:report['added_ads']+=1
             report['events'].append({'ad_id':aid,'url':url,'status':'recorded'})
