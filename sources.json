@@ -493,6 +493,50 @@
       "publication_date_source": "Previous direct collection; see Master_Ads.xlsx IG_DemL9_oSnlm",
       "original_evidence_url": "https://www.instagram.com/cy.ooi/reel/DemL9_oSnlm/",
       "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=2ExVA1lZ--Y",
+      "platform": "YouTube",
+      "company": "Samsung",
+      "industry": "Consumer electronics",
+      "promotion_type": "Galaxy S24 AI promotional film",
+      "paid_status": "unknown",
+      "published_date": "2024-01-17",
+      "publication_date_source": "Official YouTube video publication date; recheck in collector",
+      "queue_origin": "Original verified brand channel; candidate pending complete video retrieval and media validation"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=CYqOnILg8N4",
+      "platform": "YouTube",
+      "company": "Samsung",
+      "industry": "Consumer electronics",
+      "promotion_type": "Galaxy S24 Ultra Circle to Search promotional film",
+      "paid_status": "unknown",
+      "published_date": "2024-01-17",
+      "publication_date_source": "Official YouTube video publication date; recheck in collector",
+      "queue_origin": "Original verified brand channel; candidate pending complete video retrieval and media validation"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=_9sBc08FYEU",
+      "platform": "YouTube",
+      "company": "Samsung",
+      "industry": "Consumer electronics",
+      "promotion_type": "Galaxy S25 Series product unboxing promotion",
+      "paid_status": "unknown",
+      "published_date": "2025-01-22",
+      "publication_date_source": "Official YouTube video publication date; recheck in collector",
+      "queue_origin": "Original verified brand channel; candidate pending complete video retrieval and media validation"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=3i1OB6wKYms",
+      "platform": "YouTube",
+      "company": "Samsung",
+      "industry": "Consumer electronics",
+      "promotion_type": "Galaxy S25 Ultra official introduction promotion",
+      "paid_status": "unknown",
+      "published_date": "2025-01-22",
+      "publication_date_source": "Official YouTube video publication date; recheck in collector",
+      "queue_origin": "Original verified brand channel; candidate pending complete video retrieval and media validation"
     }
   ]
 }
