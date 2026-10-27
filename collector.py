@@ -13,9 +13,9 @@ PLATFORMS = {
     'youtube.com':'YouTube','www.youtube.com':'YouTube','youtu.be':'YouTube',
     'tiktok.com':'TikTok','www.tiktok.com':'TikTok',
 }
-METRICS = ['likes','comments','shares','reposts','views','followers','saves']
+METRICS = ['likes','comments','shares','reposts','views','reactions','followers','saves']
 AD_FIELDS = ['ad_id','platform','company','published_date','publication_date_source','industry',
- 'latest_observed_at_utc'] + [m+'_exact' for m in METRICS] + ['media_type','media_path',
+ 'latest_observed_at_utc'] + [x for m in METRICS for x in (m+'_exact',m+'_display')] + ['media_type','media_path',
  'original_post_url','publisher','promotion_type','first_collected_at_utc','published_date_label',
  'verification_status','paid_status','title','caption','sha256','notes']
 SNAPSHOT_FIELDS = ['ad_id','observed_at_utc'] + [x for m in METRICS for x in (m+'_exact',m+'_display')] + ['source_url','metric_source','notes']
@@ -75,7 +75,7 @@ def publication_date(info, source):
 
 def metric_snapshot(info):
     mapping={'likes':('like_count',),'comments':('comment_count',),'shares':('share_count',),
-             'reposts':('repost_count',),'views':('view_count',),
+             'reposts':('repost_count',),'views':('view_count',),'reactions':('reaction_count',),
              'followers':('channel_follower_count','uploader_follower_count'),'saves':('save_count',)}
     values={m:scalar(info,*names) for m,names in mapping.items()};notes=[]
     match=re.search(r'([\d,.]+)\s*([KMB]?)\s+views',info.get('title') or '',re.I)
@@ -85,6 +85,11 @@ def metric_snapshot(info):
         if abs(displayed-values['views'])>scale*.05:
             values['views']='';notes.append('Views withheld: title display conflicts with extracted view_count.')
     return values,' '.join(notes)
+
+def title_displays(info):
+    prefix=(info.get('title') or '').split('|',1)[0]
+    return {label.lower():number.strip() for number,label in
+        re.findall(r'([\d,.]+\s*[KMB]?)\s+(views|reactions|shares)\b',prefix,re.I)}
 
 def migrate_legacy(out):
     ads=read_csv(out/'ads.csv',AD_FIELDS); snaps=read_csv(out/'engagement_snapshots.csv',SNAPSHOT_FIELDS)
@@ -134,10 +139,19 @@ def run(config,out,limit=25):
                        industry=source.get('industry') or row.get('industry',''),caption=info.get('description') or row.get('caption',''),
                        publisher=info.get('uploader') or row.get('publisher',''))
             metric,metric_notes=metric_snapshot(info)
+            displays=title_displays(info)
+            for m in ('shares','reactions'):
+                raw=displays.get(m,'')
+                if re.fullmatch(r'[\d,]+',raw):
+                    displayed=int(raw.replace(',',''))
+                    if metric[m] not in ('',displayed):
+                        metric[m]='';metric_notes+=' Conflicting '+m+' count withheld.'
+                    else:metric[m]=displayed
             snap={'ad_id':aid,'observed_at_utc':now,'source_url':url,'metric_source':'public metadata extractor; not independently UI-verified','notes':''}
-            snap['notes']=metric_notes
+            snap['notes']=metric_notes+(' Display labels are from the original platform returned title, not an independent UI observation.' if displays else '')
             for m,value in metric.items():
-                snap[m+'_exact']=value;snap[m+'_display']=str(value) if value!='' else '';row[m+'_exact']=value
+                snap[m+'_exact']=value;snap[m+'_display']=displays.get(m) or (str(value) if value!='' else '')
+                row[m+'_exact']=value;row[m+'_display']=snap[m+'_display']
             if (aid,now) not in known_snap:snaps.append(snap);known_snap.add((aid,now));report['new_snapshots']+=1
             if not row.get('media_path') or not (out/row['media_path']).is_file():
                 with tempfile.TemporaryDirectory(dir=out) as stage:

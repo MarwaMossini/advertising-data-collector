@@ -1,6 +1,9 @@
 import unittest
-from collector import publication_date,metric_snapshot
+from collector import publication_date,metric_snapshot,title_displays
 class DateAndMetricTests(unittest.TestCase):
+ def test_title_counters_preserved_without_reading_caption(self):
+  self.assertEqual(title_displays({'title':'490 reactions · 54 shares | Offer 999 views'}),{'reactions':'490','shares':'54'})
+  self.assertEqual(title_displays({'title':'7.5K views · 18 reactions | Mop'}),{'views':'7.5K','reactions':'18'})
  def test_timestamp_recovers_date(self):
   self.assertEqual(publication_date({'timestamp':1792685485},{})[0],'2026-10-22')
  def test_upload_date_normalized(self):
