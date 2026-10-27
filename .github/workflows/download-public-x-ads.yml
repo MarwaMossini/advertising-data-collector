@@ -1,0 +1,136 @@
+name: Download public X promotional media and verify
+on:
+  push:
+    paths:
+      - '.github/workflows/download-public-x-ads.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install media validators
+        run: python -m pip install -q requests Pillow
+      - name: Retrieve original promotional media and verify
+        shell: bash
+        run: |
+          python - <<'PY'
+          import io,os,json,hashlib,requests,subprocess,re,datetime,concurrent.futures
+          from pathlib import Path
+          from PIL import Image
+          from urllib.parse import urlparse
+          sources=[
+            ("rabbit_hmi","1745598954060882142","2024-01-11"),
+            ("50cent","1815411875624210641","2024-07-22"),
+            ("SmythsToysIRE","1955225508464988293","2025-08-12"),
+            ("mistplayapp","1861802258918150383","2024-11-27"),
+            ("cfm_miku","1785179459567628438","2024-04-30")
+          ]
+          root=Path('public_x_ad_media');root.mkdir(exist_ok=True)
+          session=requests.Session()
+          session.headers.update({"User-Agent":"Mozilla/5.0 (research media metadata and public files)"})
+          def pick_url(media):
+            t=media.get("type") or ""
+            if t in ("photo","image"):
+              return media.get("url") or media.get("media_url_https"),"image"
+            if t in ("video","gif","animated_gif"):
+              direct=media.get("url")
+              if direct and ".mp4" in direct:return direct,"video"
+              variants=(media.get("variants") or [])
+              if variants:
+                mp4=[v for v in variants if ("mp4" in str(v.get("content_type","")) or ".mp4" in str(v.get("url","")))]
+                mp4.sort(key=lambda x:int(x.get("bitrate") or 0),reverse=True)
+                if mp4:return mp4[0].get("url"),"video"
+            return None,"unsupported"
+          report=[]
+          for handle,tweet_id,day in sources:
+            row={"ad_id":"X_"+tweet_id,"source_url":f"https://x.com/{handle}/status/{tweet_id}",
+                 "expected_author":handle,"expected_date":day,"status":"not_verified"}
+            paths=[]
+            try:
+              endpoint=f"https://api.fxtwitter.com/{handle}/status/{tweet_id}"
+              res=session.get(endpoint,timeout=18)
+              row["api_http_code"]=res.status_code
+              res.raise_for_status()
+              document=res.json()
+              data=document.get("tweet") or document.get("status") or {}
+              if not data or str(data.get("id"))!=tweet_id:
+                raise ValueError("Original tweet not retrieved or ID mismatch")
+              author=data.get("author") or {}
+              screen=author.get("screen_name") or author.get("username") or ""
+              row["author"]=screen
+              if screen.casefold()!=handle.casefold():raise ValueError("Not original brand account")
+              raw_date=data.get("created_at") or data.get("created_timestamp")
+              row["created_at_raw"]=raw_date
+              if isinstance(raw_date,(int,float)):
+                detected=datetime.datetime.fromtimestamp(raw_date,datetime.timezone.utc).date().isoformat()
+              else:
+                detected=datetime.datetime.fromisoformat(str(raw_date).replace("Z","+00:00")).date().isoformat()
+              if detected!=day:raise ValueError("Publication date mismatch: "+detected)
+              row.update(published_date=detected,post_text=data.get("text"),
+                         likes=data.get("likes"),comments=data.get("replies"),
+                         shares=data.get("retweets"),views=data.get("views"),
+                         bookmarks=data.get("bookmarks"),quote_count=data.get("quotes"),
+                         recorded_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
+              media=(data.get("media") or {}).get("all") or []
+              if not media:raise ValueError("No native media attached to original post")
+              if len(media)>4:raise ValueError("Unexpected media count")
+              for i, item in enumerate(media,1):
+                link,kind=pick_url(item)
+                if not link:raise ValueError("Attachment "+str(i)+" has no complete downloadable source")
+                pu=urlparse(link)
+                if pu.scheme!="https" or pu.hostname not in (
+                   "pbs.twimg.com","video.twimg.com","api.fxtwitter.com",
+                   "pbs.twimg.com","abs.twimg.com","nitter.net"):
+                  raise ValueError("Unexpected original media host: "+str(pu.hostname))
+                with session.get(link,timeout=(10,35),stream=True) as mres:
+                  mres.raise_for_status()
+                  raw=b""
+                  for chunk in mres.iter_content(262144):
+                    raw+=chunk
+                    if len(raw)>55_000_000:raise ValueError("Media file exceeds 55 MB cap")
+                if len(raw)<4000:raise ValueError("Media too small or incomplete")
+                if kind=="image":
+                  im=Image.open(io.BytesIO(raw))
+                  im.verify()
+                  ext=".png" if im.format=="PNG" else ".webp" if im.format=="WEBP" else ".jpg"
+                else:
+                  ext=".mp4"
+                  temp=root/("tmp_"+tweet_id+str(i)+ext);temp.write_bytes(raw)
+                  probe=subprocess.run(["ffprobe","-v","error","-show_entries",
+                      "format=duration:stream=codec_type","-of","json",str(temp)],
+                      capture_output=True,text=True,timeout=20,check=True)
+                  pdata=json.loads(probe.stdout)
+                  if not any(s.get("codec_type")=="video" for s in pdata.get("streams",[])):
+                    raise ValueError("No video stream")
+                  dec=subprocess.run(["ffmpeg","-v","error","-xerror","-i",str(temp),
+                     "-f","null","-"],capture_output=True,text=True,timeout=180)
+                  temp.unlink(missing_ok=True)
+                  if dec.returncode:raise ValueError("Video failed complete decode")
+                  row.setdefault("durations",[]).append(float(pdata["format"]["duration"]))
+                dest=root/(row["ad_id"]+"_"+str(i)+ext)
+                dest.write_bytes(raw);paths.append(dest)
+              row.update(status="full_media_archived_pending_visual_review",
+                         files=[p.name for p in paths],attachment_count=len(media),
+                         hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in paths})
+            except Exception as e:
+              for p in paths:p.unlink(missing_ok=True)
+              row["error"]=str(e)[:500]
+            report.append(row)
+            print(json.dumps({k:v for k,v in row.items() if k not in ('post_text','hashes')},ensure_ascii=False))
+          (root/"validation_report.json").write_text(json.dumps(report,indent=2,ensure_ascii=False),encoding="utf-8")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-x-original-media
+          path: public_x_ad_media/
+          retention-days: 7
+          compression-level: 0
+          if-no-files-found: warn
