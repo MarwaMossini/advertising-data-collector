@@ -107,7 +107,7 @@ jobs:
                   temp.write_bytes(content)
                   info=subprocess.run([FFMPEG,"-hide_banner","-i",str(temp)],capture_output=True,text=True,timeout=30)
                   if not re.search(r"Video:",info.stderr):raise ValueError("No video track")
-                  m=re.search(r"Duration: (\\d+):(\\d+):([\\d.]+)",info.stderr)
+                  m=re.search(r"Duration: (\d+):(\d+):([\d.]+)",info.stderr)
                   if not m:raise ValueError("Invalid video duration")
                   duration=int(m.group(1))*3600+int(m.group(2))*60+float(m.group(3))
                   if duration<=0:raise ValueError("Invalid video duration")
