@@ -35,6 +35,12 @@ def save_csv(path, fields, rows):
     tmp.replace(path)
 
 def probe(path):
+    if not shutil.which('ffprobe'):
+        import imageio_ffmpeg
+        result=subprocess.run([imageio_ffmpeg.get_ffmpeg_exe(),'-v','error','-i',str(path),
+            '-map','0:v:0','-frames:v','1','-f','null','-'],capture_output=True,text=True,timeout=30)
+        if result.returncode:raise ValueError('Video decode failed: '+result.stderr[:300])
+        return 0.0  # Duration is not used by this collector; a decoded video frame is required.
     d=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration:stream=codec_type','-of','json',str(path)],timeout=30))
     if not any(s.get('codec_type')=='video' for s in d.get('streams',[])):raise ValueError('Downloaded file has no video stream')
     return float(d['format']['duration'])

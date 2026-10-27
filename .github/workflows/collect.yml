@@ -9,7 +9,7 @@ permissions:
   actions: read
 concurrency:
   group: ad-collector
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   collect:
     runs-on: ubuntu-latest
@@ -24,11 +24,8 @@ jobs:
           node-version: '22'
       - name: Install dependencies
         run: |
-          python -m pip install -r requirements.txt
-          if ! command -v ffprobe >/dev/null; then
-            sudo apt-get update -qq
-            sudo apt-get install -y ffmpeg
-          fi
+          timeout 180s python -m pip install --timeout 30 --retries 1 -r requirements.txt
+          python -c "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_version())"
       - name: Restore previous successful dataset
         env:
           GH_TOKEN: ${{ github.token }}
