@@ -186,6 +186,93 @@ jobs:
             print(json.dumps(record,ensure_ascii=False))
           report_path.write_text(json.dumps(records,indent=2),encoding="utf-8")
           PY
+
+      - name: Try original adaptive video plus audio stream
+        shell: bash
+        run: |
+          python - <<'PY'
+          import requests, json, subprocess, tempfile, hashlib, shutil
+          from pathlib import Path
+          from datetime import datetime,timezone
+          d=Path("pending_media");p=d/"validation_report.json"
+          if not p.exists():raise SystemExit(0)
+          records=json.loads(p.read_text())
+          for item in records:
+            if item.get("status")=="downloaded_needs_ui_review":continue
+            vid=item["ad_id"].split("_",1)[-1]
+            item["adaptive_attempt"]={}
+            try:
+              base="https://yt.chocolatemoo53.com"
+              r=requests.get(f"{base}/api/v1/videos/{vid}?local=true",timeout=20,headers={"User-Agent":"Mozilla/5.0"})
+              r.raise_for_status()
+              meta=r.json()
+              if meta.get("videoId")!=vid:raise ValueError("Original video ID disagreement")
+              pub=meta.get("author")
+              if pub.casefold().strip() not in (["adidas"] if vid=="76dvJGizc8A" else ["made by google","google"]):
+                raise ValueError("Publisher disagreement")
+              day=datetime.fromtimestamp(float(meta["published"]),timezone.utc).date().isoformat()
+              if day!=item["expected_date"]:raise ValueError("Publication date disagreement")
+              length=float(meta["lengthSeconds"])
+              variants=meta.get("adaptiveFormats",[])
+              item["adaptive_attempt"]["format_count"]=len(variants)
+              video=[v for v in variants if v.get("url") and "video/" in str(v.get("type",""))]
+              audio=[v for v in variants if v.get("url") and "audio/" in str(v.get("type",""))]
+              item["adaptive_attempt"]["video_formats"]=len(video)
+              item["adaptive_attempt"]["audio_formats"]=len(audio)
+              video.sort(key=lambda v:(v.get("container")=="mp4",int(v.get("bitrate") or 0)),reverse=True)
+              audio.sort(key=lambda v:(v.get("container")=="mp4",int(v.get("bitrate") or 0)),reverse=True)
+              if not video or not audio:raise ValueError("No accessible paired video and audio streams")
+              def download(url,dst):
+                total=0
+                with requests.get(url,stream=True,timeout=(15,60),headers={"User-Agent":"Mozilla/5.0"}) as resp:
+                  resp.raise_for_status()
+                  with dst.open("wb") as f:
+                    for chunk in resp.iter_content(262144):
+                      total+=len(chunk)
+                      if total>250*1024*1024:raise ValueError("Media stream too large")
+                      if chunk:f.write(chunk)
+                if total<65536:raise ValueError("Stream unexpectedly short")
+                return total
+              all_errors=[]
+              for v in video[:2]:
+                for a in audio[:2]:
+                  try:
+                    with tempfile.TemporaryDirectory() as td:
+                      td=Path(td);vp=td/"video.bin";ap=td/"audio.bin";mp=td/"complete.mp4"
+                      download(v["url"],vp)
+                      download(a["url"],ap)
+                      run=subprocess.run(["ffmpeg","-v","error","-y","-i",str(vp),"-i",str(ap),
+                                         "-map","0:v:0","-map","1:a:0","-c","copy",str(mp)],
+                                         capture_output=True,text=True,timeout=120)
+                      if run.returncode:raise ValueError("Mux error: "+run.stderr[-200:])
+                      probe=subprocess.run(["ffprobe","-v","error","-show_entries","format=duration:stream=codec_type",
+                                            "-of","json",str(mp)],capture_output=True,text=True,timeout=30,check=True)
+                      pinfo=json.loads(probe.stdout)
+                      kinds=[s.get("codec_type") for s in pinfo.get("streams",[])]
+                      if "video" not in kinds or "audio" not in kinds:raise ValueError("Video or audio track missing")
+                      observed=float(pinfo["format"]["duration"])
+                      if abs(observed-length)>max(4,length*.06):raise ValueError("Duration mismatch")
+                      dec=subprocess.run(["ffmpeg","-v","error","-xerror","-i",str(mp),"-f","null","-"],
+                                         capture_output=True,text=True,timeout=240)
+                      if dec.returncode:raise ValueError("Complete stream decode failed")
+                      dest=d/(item["ad_id"]+".mp4")
+                      shutil.copy2(mp,dest)
+                      item.update(status="downloaded_needs_ui_review",media_filename=dest.name,
+                                  publisher=pub,platform_date=day,media_size_bytes=dest.stat().st_size,
+                                  duration_seconds=observed,
+                                  sha256=hashlib.file_digest(dest.open("rb"),"sha256").hexdigest(),
+                                  source="Invidious original video/audio streams; media decoded; direct UI engagement not rechecked")
+                      item["adaptive_attempt"]["result"]="downloaded and verified"
+                      break
+                  except Exception as e:all_errors.append(str(e)[:160])
+                if item["status"]=="downloaded_needs_ui_review":break
+              if item["status"]!="downloaded_needs_ui_review":
+                raise ValueError("; ".join(all_errors[:3]))
+            except Exception as e:
+              item["adaptive_attempt"]["error"]=str(e)[:500]
+            print(json.dumps(item,ensure_ascii=False))
+          p.write_text(json.dumps(records,indent=2),encoding="utf-8")
+          PY
       - name: Report to run summary
         if: always()
         run: |
