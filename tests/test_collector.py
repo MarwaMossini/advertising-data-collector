@@ -1,33 +1,27 @@
-import unittest
-from collector import classify, allowed, metric_issue
+import csv, json, tempfile, unittest
+from pathlib import Path
+from collector import AD_FIELDS, SNAPSHOT_FIELDS, platform_for, scalar, migrate_legacy
 
-class EligibilityTests(unittest.TestCase):
-    def setUp(self):
-        self.info={'upload_date':'20241001','duration':20,'view_count':0,'like_count':0,'comment_count':0,'repost_count':0,'uploader':'IKEA India','title':'Shop now'}
-        self.source={'allowed_uploaders':['IKEA India'],'promotion_keywords':['shop']}
-    def test_zero_is_valid_but_missing_is_not(self):
-        self.assertIsNone(classify(self.info,self.source))
-        self.info['view_count']=None
-        self.assertIsNotNone(classify(self.info,self.source))
-    def test_reupload_excluded(self):
-        self.info['uploader']='Random compilation channel'
-        self.assertIsNotNone(classify(self.info,self.source))
-    def test_gallery_excluded(self):
-        self.info['_type']='multi_video'
-        self.assertIsNotNone(classify(self.info,{'curated':True}))
-    def test_unknown_date_excluded(self):
-        del self.info['upload_date'];self.assertIsNotNone(classify(self.info,self.source))
-    def test_required_metrics(self):
-        for key in ('like_count', 'comment_count', 'repost_count', 'view_count'):
-            info = dict(self.info)
-            del info[key]
-            self.assertIsNotNone(metric_issue(info))
-    def test_conflicting_views(self):
-        info = dict(self.info, title='7.5K views | Shop now', view_count=1795)
-        self.assertIsNotNone(metric_issue(info))
-    def test_hosts(self):
-        self.assertTrue(allowed('https://www.youtube.com/watch?v=x'))
-        self.assertFalse(allowed('https://youtube.com.example.org/x'))
-        self.assertFalse(allowed('file:///etc/passwd'))
+class CuratedSourceTests(unittest.TestCase):
+    def test_supported_public_post_urls(self):
+        self.assertEqual(platform_for('https://www.instagram.com/p/ABC/'),'Instagram')
+        self.assertEqual(platform_for('https://www.facebook.com/reel/123/'),'Facebook')
+        self.assertEqual(platform_for('https://youtu.be/abc'),'YouTube')
+        self.assertEqual(platform_for('https://tiktok.com/@x/video/123'),'TikTok')
+    def test_rejects_non_https_and_lookalike_hosts(self):
+        self.assertIsNone(platform_for('http://facebook.com/x'))
+        self.assertIsNone(platform_for('https://facebook.com.example.org/x'))
+    def test_missing_metric_stays_blank_and_zero_is_real(self):
+        self.assertEqual(scalar({'like_count':0},'like_count'),0)
+        self.assertEqual(scalar({},'like_count'),'')
+        self.assertEqual(scalar({'like_count':None},'like_count'),'')
+    def test_legacy_output_migrates_without_duplicate_ids(self):
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d);(p/'complete_candidates.csv').write_text('ad_id,platform,advertiser,recorded_at_utc,source_url,likes\nFB-1,Facebook,Brand,2026-01-01T00:00:00Z,https://facebook.com/x,0\n')
+            ads,snaps=migrate_legacy(p)
+            self.assertEqual(len(ads),1);self.assertEqual(len(snaps),1)
+            self.assertEqual(snaps[0]['likes_exact'],'0')
+            self.assertEqual(len(AD_FIELDS),len(set(AD_FIELDS)))
+            self.assertEqual(len(SNAPSHOT_FIELDS),len(set(SNAPSHOT_FIELDS)))
 
 if __name__=='__main__':unittest.main()

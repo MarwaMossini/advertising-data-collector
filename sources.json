@@ -1,42 +1,12 @@
 {
   "sources": [
     {
-      "platform": "YouTube",
-      "query": "IKEA India commercial",
-      "allowed_uploaders": [
-        "IKEA India"
-      ],
-      "promotion_keywords": [
-        "shop",
-        "introducing",
-        "festive",
-        "ikea"
-      ]
-    },
-    {
-      "platform": "YouTube",
-      "query": "Samsung official Galaxy launch",
-      "allowed_uploaders": [
-        "Samsung"
-      ],
-      "promotion_keywords": [
-        "galaxy",
-        "introducing",
-        "pre-order",
-        "buy"
-      ]
-    },
-    {
-      "platform": "Facebook",
       "url": "https://www.facebook.com/100064086661234/videos/1583941662669925/",
-      "allowed_uploaders": [
-        "DS Traders"
-      ],
-      "promotion_keywords": [
-        "mop",
-        "shop",
-        "buy"
-      ]
+      "platform": "Facebook",
+      "company": "DS Traders",
+      "industry": "",
+      "promotion_type": "Brand product promotion",
+      "paid_status": "unknown"
     }
   ]
 }
