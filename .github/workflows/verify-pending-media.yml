@@ -1,0 +1,117 @@
+name: Verify pending thesis ad media
+on:
+  push:
+    paths:
+      - '.github/workflows/verify-pending-media.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-and-download:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare downloader
+        run: |
+          python -m pip install --upgrade yt-dlp
+          ffprobe -version | head -1
+          ffmpeg -version | head -1
+      - name: Retrieve only the two missing videos
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, re, shutil, subprocess, tempfile, traceback
+          from datetime import datetime,timezone
+          from pathlib import Path
+          import yt_dlp
+
+          jobs = [
+            {"id":"YT_76dvJGizc8A","video_id":"76dvJGizc8A","url":"https://www.youtube.com/watch?v=76dvJGizc8A","date":"2024-05-08","channels":["adidas"]},
+            {"id":"YT_H7jU7dpbV0k","video_id":"H7jU7dpbV0k","url":"https://www.youtube.com/watch?v=H7jU7dpbV0k","date":"2024-08-14","channels":["Made by Google","Google"]},
+          ]
+          target=Path("pending_media");target.mkdir(exist_ok=True)
+          reports=[]
+          common=dict(quiet=True,no_warnings=True,ignoreerrors=False,noplaylist=True,
+                      js_runtimes={'node':{}},cachedir=False, socket_timeout=25,
+                      retries=2, fragment_retries=2)
+          for job in jobs:
+            record={"ad_id":job["id"],"url":job["url"],"expected_date":job["date"],"status":"failed"}
+            try:
+              with yt_dlp.YoutubeDL({**common,"skip_download":True}) as y:
+                info=y.extract_info(job["url"],download=False)
+              if not info or info.get("_type") in ("playlist","multi_video") or info.get("entries") or info.get("is_live"):
+                raise ValueError("Not one complete non-live original video")
+              if str(info.get("id",""))!=job["video_id"]:
+                raise ValueError("Video ID mismatch")
+              date_raw=str(info.get("upload_date") or "")
+              if not re.fullmatch(r"\d{8}",date_raw):raise ValueError("No exact platform publication date")
+              actual_date=datetime.strptime(date_raw,"%Y%m%d").date().isoformat()
+              record["platform_date"]=actual_date
+              if actual_date!=job["date"]:raise ValueError("Publication date disagrees with Excel")
+              publisher=str(info.get("channel") or info.get("uploader") or "")
+              record["publisher"]=publisher
+              record["channel_url"]=str(info.get("channel_url") or "")
+              if publisher.casefold().strip() not in [n.casefold() for n in job["channels"]]:
+                raise ValueError("Publisher mismatch")
+              if info.get("duration") is None or float(info["duration"])<=0:
+                raise ValueError("Full duration not available from platform")
+              with tempfile.TemporaryDirectory() as td:
+                out=Path(td)
+                opts={**common, "format":"bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b",
+                      "merge_output_format":"mp4","outtmpl":str(out/"original.%(ext)s")}
+                with yt_dlp.YoutubeDL(opts) as y:y.extract_info(job["url"],download=True)
+                candidates=[f for f in out.glob("original.*") if f.suffix.lower() in (".mp4",".webm",".mkv")]
+                if len(candidates)!=1:raise ValueError("Download did not produce one complete video")
+                src=candidates[0]
+                if src.stat().st_size<65536:raise ValueError("Downloaded media is too small")
+                probe=subprocess.run(["ffprobe","-v","error","-show_entries","format=duration:stream=codec_type",
+                                      "-of","json",str(src)],capture_output=True,text=True,timeout=30,check=True)
+                metadata=json.loads(probe.stdout)
+                if not any(s.get("codec_type")=="video" for s in metadata.get("streams",[])):
+                  raise ValueError("No video stream")
+                duration=float(metadata["format"]["duration"])
+                if abs(duration-float(info["duration"])) > max(4,0.06*float(info["duration"])):
+                  raise ValueError("Video duration mismatch")
+                decode=subprocess.run(["ffmpeg","-v","error","-xerror","-i",str(src),"-map","0:v:0",
+                                       "-f","null","-"],capture_output=True,text=True,timeout=240)
+                if decode.returncode:
+                  raise ValueError("Complete video decode failed: "+decode.stderr[-220:])
+                final=target/(job["id"]+src.suffix.lower())
+                shutil.copy2(src,final)
+                record.update(status="downloaded_needs_ui_review",media_filename=final.name,
+                              media_size_bytes=final.stat().st_size,duration_seconds=duration,
+                              sha256=hashlib.file_digest(final.open("rb"),"sha256").hexdigest(),
+                              platform_duration_seconds=info.get("duration"),
+                              observed_at_utc=datetime.now(timezone.utc).isoformat(),
+                              source="yt-dlp YouTube metadata, no independent native UI engagement verification")
+            except Exception as e:
+              record["error"]=str(e)[:500]
+            reports.append(record)
+            print(json.dumps(record,ensure_ascii=False))
+          (target/"validation_report.json").write_text(json.dumps(reports,indent=2),encoding="utf-8")
+          PY
+      - name: Report to run summary
+        if: always()
+        run: |
+          echo '### Pending media validation' >> "$GITHUB_STEP_SUMMARY"
+          if [ -f pending_media/validation_report.json ]; then
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat pending_media/validation_report.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Retain downloaded media and validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pending-ad-media-validation
+          path: pending_media/
+          retention-days: 7
+          compression-level: 0
+          if-no-files-found: warn
