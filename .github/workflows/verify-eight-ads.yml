@@ -95,6 +95,102 @@ jobs:
             print(json.dumps(out,ensure_ascii=False))
           (folder/'validation_report.json').write_text(json.dumps(results,indent=2),encoding='utf-8')
           PY
+
+      - name: Try public Piped stream endpoints
+        shell: bash
+        run: |
+          python - <<'PY'
+          import concurrent.futures, hashlib, json, shutil, subprocess, tempfile
+          from pathlib import Path
+          from urllib.parse import urlparse
+          import requests
+          root=Path('verified_media');root.mkdir(exist_ok=True)
+          report=root/'validation_report.json'
+          rows=json.loads(report.read_text()) if report.exists() else []
+          instances=['https://pipedapi.kavin.rocks','https://pipedapi.adminforge.de',
+                     'https://pipedapi.tokhmi.xyz','https://piped-api.garudalinux.org',
+                     'https://api-piped.mha.fi']
+          def process(row):
+            if row.get('status')=='media_verified':return row
+            vid=row['ad_id'][3:]
+            notes=[]
+            for base in instances:
+              try:
+                r=requests.get(base+'/streams/'+vid,timeout=9,headers={'User-Agent':'Mozilla/5.0'})
+                if r.status_code!=200:
+                  notes.append(base+': HTTP '+str(r.status_code));continue
+                m=r.json()
+                if m.get('error') or not m.get('videoStreams'):
+                  notes.append(base+': no video streams');continue
+                publisher=str(m.get('uploader') or '')
+                if publisher.casefold().strip()!=row['expected_publisher'].casefold():
+                  notes.append(base+': publisher mismatch '+publisher[:70]);continue
+                day=str(m.get('uploadDate') or '')[:10]
+                if day!=row['expected_date']:
+                  notes.append(base+': publication date mismatch '+day);continue
+                duration=float(m.get('duration') or 0)
+                if duration<=0:notes.append(base+': duration unavailable');continue
+                videos=[v for v in m.get('videoStreams',[]) if v.get('url') and not v.get('videoOnly',False)]
+                videos=sorted(videos,key=lambda v:int(v.get('bitrate') or 0),reverse=True)
+                if not videos:
+                  vids=[v for v in m.get('videoStreams',[]) if v.get('url')]
+                  auds=[a for a in m.get('audioStreams',[]) if a.get('url')]
+                  videos=vids[:1]
+                else:
+                  auds=[]
+                if not videos:
+                  notes.append(base+': no downloadable media urls');continue
+                def copy_stream(uri,path):
+                  parsed=urlparse(uri)
+                  if parsed.scheme!='https':raise ValueError('Non-HTTPS stream')
+                  total=0
+                  with requests.get(uri,stream=True,timeout=(8,20),headers={'User-Agent':'Mozilla/5.0'}) as res:
+                    res.raise_for_status()
+                    with path.open('wb') as w:
+                      for chunk in res.iter_content(262144):
+                        if chunk:
+                          total+=len(chunk)
+                          if total>120*1024*1024:raise ValueError('Stream exceeds limit')
+                          w.write(chunk)
+                  if total<65536:raise ValueError('Incomplete stream')
+                with tempfile.TemporaryDirectory() as td:
+                  td=Path(td);vfile=td/'video.bin';outfile=td/'complete.mp4'
+                  copy_stream(videos[0]['url'],vfile)
+                  if auds:
+                    afile=td/'audio.bin';copy_stream(auds[0]['url'],afile)
+                    cmd=['ffmpeg','-v','error','-y','-i',str(vfile),'-i',str(afile),'-map','0:v:0','-map','1:a:0','-c','copy',str(outfile)]
+                  else:
+                    cmd=['ffmpeg','-v','error','-y','-i',str(vfile),'-c','copy',str(outfile)]
+                  result=subprocess.run(cmd,capture_output=True,text=True,timeout=90)
+                  if result.returncode:raise ValueError('Mux failed: '+result.stderr[-120:])
+                  probe=subprocess.run(['ffprobe','-v','error','-show_entries','format=duration:stream=codec_type',
+                                        '-of','json',str(outfile)],capture_output=True,text=True,timeout=15,check=True)
+                  probed=json.loads(probe.stdout)
+                  if not any(s.get('codec_type')=='video' for s in probed.get('streams',[])):
+                    raise ValueError('Missing video')
+                  actual=float(probed['format']['duration'])
+                  if abs(actual-duration)>max(4,.06*duration):raise ValueError('Duration mismatch')
+                  full=subprocess.run(['ffmpeg','-v','error','-xerror','-i',str(outfile),'-f','null','-'],
+                                      capture_output=True,text=True,timeout=100)
+                  if full.returncode:raise ValueError('Failed full decode')
+                  dest=root/(row['ad_id']+'.mp4')
+                  shutil.copy2(outfile,dest)
+                  row.update(status='media_verified',media_file=dest.name,media_size_bytes=dest.stat().st_size,
+                             sha256=hashlib.file_digest(dest.open('rb'),'sha256').hexdigest(),
+                             published_date=day,publisher=publisher,duration_seconds=actual,
+                             capture_method='Piped public stream; full-media decoded; engagement from original search record')
+                  notes.append(base+': full-media verified')
+                  break
+              except Exception as e:
+                notes.append(base+': '+str(e)[:130])
+            row['alternative_results']=notes
+            return row
+          with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+            updated=list(pool.map(process,rows))
+          report.write_text(json.dumps(updated,indent=2),encoding='utf-8')
+          for r in updated:
+            print(json.dumps({'id':r['ad_id'],'status':r['status'],'attempts':r.get('alternative_results',[])}))
+          PY
       - name: Display validation results
         if: always()
         run: |
