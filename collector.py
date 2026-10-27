@@ -13,10 +13,11 @@ PLATFORMS = {
     'youtube.com':'YouTube','www.youtube.com':'YouTube','youtu.be':'YouTube',
     'tiktok.com':'TikTok','www.tiktok.com':'TikTok',
 }
-AD_FIELDS = ['ad_id','platform','company','publisher','industry','promotion_type','title','caption',
- 'published_date','published_date_label','first_collected_at_utc','latest_observed_at_utc',
- 'media_type','media_path','sha256','original_post_url','verification_status','paid_status','notes']
 METRICS = ['likes','comments','shares','reposts','views','followers','saves']
+AD_FIELDS = ['ad_id','platform','company','published_date','publication_date_source','industry',
+ 'latest_observed_at_utc'] + [m+'_exact' for m in METRICS] + ['media_type','media_path',
+ 'original_post_url','publisher','promotion_type','first_collected_at_utc','published_date_label',
+ 'verification_status','paid_status','title','caption','sha256','notes']
 SNAPSHOT_FIELDS = ['ad_id','observed_at_utc'] + [x for m in METRICS for x in (m+'_exact',m+'_display')] + ['source_url','metric_source','notes']
 
 def platform_for(url):
@@ -44,6 +45,41 @@ def scalar(info,*names):
         if isinstance(v,(int,float)) and not isinstance(v,bool) and v>=0:return v
     return ''
 
+def publication_date(info, source):
+    for key in ('timestamp','release_timestamp'):
+        v=info.get(key)
+        if isinstance(v,(int,float)) and not isinstance(v,bool):
+            try:
+                day=datetime.fromtimestamp(v,timezone.utc).date().isoformat()
+                if '2021-01-01'<=day<='2026-12-31':return day,'Platform '+key+' (UTC)'
+            except (ValueError,OverflowError,OSError):pass
+    for key in ('upload_date','release_date'):
+        value=str(info.get(key) or '')
+        try:
+            day=datetime.strptime(value,'%Y%m%d').date().isoformat()
+            if '2021-01-01'<=day<='2026-12-31':return day,'Platform '+key+' (timezone unspecified)'
+        except ValueError:pass
+    value=str(source.get('published_date') or '')[:10]
+    if re.fullmatch(r'202[1-6]-\d{2}-\d{2}',value) and source.get('publication_date_source'):
+        try:
+            datetime.strptime(value,'%Y-%m-%d')
+            return value,source['publication_date_source']
+        except ValueError:pass
+    return '', 'Unavailable; no date inferred'
+
+def metric_snapshot(info):
+    mapping={'likes':('like_count',),'comments':('comment_count',),'shares':('share_count',),
+             'reposts':('repost_count',),'views':('view_count',),
+             'followers':('channel_follower_count','uploader_follower_count'),'saves':('save_count',)}
+    values={m:scalar(info,*names) for m,names in mapping.items()};notes=[]
+    match=re.search(r'([\d,.]+)\s*([KMB]?)\s+views',info.get('title') or '',re.I)
+    if match and values['views']!='':
+        raw,suffix=match.groups();scale={'':1,'K':1000,'M':1000000,'B':1000000000}[suffix.upper()]
+        displayed=float(raw.replace(',',''))*scale
+        if abs(displayed-values['views'])>scale*.05:
+            values['views']='';notes.append('Views withheld: title display conflicts with extracted view_count.')
+    return values,' '.join(notes)
+
 def migrate_legacy(out):
     ads=read_csv(out/'ads.csv',AD_FIELDS); snaps=read_csv(out/'engagement_snapshots.csv',SNAPSHOT_FIELDS)
     known={r['ad_id'] for r in ads}
@@ -69,12 +105,16 @@ def run(config,out,limit=25):
     report={'started_at_utc':datetime.now(timezone.utc).isoformat(),'added_ads':0,'new_snapshots':0,'events':[]}
     opts={'quiet':True,'noplaylist':True,'socket_timeout':20,'retries':1,'fragment_retries':1,'format':'best[ext=mp4]/best',
           'js_runtimes':{'node':{}},'max_filesize':250*1024*1024,'cachedir':False}
-    for source in config.get('sources',[]):
+    for source in config.get('sources',[])[:limit]:
         url=source.get('url','');plat=platform_for(url)
         if not plat or source.get('platform',plat)!=plat:
             report['events'].append({'url':url,'status':'rejected','reason':'Only explicit HTTPS URLs from supported platforms are accepted.'});continue
         try:
             with yt_dlp.YoutubeDL(opts) as y:info=y.extract_info(url,download=False)
+            if info.get('_type') in ('playlist','multi_video') or info.get('entries') or info.get('is_live'):
+                raise ValueError('Gallery, playlist or live stream excluded; requires one original creative.')
+            day,date_source=publication_date(info,source)
+            if not day:raise ValueError('Publication date unavailable or outside 2021–2026; excluded from main list.')
             aid=plat+'-'+str(info.get('id') or hashlib.sha256(url.encode()).hexdigest()[:16])
             if not re.fullmatch(r'[A-Za-z0-9_-]+',aid):raise ValueError('Unexpected post identifier')
             now=datetime.now(timezone.utc).isoformat(timespec='seconds');row=byid.get(aid);is_new=row is None
@@ -84,11 +124,14 @@ def run(config,out,limit=25):
                     caption=info.get('description') or '',published_date=info.get('upload_date') or '',published_date_label=info.get('release_date') or '',
                     first_collected_at_utc=now,original_post_url=url,verification_status='needs_review',paid_status=source.get('paid_status','unknown'),notes='Metadata extractor output; verify against original post.')
             row['latest_observed_at_utc']=now
-            metric={'likes':('like_count',),'comments':('comment_count',),'shares':('share_count','repost_count'),'reposts':('repost_count',),
-                    'views':('view_count',),'followers':('channel_follower_count','uploader_follower_count'),'saves':('save_count',)}
+            row.update(published_date=day,publication_date_source=date_source,company=source.get('company') or row.get('company',''),
+                       industry=source.get('industry') or row.get('industry',''),caption=info.get('description') or row.get('caption',''),
+                       publisher=info.get('uploader') or row.get('publisher',''))
+            metric,metric_notes=metric_snapshot(info)
             snap={'ad_id':aid,'observed_at_utc':now,'source_url':url,'metric_source':'public metadata extractor; not independently UI-verified','notes':''}
-            for m,names in metric.items():
-                value=scalar(info,*names);snap[m+'_exact']=value;snap[m+'_display']=str(value) if value!='' else ''
+            snap['notes']=metric_notes
+            for m,value in metric.items():
+                snap[m+'_exact']=value;snap[m+'_display']=str(value) if value!='' else '';row[m+'_exact']=value
             if (aid,now) not in known_snap:snaps.append(snap);known_snap.add((aid,now));report['new_snapshots']+=1
             if not row.get('media_path') or not (out/row['media_path']).is_file():
                 with tempfile.TemporaryDirectory(dir=out) as stage:

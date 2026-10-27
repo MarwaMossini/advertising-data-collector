@@ -1,12 +1,498 @@
 {
   "sources": [
     {
+      "url": "https://www.facebook.com/Dominos/videos/3885226688465219/",
+      "platform": "Facebook",
+      "company": "Domino's Pizza",
+      "industry": "Food and beverages",
+      "promotion_type": "Pizza discount promotion",
+      "paid_status": "unknown",
+      "queue_origin": "Newly discovered original-platform promotional post; not yet downloaded or verified"
+    },
+    {
+      "url": "https://www.facebook.com/StarbucksSingapore/videos/912517866217781/",
+      "platform": "Facebook",
+      "company": "Starbucks Singapore",
+      "industry": "Food and beverages",
+      "promotion_type": "Delivery app promotion",
+      "paid_status": "unknown",
+      "queue_origin": "Newly discovered original-platform promotional post; not yet downloaded or verified"
+    },
+    {
+      "url": "https://www.facebook.com/DolbyAsia/videos/7424615760952893/",
+      "platform": "Facebook",
+      "company": "Dolby Asia / Samsung",
+      "industry": "Consumer electronics",
+      "promotion_type": "Galaxy S24 Ultra Dolby Atmos promotion",
+      "paid_status": "unknown",
+      "queue_origin": "Newly discovered original-platform promotional post; not yet downloaded or verified"
+    },
+    {
+      "url": "https://www.facebook.com/lldiaries/videos/310852740120222/",
+      "platform": "Facebook",
+      "company": "Lumsleeshdiaries / L’Oreal",
+      "industry": "Beauty and haircare",
+      "promotion_type": "Disclosed collaboration promoting Elnett hairspray",
+      "paid_status": "unknown",
+      "queue_origin": "Newly discovered original-platform promotional post; not yet downloaded or verified"
+    },
+    {
+      "url": "https://www.facebook.com/61566049687979/videos/1000062678757556/",
+      "platform": "Facebook",
+      "company": "PUBG MOBILE",
+      "industry": "Video games",
+      "promotion_type": "Game collection-system and download promotion",
+      "paid_status": "unknown",
+      "queue_origin": "Newly discovered original-platform promotional post; not yet downloaded or verified"
+    },
+    {
+      "url": "https://www.facebook.com/MahajanElectronics/videos/2207382739701512/",
+      "platform": "Facebook",
+      "company": "Mahajan Electronics",
+      "industry": "Home appliances",
+      "promotion_type": "LG washing machine retail offer",
+      "paid_status": "unknown",
+      "queue_origin": "Newly discovered original-platform promotional post; not yet downloaded or verified"
+    },
+    {
+      "url": "https://www.facebook.com/MahajanElectronics/videos/24037161712545677/",
+      "platform": "Facebook",
+      "company": "Mahajan Electronics",
+      "industry": "Consumer electronics",
+      "promotion_type": "Samsung The Frame TV retail offer",
+      "paid_status": "unknown",
+      "queue_origin": "Newly discovered original-platform promotional post; not yet downloaded or verified"
+    },
+    {
+      "url": "https://www.facebook.com/Elshamykids/videos/1366245407858341/",
+      "platform": "Facebook",
+      "company": "Elshamy Kids",
+      "industry": "Childrenswear",
+      "promotion_type": "Childrenswear retail promotion",
+      "paid_status": "unknown",
+      "queue_origin": "Newly discovered original-platform promotional post; not yet downloaded or verified"
+    },
+    {
+      "url": "https://www.facebook.com/bangshalcycle/videos/1883550962441655/",
+      "platform": "Facebook",
+      "company": "Bangshal Cycle Mart",
+      "industry": "Bicycle retail",
+      "promotion_type": "Bicycle price and retail promotion",
+      "paid_status": "unknown",
+      "queue_origin": "Newly discovered original-platform promotional post; not yet downloaded or verified"
+    },
+    {
+      "url": "https://www.facebook.com/labuflutes/videos/1906882333448994/",
+      "platform": "Facebook",
+      "company": "Labu Flutes",
+      "industry": "Musical instrument retail",
+      "promotion_type": "Guitar retail promotion",
+      "paid_status": "unknown",
+      "queue_origin": "Newly discovered original-platform promotional post; not yet downloaded or verified"
+    },
+    {
+      "url": "https://www.facebook.com/SaifulExpressLtd/videos/736120082118285/",
+      "platform": "Facebook",
+      "company": "Saiful Express Ltd.",
+      "industry": "Home appliances retail",
+      "promotion_type": "Water filter retail promotion",
+      "paid_status": "unknown",
+      "queue_origin": "Newly discovered original-platform promotional post; not yet downloaded or verified"
+    },
+    {
       "url": "https://www.facebook.com/100064086661234/videos/1583941662669925/",
       "platform": "Facebook",
       "company": "DS Traders",
-      "industry": "",
-      "promotion_type": "Brand product promotion",
-      "paid_status": "unknown"
+      "industry": "Household products retail",
+      "promotion_type": "Cleaning mop promotion",
+      "published_date": "2026-04-30",
+      "publication_date_source": "Previously saved original-platform metadata; 2026-10-24 collector",
+      "queue_origin": "Existing GitHub collector record"
+    },
+    {
+      "url": "https://www.facebook.com/reel/1004031189297237/",
+      "platform": "Facebook",
+      "company": "DS Traders",
+      "industry": "Travel accessories",
+      "promotion_type": "Demonstrates a compact toothbrush container promoted for travel, work, school and gym use.",
+      "published_date": "2026-08-25",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_1004031189297237",
+      "original_evidence_url": "https://www.facebook.com/100064086661234/videos/1004031189297237/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/1048165747446634/",
+      "platform": "Facebook",
+      "company": "Lucca Comics & Games",
+      "industry": "Events and entertainment",
+      "promotion_type": "Announces ticket sales for Lucca Comics & Games 2025 and promotes discounted early-bird tickets for its French Kiss edition.",
+      "published_date": "2025-06-27",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_1048165747446634",
+      "original_evidence_url": "https://www.facebook.com/luccacomicsandgames/posts/la-biglietteria-di-lucca-cg-2025-%C3%A8-ufficialmente-aperta-approfitta-dei-biglietti/1289204495896257/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/122179097042087053/",
+      "platform": "Facebook",
+      "company": "Ankhway",
+      "industry": "Wellness products",
+      "promotion_type": "Mushroom gummy promotion. Health claims are advertiser statements, not research findings.",
+      "published_date": "2024-09-16",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_122179097042087053",
+      "original_evidence_url": "https://www.facebook.com/61552611613150/posts/embrace-the-power-of-nature-with-ten-functional-mushrooms-harmoniously-blended-i/122179097042087053/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/1388891906771214/",
+      "platform": "Facebook",
+      "company": "DS Traders",
+      "industry": "Kitchenware",
+      "promotion_type": "Demonstrates flower-shaped magnetic clips for sealing food bags. Includes a shopping link.",
+      "published_date": "2026-09-01",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_1388891906771214",
+      "original_evidence_url": "https://www.facebook.com/100064086661234/videos/1388891906771214/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/1494847519067179/",
+      "platform": "Facebook",
+      "company": "DS Traders",
+      "industry": "Kitchenware",
+      "promotion_type": "Promotes a silicone cooking-utensil set with wooden handles and storage stand, with a shopping link.",
+      "published_date": "2026-08-29",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_1494847519067179",
+      "original_evidence_url": "https://www.facebook.com/100064086661234/videos/1494847519067179/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/1521525988863064/",
+      "platform": "Facebook",
+      "company": "Sweet Table n Bakery",
+      "industry": "Food and beverage / Bakery",
+      "promotion_type": "Custom decorated cakes",
+      "published_date": "2025-11-01",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_1521525988863064",
+      "original_evidence_url": "https://www.facebook.com/reel/1521525988863064/?s=fb_shorts_profile&stack_idx=0",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/1691497735621014/",
+      "platform": "Facebook",
+      "company": "DS Traders",
+      "industry": "Kitchenware",
+      "promotion_type": "Demonstrates an ice tray with a press mechanism for releasing ice cubes and provides a purchase link.",
+      "published_date": "2026-04-30",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_1691497735621014",
+      "original_evidence_url": "https://www.facebook.com/100064086661234/videos/1691497735621014/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/1944425202898653/",
+      "platform": "Facebook",
+      "company": "DS Traders",
+      "industry": "Home decor",
+      "promotion_type": "Promotes a three-piece decorative mirror and shelf set with wooden and gold-coloured elements and a shopping link.",
+      "published_date": "2026-08-31",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_1944425202898653",
+      "original_evidence_url": "https://www.facebook.com/100064086661234/videos/1944425202898653/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/1962139084475519/",
+      "platform": "Facebook",
+      "company": "DS Traders",
+      "industry": "Home decor",
+      "promotion_type": "Promotes self-adhesive decorative sheets with a black marble and floral pattern. Includes a shopping link.",
+      "published_date": "2026-08-31",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_1962139084475519",
+      "original_evidence_url": "https://www.facebook.com/100064086661234/videos/1962139084475519/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/1976163169188192/",
+      "platform": "Facebook",
+      "company": "Vegamour",
+      "industry": "Haircare",
+      "promotion_type": "Demonstrates application of a hair serum and links to its product page.",
+      "published_date": "2021-01-10",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_1976163169188192",
+      "original_evidence_url": "https://www.facebook.com/VegamourBeauty/videos/1976163169188192/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/2263336744463166/",
+      "platform": "Facebook",
+      "company": "Samsung",
+      "industry": "Home appliances",
+      "promotion_type": "EcoBubble top-load washing machine",
+      "published_date": "2026-09-29",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_2263336744463166",
+      "original_evidence_url": "https://www.facebook.com/100064785873719/videos/2263336744463166?__so__=permalink",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/2339543633486414/",
+      "platform": "Facebook",
+      "company": "DS Traders",
+      "industry": "Kitchenware",
+      "promotion_type": "Demonstrates an over-sink metal rack for drying dishes and organizing kitchen storage. Includes a shopping link.",
+      "published_date": "2026-10-05",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_2339543633486414",
+      "original_evidence_url": "https://www.facebook.com/100064086661234/videos/2339543633486414/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/2498352813986379/",
+      "platform": "Facebook",
+      "company": "Starbucks",
+      "industry": "Food and beverages",
+      "promotion_type": "Black Cat Frappuccino",
+      "published_date": "2026-10-22",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_2498352813986379",
+      "original_evidence_url": "https://www.facebook.com/reel/2498352813986379/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/2567490463696515/",
+      "platform": "Facebook",
+      "company": "DS Traders",
+      "industry": "Kitchenware",
+      "promotion_type": "Demonstrates a self-stirring mug for mixing drinks and links to the retailer's product page.",
+      "published_date": "2026-08-24",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_2567490463696515",
+      "original_evidence_url": "https://www.facebook.com/100064086661234/videos/2567490463696515/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/439765041957753/",
+      "platform": "Facebook",
+      "company": "Flo Mattress",
+      "industry": "Home furnishings",
+      "promotion_type": "Memory foam mattress benefits and online shopping promotion.",
+      "published_date": "2024-04-10",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_439765041957753",
+      "original_evidence_url": "https://www.facebook.com/sleeponflo/posts/-introducing-flo-ergo-memory-foam-mattress-optimal-comfort-designed-for-working-/439765041957753/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/480203238110854/",
+      "platform": "Facebook",
+      "company": "Khazanay Pakistan",
+      "industry": "Footwear",
+      "promotion_type": "Running shoe promotion with shopping link.",
+      "published_date": "2024-08-19",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_480203238110854",
+      "original_evidence_url": "https://www.facebook.com/Khazanaypak/posts/affordable-running-shoes-at-khazanaypk-hit-your-running-goals-without-breaking-t/480203238110854/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/511716291443398/",
+      "platform": "Facebook",
+      "company": "DS Traders",
+      "industry": "Kitchenware",
+      "promotion_type": "Demonstrates a silicone garlic peeler and directs viewers to the product store.",
+      "published_date": "2024-09-16",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_511716291443398",
+      "original_evidence_url": "https://www.facebook.com/dstradersofficial/videos/511716291443398/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/547955717887740/",
+      "platform": "Facebook",
+      "company": "Bakcell",
+      "industry": "Telecommunications",
+      "promotion_type": "Star mobile tariff promotion covering messaging, data and roaming.",
+      "published_date": "2024-09-18",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_547955717887740",
+      "original_evidence_url": "https://www.facebook.com/Bakcell/posts/yeni-star-tarifi-xo%C5%9F-anlara-yeni-h%C9%99y%C9%99canlara-k%C9%99%C5%9Ffl%C9%99r%C9%99-%C3%A7a%C4%9F%C4%B1r%C4%B1rbol-%C3%BCnsiyy%C9%99t-pulsuz/547955717887740/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/668796019227427/",
+      "platform": "Facebook",
+      "company": "Samsung",
+      "industry": "Consumer electronics",
+      "promotion_type": "Galaxy A16 5G",
+      "published_date": "2025-04-15",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_668796019227427",
+      "original_evidence_url": "https://www.facebook.com/SamsungBangladesh/videos/galaxy-a16-5g-available-with-stunning-colors/668796019227427/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/706803341698717/",
+      "platform": "Facebook",
+      "company": "Digitek",
+      "industry": "Photography equipment",
+      "promotion_type": "Promotes a portable RGB video light and lists its features and offer price.",
+      "published_date": "2025-04-28",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_706803341698717",
+      "original_evidence_url": "https://www.facebook.com/digitekofficial/videos/706803341698717/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/747813961149666/",
+      "platform": "Facebook",
+      "company": "Bhima Gold - B Krishnan Group",
+      "industry": "Jewellery",
+      "promotion_type": "Promotes a jewellery offer for 20 June 2025 with purchase conditions and diamond discounts. Offer date differs from publication date.",
+      "published_date": "2025-06-19",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_747813961149666",
+      "original_evidence_url": "https://www.facebook.com/bhimagoldofficial.bkrishnangroup/videos/747813961149666/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/752425544318552/",
+      "platform": "Facebook",
+      "company": "Military Endurance",
+      "industry": "Security cameras",
+      "promotion_type": "Promotes a solar-powered cellular security camera with a discount and free shipping.",
+      "published_date": "2025-08-28",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_752425544318552",
+      "original_evidence_url": "https://www.facebook.com/100094210683544/videos/752425544318552/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/758467600418797/",
+      "platform": "Facebook",
+      "company": "Fiona Franchimon",
+      "industry": "Haircare",
+      "promotion_type": "Promotes a styling hairspray with a demonstration and a website shopping call to action.",
+      "published_date": "2025-08-16",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_758467600418797",
+      "original_evidence_url": "https://www.facebook.com/fionafranchimonofficial/videos/758467600418797/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/763570512901491/",
+      "platform": "Facebook",
+      "company": "Tilda Fabrics USA",
+      "industry": "Textiles",
+      "promotion_type": "Christmas fabric collection available in stores September 1, 2025.",
+      "published_date": "2025-07-03",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_763570512901491",
+      "original_evidence_url": "https://www.facebook.com/tildausa/posts/introducing-tildas-merry-little-christmas-collectionin-stores-september-1st-2025/763570512901491/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/853469779607288/",
+      "platform": "Facebook",
+      "company": "Bepanthen",
+      "industry": "Skincare",
+      "promotion_type": "Promotes Bepanthen Derma moisturising products with a retailer shopping link.",
+      "published_date": "2023-10-03",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_853469779607288",
+      "original_evidence_url": "https://www.facebook.com/BepanthenArabia/posts/bepanthens-hydrating-powerhouses-infuse-your-skin-with-moisture-unveiling-a-more/629532986033860/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/873650801113399/",
+      "platform": "Facebook",
+      "company": "POND'S Philippines",
+      "industry": "Skincare",
+      "promotion_type": "Introduces a facial serum and advertises dark-spot and skin-brightening benefits, with a Lazada shopping link.",
+      "published_date": "2024-02-01",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_873650801113399",
+      "original_evidence_url": "https://www.facebook.com/PondsPhilippines/posts/introducing-the-all-new-ponds-bright-miracle-serum-with-50x-niasorcinol-vs-anoth/1028206625319375/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/939871364833494/",
+      "platform": "Facebook",
+      "company": "TabloTV",
+      "industry": "Electronics",
+      "promotion_type": "DVR and streaming device promotion, including storage and TV guide features.",
+      "published_date": "2024-10-04",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_939871364833494",
+      "original_evidence_url": "https://www.facebook.com/tablotv/posts/a-tablo-device-99-comes-with-tablo-dvr-streaming-device-ability-to-stream-tv-to-/939871364833494/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/943282474199035/",
+      "platform": "Facebook",
+      "company": "POND'S Philippines",
+      "industry": "Skincare",
+      "promotion_type": "Promotes a facial serum at a starting price of P108 per pack with a Lazada shopping link.",
+      "published_date": "2024-06-13",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_943282474199035",
+      "original_evidence_url": "https://www.facebook.com/PondsPhilippines/posts/the-new-ponds-bright-miracle-serum-with-niasorcinol-is-now-available-for-as-low-/1108531757286861/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.facebook.com/reel/959258256238136/",
+      "platform": "Facebook",
+      "company": "Pond's Sri Lanka",
+      "industry": "Skincare",
+      "promotion_type": "Sunscreen promotion with shopping link.",
+      "published_date": "2024-11-13",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx FB_959258256238136",
+      "original_evidence_url": "https://www.facebook.com/PondsSriLanka/posts/why-settle-for-less-ponds-sunscreen-is-packed-with-niacinamide-ensuring-it-absor/959258256238136/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.instagram.com/reel/DSZpCCrEt47/",
+      "platform": "Instagram",
+      "company": "Samsung",
+      "industry": "Consumer electronics",
+      "promotion_type": "Galaxy Buds Core",
+      "published_date": "2025-12-18",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx IG_DSZpCCrEt47",
+      "original_evidence_url": "https://www.instagram.com/reel/DSZpCCrEt47/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.instagram.com/reel/DU8zbGYDqBU/",
+      "platform": "Instagram",
+      "company": "Laugh Festival",
+      "industry": "Live entertainment",
+      "promotion_type": "Laugh Festival comedy show",
+      "published_date": "2026-02-19",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx IG_DU8zbGYDqBU",
+      "original_evidence_url": "https://www.instagram.com/reel/DU8zbGYDqBU/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.instagram.com/reel/DYbW2tVztIC/",
+      "platform": "Instagram",
+      "company": "Headout",
+      "industry": "Travel and experiences",
+      "promotion_type": "Headout signup wallet-credit promotion",
+      "published_date": "2026-05-17",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx IG_DYbW2tVztIC",
+      "original_evidence_url": "https://www.instagram.com/reel/DYbW2tVztIC/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.instagram.com/whiteoakmh/reel/De2C46kjLcP/",
+      "platform": "Instagram",
+      "company": "White Oak Music Hall",
+      "industry": "Live entertainment",
+      "promotion_type": "Temachii concert tickets",
+      "published_date": "2026-10-23",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx IG_De2C46kjLcP",
+      "original_evidence_url": "https://www.instagram.com/whiteoakmh/reel/De2C46kjLcP/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.instagram.com/whiteoakmh/reel/De2eTO7DhAG/",
+      "platform": "Instagram",
+      "company": "White Oak Music Hall",
+      "industry": "Live entertainment",
+      "promotion_type": "MICO ticket reminder",
+      "published_date": "2026-10-23",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx IG_De2eTO7DhAG",
+      "original_evidence_url": "https://www.instagram.com/whiteoakmh/reel/De2eTO7DhAG/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
+    },
+    {
+      "url": "https://www.instagram.com/cy.ooi/reel/DemL9_oSnlm/",
+      "platform": "Instagram",
+      "company": "Samsung",
+      "industry": "Consumer electronics / Wearables",
+      "promotion_type": "Galaxy Watch Ultra 2",
+      "published_date": "2026-10-17",
+      "publication_date_source": "Previous direct collection; see Master_Ads.xlsx IG_DemL9_oSnlm",
+      "original_evidence_url": "https://www.instagram.com/cy.ooi/reel/DemL9_oSnlm/",
+      "queue_origin": "Existing master record; recheck only, not a new thesis sample"
     }
   ]
 }
