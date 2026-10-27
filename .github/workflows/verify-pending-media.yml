@@ -97,6 +97,95 @@ jobs:
             print(json.dumps(record,ensure_ascii=False))
           (target/"validation_report.json").write_text(json.dumps(reports,indent=2),encoding="utf-8")
           PY
+
+      - name: Try public media proxy for blocked videos
+        shell: bash
+        run: |
+          python -m pip install -q requests
+          python - <<'PY'
+          from pathlib import Path
+          from datetime import datetime, timezone
+          import hashlib,json,requests,subprocess,re,shutil,tempfile
+          from urllib.parse import urlparse
+          folder=Path("pending_media")
+          report_path=folder/"validation_report.json"
+          if not report_path.exists():raise SystemExit(0)
+          records=json.loads(report_path.read_text())
+          instances=["https://inv.nadeko.net","https://invidious.nerdvpn.de",
+                     "https://yt.chocolatemoo53.com","https://invidious.tiekoetter.com"]
+          for record in records:
+            if record.get("status")=="downloaded_needs_ui_review":continue
+            vid=record["ad_id"].split("_",1)[-1]
+            acceptable=["adidas"] if vid=="76dvJGizc8A" else ["Made by Google","Google"]
+            record["alternative_attempts"]=[]
+            for base in instances:
+              attempt={"instance":base}
+              record["alternative_attempts"].append(attempt)
+              try:
+                r=requests.get(f"{base}/api/v1/videos/{vid}",timeout=12,headers={"User-Agent":"Mozilla/5.0"})
+                attempt["metadata_http_status"]=r.status_code
+                r.raise_for_status()
+                info=r.json()
+                if info.get("videoId")!=vid:raise ValueError("Video ID mismatch")
+                publisher=info.get("author") or ""
+                if publisher.casefold().strip() not in [v.casefold() for v in acceptable]:
+                  raise ValueError("Publisher mismatch")
+                published=info.get("published")
+                if published is None:raise ValueError("Publication timestamp unavailable")
+                day=datetime.fromtimestamp(float(published),timezone.utc).date().isoformat()
+                if day!=record["expected_date"]:raise ValueError("Date does not match workbook")
+                duration=float(info.get("lengthSeconds") or 0)
+                if duration<=0:raise ValueError("Duration unavailable")
+                streams=[f for f in info.get("formatStreams",[]) if f.get("url") and ("mp4" in str(f.get("type","")) or "video" in str(f.get("type","")))]
+                streams.sort(key=lambda f:int(f.get("bitrate") or 0),reverse=True)
+                if not streams:raise ValueError("No muxed full-video streams")
+                ok=False
+                for stream in streams[:2]:
+                  try:
+                    url=stream["url"]
+                    # Use the original public stream URL, not a screenshot or frame.
+                    with tempfile.TemporaryDirectory() as td:
+                      tmp=Path(td)/"original.mp4"
+                      with requests.get(url,stream=True,timeout=(10,50),headers={"User-Agent":"Mozilla/5.0"}) as resp:
+                        attempt["stream_http_status"]=resp.status_code
+                        resp.raise_for_status()
+                        with tmp.open("wb") as f:
+                          downloaded=0
+                          for chunk in resp.iter_content(chunk_size=262144):
+                            if chunk:
+                              downloaded+=len(chunk)
+                              if downloaded>250*1024*1024:raise ValueError("Exceeded media limit")
+                              f.write(chunk)
+                      if tmp.stat().st_size<65536:raise ValueError("Stream too small")
+                      p=subprocess.run(["ffprobe","-v","error","-show_entries","format=duration:stream=codec_type",
+                                        "-of","json",str(tmp)],capture_output=True,text=True,timeout=30,check=True)
+                      meta=json.loads(p.stdout)
+                      if not any(x.get("codec_type")=="video" for x in meta.get("streams",[])):
+                        raise ValueError("Not video")
+                      duration_observed=float(meta["format"]["duration"])
+                      if abs(duration-duration_observed)>max(4,duration*.06):
+                        raise ValueError("Duration differs from source")
+                      decoded=subprocess.run(["ffmpeg","-v","error","-xerror","-i",str(tmp),"-map","0:v:0",
+                                              "-f","null","-"],capture_output=True,text=True,timeout=240)
+                      if decoded.returncode:raise ValueError("Full video decode failed")
+                      dst=folder/(record["ad_id"]+".mp4")
+                      shutil.copy2(tmp,dst)
+                      record.update(status="downloaded_needs_ui_review",
+                                    publisher=publisher,platform_date=day,media_filename=dst.name,
+                                    duration_seconds=duration_observed,media_size_bytes=dst.stat().st_size,
+                                    sha256=hashlib.file_digest(dst.open("rb"),"sha256").hexdigest(),
+                                    source="Public Invidious metadata + full media stream; original platform UI not independently reverified")
+                      attempt["status"]="downloaded_and_decoded"
+                      ok=True
+                      break
+                  except Exception as inner:
+                    attempt["stream_error"]=str(inner)[:160]
+                if ok:break
+              except Exception as ex:
+                attempt["error"]=str(ex)[:180]
+            print(json.dumps(record,ensure_ascii=False))
+          report_path.write_text(json.dumps(records,indent=2),encoding="utf-8")
+          PY
       - name: Report to run summary
         if: always()
         run: |
