@@ -26,7 +26,7 @@ jobs:
           from PIL import Image
           from urllib.parse import urlparse
           sources=[
-            ("rabbit_hmi","1745598954060882142","2024-01-11"),
+            ("rabbit_hmi","1745598954060882142","2024-01-12"),
             ("50cent","1815411875624210641","2024-07-22"),
             ("SmythsToysIRE","1955225508464988293","2025-08-12"),
             ("mistplayapp","1861802258918150383","2024-11-27"),
@@ -71,7 +71,7 @@ jobs:
               if isinstance(raw_date,(int,float)):
                 detected=datetime.datetime.fromtimestamp(raw_date,datetime.timezone.utc).date().isoformat()
               else:
-                detected=datetime.datetime.fromisoformat(str(raw_date).replace("Z","+00:00")).date().isoformat()
+                detected=datetime.datetime.strptime(str(raw_date),"%a %b %d %H:%M:%S %z %Y").date().isoformat() if re.match(r"^[A-Za-z]{3} [A-Za-z]{3} ",str(raw_date)) else datetime.datetime.fromisoformat(str(raw_date).replace("Z","+00:00")).date().isoformat()
               if detected!=day:raise ValueError("Publication date mismatch: "+detected)
               row.update(published_date=detected,post_text=data.get("text"),
                          likes=data.get("likes"),comments=data.get("replies"),
