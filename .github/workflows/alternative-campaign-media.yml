@@ -1,0 +1,74 @@
+name: Try alternative hosts for candidate media
+on:
+  push:
+    paths: ['.github/workflows/alternative-campaign-media.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install extractor
+        run: python -m pip install -U yt-dlp
+      - name: Try media from other official or campaign hosts
+        run: |
+          python - <<'PY'
+          import json, subprocess, tempfile, shutil, hashlib
+          from pathlib import Path
+          import yt_dlp
+          cases=[
+           ('YT_hDZ7y8RP5HE','Disney official media page','https://video.disney.com/watch/moana-2-official-trailer-61f4bc35ea7c5dea2c651fcc'),
+           ('YT_kjVf8ptmDmk','Vimeo ad portfolio','https://vimeo.com/946625522'),
+           ('YT_kjVf8ptmDmk','Vimeo production reel','https://vimeo.com/1004659959'),
+           ('YT_itpcsQQvgAQ','Abt Nintendo first-look trailer copy','https://www.abt.com/videos/6920/Nintendo-Switch-2-First-Look-Trailer'),
+          ]
+          out=Path('alternative_media');out.mkdir(exist_ok=True)
+          logs=[]
+          for id,label,url in cases:
+           entry={'ad_id':id,'host':label,'url':url,'status':'not_downloaded'}
+           try:
+            with tempfile.TemporaryDirectory() as tmp:
+             opts={'quiet':True,'no_warnings':True,'noplaylist':True,'socket_timeout':20,
+                   'retries':1,'fragment_retries':1,'max_filesize':160*1024*1024,
+                   'format':'bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/b/best',
+                   'merge_output_format':'mp4','outtmpl':tmp+'/video.%(ext)s'}
+             with yt_dlp.YoutubeDL(opts) as y:
+              info=y.extract_info(url,download=True)
+             media=[p for p in Path(tmp).glob('video.*') if p.suffix.lower() in ('.mp4','.webm','.mkv')]
+             if len(media)!=1:raise ValueError('No single video file produced')
+             p=media[0]
+             if p.stat().st_size<65536:raise ValueError('Too small')
+             probe=subprocess.run(['ffprobe','-v','error','-show_entries','format=duration:stream=codec_type',
+                      '-of','json',str(p)],capture_output=True,text=True,timeout=30,check=True)
+             d=json.loads(probe.stdout)
+             if not any(q.get('codec_type')=='video' for q in d.get('streams',[])):
+              raise ValueError('Video track absent')
+             decode=subprocess.run(['ffmpeg','-v','error','-xerror','-i',str(p),'-f','null','-'],
+                     capture_output=True,text=True,timeout=120)
+             if decode.returncode:raise ValueError('Full decode failure')
+             name=id+'_'+str(len(logs)+1)+p.suffix.lower()
+             dest=out/name;shutil.copy2(p,dest)
+             entry.update(status='complete_mirror_needs_creative_comparison',title=info.get('title'),
+                          uploader=info.get('uploader'),duration=float(d['format']['duration']),
+                          size_bytes=dest.stat().st_size,file=name,
+                          sha256=hashlib.file_digest(dest.open('rb'),'sha256').hexdigest())
+           except Exception as e:
+            entry['error']=str(e)[:420]
+           logs.append(entry);print(json.dumps(entry))
+          (out/'host_attempts.json').write_text(json.dumps(logs,indent=2))
+          PY
+      - name: Archive successful media for checking
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alternative-campaign-media
+          path: alternative_media/
+          retention-days: 7
+          compression-level: 0
+          if-no-files-found: warn
