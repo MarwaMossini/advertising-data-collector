@@ -1,0 +1,115 @@
+name: Check eight candidate ads for full media
+on:
+  push:
+    paths: ['.github/workflows/verify-eight-ads.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install downloader
+        run: python -m pip install --upgrade yt-dlp
+      - name: Validate original links and download full videos
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, re, hashlib, subprocess, shutil, tempfile
+          from datetime import datetime, timezone
+          from pathlib import Path
+          import yt_dlp
+          ads=[
+            ('_Ra6wkIoJp0','Nike','2024-07-28'),
+            ('yP0grL4HZ1E','Nike','2024-08-06'),
+            ('uTRwjD10dKY',"McDonald's",'2024-06-25'),
+            ('7BprWF9Ip78','Starbucks Coffee','2025-07-09'),
+            ('kjVf8ptmDmk','e.l.f. Cosmetics','2024-02-07'),
+            ('DXfWY8GpX8Y','e.l.f. Cosmetics','2024-02-07'),
+            ('itpcsQQvgAQ','Nintendo of America','2025-01-16'),
+            ('hDZ7y8RP5HE','Walt Disney Animation Studios','2024-08-09')
+          ]
+          folder=Path('verified_media');folder.mkdir(exist_ok=True)
+          results=[]
+          common={'quiet':True,'no_warnings':True,'noplaylist':True,'socket_timeout':20,
+                  'retries':1,'fragment_retries':1,'cachedir':False,'js_runtimes':{'node':{}}}
+          for vid,expected_channel,expected_day in ads:
+            out={'ad_id':'YT_'+vid,'url':'https://www.youtube.com/watch?v='+vid,
+                 'expected_publisher':expected_channel,'expected_date':expected_day,
+                 'status':'not_verified'}
+            try:
+              with yt_dlp.YoutubeDL({**common,'skip_download':True}) as y:
+                info=y.extract_info(out['url'],download=False)
+              if not info or str(info.get('id',''))!=vid:
+                raise ValueError('Wrong video ID / unavailable')
+              if info.get('_type') in ('playlist','multi_video') or info.get('entries') or info.get('is_live'):
+                raise ValueError('Not a single completed video')
+              channel=str(info.get('channel') or info.get('uploader') or '')
+              out['publisher']=channel
+              if channel.casefold().strip()!=expected_channel.casefold():
+                raise ValueError('Publisher mismatch; manual check needed')
+              raw_day=str(info.get('upload_date') or '')
+              if not re.fullmatch(r'\d{8}',raw_day):
+                raise ValueError('Exact date unavailable')
+              day=datetime.strptime(raw_day,'%Y%m%d').date().isoformat()
+              out['published_date']=day
+              if day!=expected_day:
+                raise ValueError('Publication date conflict; manual check needed')
+              ref_duration=float(info.get('duration') or 0)
+              if ref_duration<=0:raise ValueError('No original duration')
+              with tempfile.TemporaryDirectory() as td:
+                opts={**common,'format':'bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b',
+                      'merge_output_format':'mp4','outtmpl':td+'/creative.%(ext)s'}
+                with yt_dlp.YoutubeDL(opts) as y:y.extract_info(out['url'],download=True)
+                files=[p for p in Path(td).glob('creative.*') if p.suffix in ('.mp4','.mkv','.webm')]
+                if len(files)!=1:raise ValueError('No single full media file')
+                f=files[0]
+                if f.stat().st_size<65536:raise ValueError('Media is too small')
+                probe=subprocess.run(['ffprobe','-v','error','-show_entries','format=duration:stream=codec_type',
+                                      '-of','json',str(f)],capture_output=True,text=True,check=True,timeout=30)
+                meta=json.loads(probe.stdout)
+                if not any(s.get('codec_type')=='video' for s in meta.get('streams',[])):
+                  raise ValueError('Video stream missing')
+                duration=float(meta['format']['duration'])
+                if abs(duration-ref_duration)>max(4,ref_duration*0.06):
+                  raise ValueError('Duration does not match original')
+                decoded=subprocess.run(['ffmpeg','-v','error','-xerror','-i',str(f),'-map','0:v:0',
+                                        '-f','null','-'],capture_output=True,text=True,timeout=180)
+                if decoded.returncode:raise ValueError('Complete media decode failed')
+                dst=folder/('YT_'+vid+f.suffix)
+                shutil.copyfile(f,dst)
+                out.update(status='media_verified',media_file=dst.name,size_bytes=dst.stat().st_size,
+                           sha256=hashlib.file_digest(dst.open('rb'),'sha256').hexdigest(),
+                           duration_seconds=duration)
+            except Exception as e:
+              out['reason']=str(e)[:340]
+            results.append(out)
+            print(json.dumps(out,ensure_ascii=False))
+          (folder/'validation_report.json').write_text(json.dumps(results,indent=2),encoding='utf-8')
+          PY
+      - name: Display validation results
+        if: always()
+        run: |
+          if [ -f verified_media/validation_report.json ]; then
+            echo '### Eight new ad candidates' >> "$GITHUB_STEP_SUMMARY"
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat verified_media/validation_report.json >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Retain complete media and validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eight-ad-media-verification
+          path: verified_media/
+          retention-days: 7
+          compression-level: 0
+          if-no-files-found: warn
