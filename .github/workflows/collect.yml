@@ -44,14 +44,11 @@ jobs:
         if: always()
         run: |
           if [ -f data/latest_run.json ]; then
-            python - <<'PY'
-            import json, os
-            from pathlib import Path
-            r=json.loads(Path('data/latest_run.json').read_text())
-            with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
-              f.write(f"Ads added: {r.get('added_ads',0)}\n\nSnapshots added: {r.get('new_snapshots',0)}\n\nTotal ads: {r.get('total_ads',0)}\n\nTotal snapshots: {r.get('total_snapshots',0)}\n\n")
-              for e in r.get('events',[]): f.write(f"- {e.get('status')}: {e.get('url','')} {e.get('error',e.get('reason',''))}\n")
-            PY
+            echo '### Collection report' >> "$GITHUB_STEP_SUMMARY"
+            echo '```json' >> "$GITHUB_STEP_SUMMARY"
+            cat data/latest_run.json >> "$GITHUB_STEP_SUMMARY"
+            echo '' >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
           fi
       - name: Save cumulative dataset
         if: always()
