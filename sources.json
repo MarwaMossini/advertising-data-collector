@@ -529,6 +529,33 @@
       "promotion_type": "Galaxy S25 Ultra official introduction promotion",
       "paid_status": "unknown",
       "queue_origin": "Promotional source candidate; exact publication date, original publisher, complete media, and metrics require direct collector validation"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=76dvJGizc8A",
+      "platform": "YouTube",
+      "company": "adidas",
+      "industry": "Sportswear",
+      "promotion_type": "T20 Cricket World Cup / You Got This campaign film",
+      "paid_status": "unknown",
+      "queue_origin": "Official verified adidas YouTube channel; exact date and public metrics observed; pending collector media validation"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=H7jU7dpbV0k",
+      "platform": "YouTube",
+      "company": "Google",
+      "industry": "Consumer electronics",
+      "promotion_type": "Pixel 9 / Pixel 9 Pro product promotion",
+      "paid_status": "unknown",
+      "queue_origin": "Official verified Made by Google YouTube channel; exact date and public metrics observed; pending collector media validation"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=1RULyKptH2k",
+      "platform": "YouTube",
+      "company": "Google",
+      "industry": "Consumer electronics",
+      "promotion_type": "Pixel 9 camera features promotion",
+      "paid_status": "unknown",
+      "queue_origin": "Official verified Made by Google YouTube channel; exact date and public metrics observed; pending collector media validation"
     }
   ]
 }
