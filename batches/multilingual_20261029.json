@@ -1,0 +1,104 @@
+{
+  "sources": [
+    {
+      "url": "https://www.facebook.com/Dominos/videos/2524780857882676/",
+      "platform": "Facebook",
+      "company": "Domino's Pizza",
+      "industry": "Food and beverages",
+      "promotion_type": "Pizza $9.99 offer",
+      "paid_status": "unknown",
+      "published_date": "2025-07-10",
+      "publication_evidence": "Exact publication calendar date observed in original Facebook UI"
+    },
+    {
+      "url": "https://www.facebook.com/Dominos/videos/944740477831870/",
+      "platform": "Facebook",
+      "company": "Domino's Pizza",
+      "industry": "Food and beverages",
+      "promotion_type": "Stuffed-crust pizza product promotion",
+      "paid_status": "unknown",
+      "published_date": "2025-03-18",
+      "publication_evidence": "Exact publication calendar date observed in original Facebook UI"
+    },
+    {
+      "url": "https://www.facebook.com/Dominos/videos/673546468574766/",
+      "platform": "Facebook",
+      "company": "Domino's Pizza",
+      "industry": "Food and beverages",
+      "promotion_type": "Parmesan Stuffed Crust giveaway",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.facebook.com/carrefour/videos/2178289932764382/",
+      "platform": "Facebook",
+      "company": "Carrefour France / Mixa",
+      "industry": "Beauty and personal care",
+      "promotion_type": "Mixa shower skincare product promotion",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.facebook.com/carrefour/videos/1721128938947822/",
+      "platform": "Facebook",
+      "company": "Carrefour France / SEB",
+      "industry": "Home appliances",
+      "promotion_type": "SEB Crisp&Go AirFryer product demonstration",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.facebook.com/carrefour/videos/2544313199412939/",
+      "platform": "Facebook",
+      "company": "Carrefour France",
+      "industry": "Home appliances",
+      "promotion_type": "Carrefour Home raclette appliance €10.49 offer",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.facebook.com/carrefouregypt/videos/1130207019424658/",
+      "platform": "Facebook",
+      "company": "Carrefour Egypt",
+      "industry": "Retail",
+      "promotion_type": "Carrefour Friday sale teaser",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.facebook.com/carrefouregypt/videos/1127502176436178/",
+      "platform": "Facebook",
+      "company": "Carrefour Egypt",
+      "industry": "Retail",
+      "promotion_type": "Carrefour Friday sale audience invitation",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.facebook.com/carrefouregypt/videos/1654138666063020/",
+      "platform": "Facebook",
+      "company": "Carrefour Egypt / SHARE",
+      "industry": "Retail",
+      "promotion_type": "SHARE 20% cashback offer",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.facebook.com/IKEAThailand/videos/1594456855278912/",
+      "platform": "Facebook",
+      "company": "IKEA Thailand",
+      "industry": "Furniture and home storage",
+      "promotion_type": "BROR shelving shopping promotion",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.facebook.com/IKEAThailand/videos/1789398222294150/",
+      "platform": "Facebook",
+      "company": "IKEA Thailand",
+      "industry": "Food and home retail",
+      "promotion_type": "VINTERSAGA gingerbread product and store promotion",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.facebook.com/IKEAThailand/videos/1470270515288646/",
+      "platform": "Facebook",
+      "company": "IKEA Thailand",
+      "industry": "Home storage",
+      "promotion_type": "KUGGIS storage boxes shopping promotion",
+      "paid_status": "unknown"
+    }
+  ]
+}
