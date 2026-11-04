@@ -1,0 +1,37 @@
+name: Verify promotional YouTube batch twenty-three 2026-11-05
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-youtube-20261105-batch23.yml'
+      - 'batches/public_promotions_20261105_youtube_batch23.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install collector dependencies
+        run: timeout 180s python -m pip install --timeout 30 --retries 1 -r requirements.txt
+      - name: Run collector tests
+        run: python -m unittest discover -s tests -v
+      - name: Capture full creative videos and source metadata
+        run: python collect_paced.py --config batches/public_promotions_20261105_youtube_batch23.json --out youtube_promotions_batch23 --limit 8 --interval-seconds 5
+      - name: Save candidate full media and verification metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: youtube-promotions-20261105-batch23
+          path: youtube_promotions_batch23/
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: warn
