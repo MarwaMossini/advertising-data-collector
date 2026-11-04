@@ -1,0 +1,68 @@
+{
+  "sources": [
+    {
+      "url": "https://www.youtube.com/watch?v=3i1OB6wKYms",
+      "platform": "YouTube",
+      "company": "Samsung",
+      "industry": "Consumer electronics",
+      "promotion_type": "Galaxy S25 Ultra official product introduction",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=2HhrudHXaDs",
+      "platform": "YouTube",
+      "company": "Samsung",
+      "industry": "Consumer electronics",
+      "promotion_type": "Galaxy Z Fold7 official product introduction",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=wtCmdWaXqYo",
+      "platform": "YouTube",
+      "company": "Sony Corporation",
+      "industry": "Audio electronics",
+      "promotion_type": "WH-1000XM6 official headphone announcement",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=x4_ahwTAS-I",
+      "platform": "YouTube",
+      "company": "Made by Google",
+      "industry": "Consumer electronics",
+      "promotion_type": "Pixel 10 series for business",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=itpcsQQvgAQ",
+      "platform": "YouTube",
+      "company": "Nintendo of America",
+      "industry": "Video gaming",
+      "promotion_type": "Nintendo Switch 2 reveal trailer",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=jRzpagPx6uY",
+      "platform": "YouTube",
+      "company": "DJI",
+      "industry": "Camera equipment and drones",
+      "promotion_type": "DJI Mini 5 Pro official product introduction",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=HjaQ-HRumuk",
+      "platform": "YouTube",
+      "company": "LEGO",
+      "industry": "Toys and games",
+      "promotion_type": "LEGO Party game reveal and wishlist promotion",
+      "paid_status": "unknown"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Zx4eJTWao4E",
+      "platform": "YouTube",
+      "company": "Liverpool FC",
+      "industry": "Sports and technology partnerships",
+      "promotion_type": "Google Pixel 10 co-branded launch promotion",
+      "paid_status": "unknown"
+    }
+  ]
+}
