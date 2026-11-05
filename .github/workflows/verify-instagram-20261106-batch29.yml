@@ -1,0 +1,37 @@
+name: Verify Neutrogena and Coca-Cola Instagram promotions batch 29
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-instagram-20261106-batch29.yml'
+      - 'batches/public_promotions_20261106_instagram_batch29.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install collector dependencies
+        run: timeout 180s python -m pip install --timeout 30 --retries 1 -r requirements.txt
+      - name: Test collector
+        run: python -m unittest discover -s tests -v
+      - name: Retrieve source metadata and full original media
+        run: python collect_paced.py --config batches/public_promotions_20261106_instagram_batch29.json --out batch29_instagram --limit 13 --interval-seconds 5
+      - name: Archive verified candidates and source snapshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: batch29-instagram-candidates
+          path: batch29_instagram/
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: warn
