@@ -1,0 +1,36 @@
+name: Summarize integrity-passed Instagram candidates 2026-11-06
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/report-instagram-20261106.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  summarize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download media-audit metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/summary
+          gh run download 42086652672 --name instagram-batches28-29-audit-report --repo MarwaMossini/advertising-data-collector --dir /tmp/summary
+      - name: Print candidate metric completeness and text for editorial review
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/summary/instagram_batches28_29_integrity.json')
+          if not p.is_file():raise RuntimeError('Missing audit JSON')
+          obj=json.loads(p.read_text())
+          out=[]
+          for r in obj['records']:
+              metrics=r['metrics']
+              counts={k:v for k,v in metrics.items() if v!=''}
+              out.append({'id':r['master_ad_id'],'company':r['company'],'url':r['url'],'publication_date':r['publication_date'],'publication_source':r['publication_source'],'observation_utc':r['observation_utc'],'title':r['title'],'caption':r['caption_excerpt'],'metrics':counts,'media_sha256':r['sha256'],'media_bytes':r['bytes'],'integrity_passed':r['integrity_passed'],'issues':r['issues']})
+          print('INSTAGRAM_AUDIT_DETAILS='+json.dumps(out,ensure_ascii=False,separators=(',',':')))
+          print('METRICS_COMPLETENESS='+json.dumps({'count':len(out),'with_likes_exact':sum('likes_exact' in x['metrics'] for x in out),'with_comments_exact':sum('comments_exact' in x['metrics'] for x in out),'with_views_exact':sum('views_exact' in x['metrics'] for x in out),'with_likes_and_comments':sum('likes_exact' in x['metrics'] and 'comments_exact' in x['metrics'] for x in out)}))
+          PY
