@@ -1,0 +1,91 @@
+name: Audit Instagram batches 28 and 29 against 616-record master
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/audit-instagram-20261106.yml'
+      - 'batches/master_identity_snapshot_before_instagram_20261106.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch archived Instagram source media
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/audit/b28 /tmp/audit/b29
+          gh run download 42081829513 --name batch28-instagram-candidates --dir /tmp/audit/b28
+          gh run download 42084897765 --name batch29-instagram-candidates --dir /tmp/audit/b29
+      - name: Decode entire videos, check checksum, IDs, dates and engagement provenance
+        run: |
+          python - <<'PY'
+          import csv, hashlib, json, subprocess, shutil, re
+          from pathlib import Path
+          from datetime import datetime, timezone
+          baseline=json.loads(Path('batches/master_identity_snapshot_before_instagram_20261106.json').read_text())
+          known_ids=set(baseline['ad_ids']); known_sha=set(baseline['media_sha256'])
+          seen_ids=set();seen_sha=set(); results=[]
+          for batch in ('b28','b29'):
+              folder=Path('/tmp/audit')/batch
+              p=folder/'ads.csv'
+              if not p.exists(): raise RuntimeError('Missing archived ads.csv: '+str(p))
+              rows=list(csv.DictReader(p.open(encoding='utf-8-sig',newline='')))
+              for r in rows:
+                  rawid=r['ad_id']; nativeid=rawid.split('-',1)[-1]; aid='IG_'+nativeid
+                  media=folder/r.get('media_path',''); errors=[]
+                  if aid in known_ids or aid in seen_ids: errors.append('duplicate ad ID')
+                  sha=r.get('sha256','')
+                  if sha and (sha in known_sha or sha in seen_sha): errors.append('duplicate media SHA256')
+                  if not media.is_file(): errors.append('media file missing')
+                  else:
+                      digest=hashlib.sha256()
+                      with media.open('rb') as f:
+                          for b in iter(lambda:f.read(4*1024*1024),b''):digest.update(b)
+                      if digest.hexdigest()!=sha: errors.append('SHA256 mismatch')
+                  if not r.get('original_post_url','').startswith('https://www.instagram.com/'):errors.append('unsupported original URL')
+                  date=r.get('published_date','')
+                  try:
+                      dt=datetime.strptime(date,'%Y-%m-%d').date()
+                      if not (datetime(2021,1,1).date()<=dt<=datetime(2026,12,31).date()):errors.append('date outside target window')
+                  except Exception: errors.append('invalid publication day')
+                  if not r.get('publication_date_source','').startswith('Platform'):errors.append('publication provenance not platform timestamp')
+                  if media.is_file() and media.suffix.lower() in ('.mp4','.webm','.mkv'):
+                      try:
+                          pr=subprocess.run(['ffprobe','-v','error','-select_streams','v:0','-show_entries','stream=codec_name','-of','default=nw=1',str(media)],capture_output=True,text=True,timeout=25)
+                          if pr.returncode or not pr.stdout.strip(): errors.append('video probe failed')
+                          else:
+                              dec=subprocess.run(['ffmpeg','-nostdin','-v','error','-xerror','-i',str(media),'-map','0:v:0','-f','null','-'],capture_output=True,text=True,timeout=150)
+                              if dec.returncode: errors.append('full video decode failed: '+dec.stderr[:200])
+                      except Exception as ex:errors.append('video probe/decode exception '+str(ex)[:120])
+                  else: errors.append('not a full video format')
+                  metrics={k:r.get(k,'') for k in ('likes_exact','likes_display','comments_exact','comments_display','views_exact','views_display','shares_exact','shares_display','reactions_exact','reactions_display','followers_exact','followers_display','saves_exact','reposts_exact')}
+                  metric_present=sum(bool(v) for k,v in metrics.items() if k.endswith('_exact'))
+                  if metric_present==0: errors.append('no exact engagement metric exposed')
+                  entry={'batch':batch,'source_ad_id':rawid,'master_ad_id':aid,'url':r.get('original_post_url',''),'company':r.get('company',''),'publisher':r.get('publisher',''),'publication_date':date,'publication_source':r.get('publication_date_source',''),'observation_utc':r.get('latest_observed_at_utc',''),'title':r.get('title','')[:250],'caption_excerpt':r.get('caption','')[:220],'metrics':metrics,'sha256':sha,'media_path':r.get('media_path',''),'bytes':media.stat().st_size if media.is_file() else 0,'integrity_passed':not errors,'issues':errors}
+                  results.append(entry)
+                  seen_ids.add(aid)
+                  if sha:seen_sha.add(sha)
+          summary={'master_start_count':baseline['count'],'candidate_records':len(results),'integrity_passed':sum(z['integrity_passed'] for z in results),'rejected':sum(not z['integrity_passed'] for z in results),'by_brand':{},'by_batch':{},'observed_platform':'Instagram','manual_promotion_ui_review_required':True,'note':'Archive provenance only; originals need independent human creative and UI metrics review'}
+          for entry in results:
+              brand=entry['company'];summary['by_brand'][brand]=summary['by_brand'].get(brand,0)+1
+              batch=entry['batch'];summary['by_batch'][batch]=summary['by_batch'].get(batch,0)+1
+          output={'summary':summary,'records':results}
+          Path('audit').mkdir(exist_ok=True)
+          Path('audit/instagram_batches28_29_integrity.json').write_text(json.dumps(output,indent=2),encoding='utf-8')
+          print('INSTAGRAM_AUDIT_SUMMARY='+json.dumps(summary))
+          print('INSTAGRAM_AUDIT_CANDIDATES='+json.dumps([{k:e[k] for k in ('master_ad_id','company','publication_date','integrity_passed','issues')} for e in results]))
+          PY
+      - name: Archive integrity report without source video files
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: instagram-batches28-29-audit-report
+          path: audit/
+          retention-days: 60
+          if-no-files-found: warn
