@@ -1,0 +1,37 @@
+name: Validate Instagram and TikTok promotional posts batch 27
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/validate-multiplatform-20261105-batch27.yml'
+      - 'batches/multiplatform_20261105_batch27.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: timeout 180s python -m pip install --timeout 30 --retries 1 -r requirements.txt
+      - name: Run collector tests
+        run: python -m unittest discover -s tests -v
+      - name: Check original public posts and retrieve full media
+        run: python collect_paced.py --config batches/multiplatform_20261105_batch27.json --out batch27_multiplatform --limit 13 --interval-seconds 5
+      - name: Archive validated media and source metric snapshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: batch27-instagram-tiktok-candidates
+          path: batch27_multiplatform/
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: warn
