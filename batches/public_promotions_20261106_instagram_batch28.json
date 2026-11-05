@@ -1,0 +1,249 @@
+{
+  "batch": "batch28",
+  "source_discovery": "CollabFeed creator listings, original links checked for duplicate URLs against Drive master 616",
+  "sources": [
+    {
+      "url": "https://www.instagram.com/p/DSLlqXICZUi/",
+      "platform": "Instagram",
+      "company": "Nike",
+      "industry": "Sportswear and footwear",
+      "promotion_type": "Creator collaboration promoting Nike sportswear or footwear; review original promotional caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DSK4O1pEU-8/",
+      "platform": "Instagram",
+      "company": "Nike",
+      "industry": "Sportswear and footwear",
+      "promotion_type": "Creator collaboration promoting Nike sportswear or footwear; review original promotional caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DSKRTK6CGtZ/",
+      "platform": "Instagram",
+      "company": "Nike",
+      "industry": "Sportswear and footwear",
+      "promotion_type": "Creator collaboration promoting Nike sportswear or footwear; review original promotional caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DSJA0QWExpg/",
+      "platform": "Instagram",
+      "company": "Nike",
+      "industry": "Sportswear and footwear",
+      "promotion_type": "Creator collaboration promoting Nike sportswear or footwear; review original promotional caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbzIfKOgWPf/",
+      "platform": "Instagram",
+      "company": "Temu",
+      "industry": "Online marketplace and retail",
+      "promotion_type": "Creator showcase of Temu products; review commercial intent and discount/CTA",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/Dbw8wx8PPVt/",
+      "platform": "Instagram",
+      "company": "Temu",
+      "industry": "Online marketplace and retail",
+      "promotion_type": "Creator showcase of Temu products; review commercial intent and discount/CTA",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbM1BPQtaYT/",
+      "platform": "Instagram",
+      "company": "Amazon",
+      "industry": "Online retail",
+      "promotion_type": "Creator review, product haul or Amazon shopping promotion; review caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbCjaWcp3jq/",
+      "platform": "Instagram",
+      "company": "Amazon",
+      "industry": "Online retail",
+      "promotion_type": "Creator review, product haul or Amazon shopping promotion; review caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/Daf_0azRrvg/",
+      "platform": "Instagram",
+      "company": "Amazon",
+      "industry": "Online retail",
+      "promotion_type": "Creator review, product haul or Amazon shopping promotion; review caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DaU-KH9h3w_/",
+      "platform": "Instagram",
+      "company": "Amazon",
+      "industry": "Online retail",
+      "promotion_type": "Creator review, product haul or Amazon shopping promotion; review caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DY4xU3hO0iB/",
+      "platform": "Instagram",
+      "company": "Sephora",
+      "industry": "Beauty retail and cosmetics",
+      "promotion_type": "Creator beauty or skincare promotion featuring Sephora; verify partnership disclosure",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DV1LB4QjfK5/",
+      "platform": "Instagram",
+      "company": "Sephora",
+      "industry": "Beauty retail and cosmetics",
+      "promotion_type": "Creator beauty or skincare promotion featuring Sephora; verify partnership disclosure",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DVEjb8CD4tH/",
+      "platform": "Instagram",
+      "company": "Sephora",
+      "industry": "Beauty retail and cosmetics",
+      "promotion_type": "Creator beauty or skincare promotion featuring Sephora; verify partnership disclosure",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DRiFMt2CY9t/",
+      "platform": "Instagram",
+      "company": "Sephora",
+      "industry": "Beauty retail and cosmetics",
+      "promotion_type": "Creator beauty or skincare promotion featuring Sephora; verify partnership disclosure",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DadK7xwo49l/",
+      "platform": "Instagram",
+      "company": "Garnier",
+      "industry": "Beauty and haircare",
+      "promotion_type": "Creator promotion of Garnier haircare or skincare; verify original caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DZ5sMtzPnaJ/",
+      "platform": "Instagram",
+      "company": "Garnier",
+      "industry": "Beauty and haircare",
+      "promotion_type": "Creator promotion of Garnier haircare or skincare; verify original caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DZavuZ9prUT/",
+      "platform": "Instagram",
+      "company": "Garnier",
+      "industry": "Beauty and haircare",
+      "promotion_type": "Creator promotion of Garnier haircare or skincare; verify original caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DXkvT8QDbe8/",
+      "platform": "Instagram",
+      "company": "Garnier",
+      "industry": "Beauty and haircare",
+      "promotion_type": "Creator promotion of Garnier haircare or skincare; verify original caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbwGGD4OQC2/",
+      "platform": "Instagram",
+      "company": "SHEGLAM",
+      "industry": "Beauty and cosmetics",
+      "promotion_type": "Creator promotion of SHEGLAM makeup or haircare products; verify original caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbvfVJzN6xB/",
+      "platform": "Instagram",
+      "company": "SHEGLAM",
+      "industry": "Beauty and cosmetics",
+      "promotion_type": "Creator promotion of SHEGLAM makeup or haircare products; verify original caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbroBsQRqd5/",
+      "platform": "Instagram",
+      "company": "SHEGLAM",
+      "industry": "Beauty and cosmetics",
+      "promotion_type": "Creator promotion of SHEGLAM makeup or haircare products; verify original caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbqtqRwquOa/",
+      "platform": "Instagram",
+      "company": "SHEGLAM",
+      "industry": "Beauty and cosmetics",
+      "promotion_type": "Creator promotion of SHEGLAM makeup or haircare products; verify original caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbqO4UHAh_H/",
+      "platform": "Instagram",
+      "company": "SHEGLAM",
+      "industry": "Beauty and cosmetics",
+      "promotion_type": "Creator promotion of SHEGLAM makeup or haircare products; verify original caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DblCcZ9oB_J/",
+      "platform": "Instagram",
+      "company": "SHEGLAM",
+      "industry": "Beauty and cosmetics",
+      "promotion_type": "Creator promotion of SHEGLAM makeup or haircare products; verify original caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbdgEvyMk5C/",
+      "platform": "Instagram",
+      "company": "SHEGLAM",
+      "industry": "Beauty and cosmetics",
+      "promotion_type": "Creator promotion of SHEGLAM makeup or haircare products; verify original caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbcBLbJt75i/",
+      "platform": "Instagram",
+      "company": "SHEGLAM",
+      "industry": "Beauty and cosmetics",
+      "promotion_type": "Creator promotion of SHEGLAM makeup or haircare products; verify original caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    },
+    {
+      "url": "https://www.instagram.com/p/DbbAO6ttQtk/",
+      "platform": "Instagram",
+      "company": "SHEGLAM",
+      "industry": "Beauty and cosmetics",
+      "promotion_type": "Creator promotion of SHEGLAM makeup or haircare products; verify original caption",
+      "paid_status": "unknown",
+      "discovery_note": "Candidate URL from tracked creator partnership listing (CollabFeed). Original post caption, dates, metrics, one full creative and authenticity must be checked in collector before using in master."
+    }
+  ]
+}
