@@ -1,0 +1,37 @@
+name: Verify Instagram promotional creator posts batch 28
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-instagram-20261106-batch28.yml'
+      - 'batches/public_promotions_20261106_instagram_batch28.json'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install collector dependencies
+        run: timeout 180s python -m pip install --timeout 30 --retries 1 -r requirements.txt
+      - name: Test collector integrity
+        run: python -m unittest discover -s tests -v
+      - name: Verify original posts and download complete media
+        run: python collect_paced.py --config batches/public_promotions_20261106_instagram_batch28.json --out batch28_instagram --limit 27 --interval-seconds 5
+      - name: Archive candidates, source metadata and complete media
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: batch28-instagram-candidates
+          path: batch28_instagram/
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: warn
