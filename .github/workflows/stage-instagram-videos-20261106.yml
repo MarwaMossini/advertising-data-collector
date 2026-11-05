@@ -1,0 +1,132 @@
+name: Preserve verified Instagram full videos in smaller media archives
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/stage-instagram-videos-20261106.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Fetch original archived Instagram MP4s
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p /tmp/stage/b28 /tmp/stage/b29
+          gh run download 42081829513 --name batch28-instagram-candidates --repo MarwaMossini/advertising-data-collector --dir /tmp/stage/b28
+          gh run download 42084897765 --name batch29-instagram-candidates --repo MarwaMossini/advertising-data-collector --dir /tmp/stage/b29
+      - name: Partition complete MP4s and accompanying source metadata below 80MiB
+        run: |
+          python - <<'PY'
+          import csv,hashlib,json,shutil
+          from pathlib import Path
+          cap=73*1024*1024
+          entries=[]
+          for batch in ('b28','b29'):
+              root=Path('/tmp/stage')/batch
+              with (root/'ads.csv').open(encoding='utf-8-sig',newline='') as f:
+                  rr=csv.DictReader(f);fields=rr.fieldnames;rows=list(rr)
+              with (root/'engagement_snapshots.csv').open(encoding='utf-8-sig',newline='') as f:
+                  sr=csv.DictReader(f);snapfields=sr.fieldnames;snaps=list(sr)
+              for row in rows:
+                  media=root/row['media_path']
+                  if not media.is_file():raise RuntimeError('Source media missing '+str(media))
+                  digest=hashlib.sha256(media.read_bytes()).hexdigest()
+                  if digest!=row['sha256']:raise RuntimeError('SHA mismatch '+str(media))
+                  row['_batch']=batch
+                  entries.append((row,media,fields,[s for s in snaps if s['ad_id']==row['ad_id']],snapfields))
+          entries.sort(key=lambda x:x[0]['ad_id'])
+          parts=[];sizes=[]
+          for row,media,fields,snaps,snapfields in entries:
+              size=media.stat().st_size
+              idx=next((i for i,n in enumerate(sizes) if n+size<=cap),None)
+              if idx is None:
+                  idx=len(sizes);sizes.append(0);parts.append([])
+              sizes[idx]+=size;parts[idx].append((row,media,fields,snaps,snapfields))
+          if len(parts)>8:raise RuntimeError('More than eight staging packages')
+          for i,group in enumerate(parts,1):
+              root=Path('parts')/('part%02d'%i)
+              (root/'media').mkdir(parents=True,exist_ok=True)
+              rows=[];snaps=[];ff=group[0][2];sf=group[0][4]
+              for row,source,fields,ss,snapfields in group:
+                  target=root/row['media_path']
+                  target.parent.mkdir(parents=True,exist_ok=True)
+                  if target.exists():raise RuntimeError('Duplicate target path '+str(target))
+                  shutil.copy2(source,target)
+                  rows.append({k:row.get(k,'') for k in ff})
+                  snaps.extend(ss)
+              with (root/'ads.csv').open('w',encoding='utf-8',newline='') as f:
+                  w=csv.DictWriter(f,fieldnames=ff);w.writeheader();w.writerows(rows)
+              with (root/'engagement_snapshots.csv').open('w',encoding='utf-8',newline='') as f:
+                  w=csv.DictWriter(f,fieldnames=sf);w.writeheader();w.writerows(snaps)
+              (root/'README.txt').write_text('PROVISIONAL ARCHIVE, NOT IN 616-ROW MASTER. Source Instagram posts in ads.csv. Full video MP4s in media/. Publication dates are platform-derived. Engagement is extractor-derived, NOT independently checked in Instagram UI. Preserve historical UTC observations. Only import after editorial review and deduplication.\n',encoding='utf-8')
+          print('STAGING_PARTS='+json.dumps({'parts':len(parts),'record_count':len(entries),'parts_detail':[{'index':i+1,'records':len(group),'bytes':sizes[i]} for i,group in enumerate(parts)]}))
+          PY
+      - name: Upload media staging part 01
+        uses: actions/upload-artifact@v4
+        with:
+          name: instagram-media-batches28-29-part01
+          path: parts/part01/
+          compression-level: 0
+          retention-days: 45
+          if-no-files-found: ignore
+      - name: Upload media staging part 02
+        uses: actions/upload-artifact@v4
+        with:
+          name: instagram-media-batches28-29-part02
+          path: parts/part02/
+          compression-level: 0
+          retention-days: 45
+          if-no-files-found: ignore
+      - name: Upload media staging part 03
+        uses: actions/upload-artifact@v4
+        with:
+          name: instagram-media-batches28-29-part03
+          path: parts/part03/
+          compression-level: 0
+          retention-days: 45
+          if-no-files-found: ignore
+      - name: Upload media staging part 04
+        uses: actions/upload-artifact@v4
+        with:
+          name: instagram-media-batches28-29-part04
+          path: parts/part04/
+          compression-level: 0
+          retention-days: 45
+          if-no-files-found: ignore
+      - name: Upload media staging part 05
+        uses: actions/upload-artifact@v4
+        with:
+          name: instagram-media-batches28-29-part05
+          path: parts/part05/
+          compression-level: 0
+          retention-days: 45
+          if-no-files-found: ignore
+      - name: Upload media staging part 06
+        uses: actions/upload-artifact@v4
+        with:
+          name: instagram-media-batches28-29-part06
+          path: parts/part06/
+          compression-level: 0
+          retention-days: 45
+          if-no-files-found: ignore
+      - name: Upload media staging part 07
+        uses: actions/upload-artifact@v4
+        with:
+          name: instagram-media-batches28-29-part07
+          path: parts/part07/
+          compression-level: 0
+          retention-days: 45
+          if-no-files-found: ignore
+      - name: Upload media staging part 08
+        uses: actions/upload-artifact@v4
+        with:
+          name: instagram-media-batches28-29-part08
+          path: parts/part08/
+          compression-level: 0
+          retention-days: 45
+          if-no-files-found: ignore
