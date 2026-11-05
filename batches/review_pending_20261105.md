@@ -28,3 +28,14 @@ The following older GitHub artifacts contain original full MP4 files; the listed
 - A workflow concluding `success` only means it executed and archived its report; it does not certify positive collection results.
 
 Next step: obtain independent comment/share UI counts if publicly accessible, review the promotional content and exact media at source, and upload each accepted full MP4 to the original Drive media folder before appending an ID-matched row to the original master. Do not overwrite the original workbook or change historical observation dates without a verified compatible upload.
+
+
+## Update, 5 November 2026 (Asia/Dhaka): saved to original Google Drive master
+
+At the user's explicit request, **three** archival MP4-backed records were appended to the **same** Google Drive master, with IDs `FB_1256921419578207`, `FB_1836223834395087`, and `FB_1744004273322477`. The table now has **595 total records in 49 columns, one Ads tab**, and no duplicate ad IDs. These are **provisional media-backed records**; their Facebook UI engagement counts, comments and shares have not been independently rechecked. They are distinct from the 592 earlier records already in the master.
+
+The full original MP4s, renamed `FB_<native_post_id>.mp4`, were uploaded to the **existing** Drive media folder. Their SHA-256 digests matched the archive records and the video/audio streams decoded. The master retains the original platform-derived UTC publication dates and **2 November 2026** metric observation dates; 5 November is recorded only for media upload/recovery. Rounded `views_display` and exact `reactions_exact` are retained, with unknown likes, comments, shares, saves, reposts and followers blank. Views exact is blank. Paid delivery and country remain unknown.
+
+Before overwriting the original master, an exact copy of the 592-row workbook was placed in the existing `backup` folder as `Master_Ads_backup_592_ads_before_2026-11-05.xlsx` (Google Drive file ID `1Nu1oiQFMMoCKb2TbSNW1upew3kffSFU5`). The updated master kept its original file ID `1vzXBlvO-ckqJ6U9-ypNA-cSy3yK4BV-s`. Readback confirmed 595 unique IDs and three full MP4s in folder ID `1QW4f9iy-tTbGaTUHSG-iYnJxEJXHrC6f`.
+
+Historical note: the earlier section above describes the status **before** this user-approved update; it is now superseded for these three records.
