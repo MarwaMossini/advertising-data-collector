@@ -43,7 +43,76 @@ jobs:
           print(json.dumps({'media_files':len(media),'packages':report},indent=2))
       - uses: actions/upload-artifact@v4
         with:
-          name: batch30-fullmedia-packages
-          path: packages/
-          compression-level: 6
+          name: batch30-fullmedia-part01
+          path: packages/batch30_fullmedia_part01.zip
+          compression-level: 0
+          retention-days: 30
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: batch30-fullmedia-part02
+          path: packages/batch30_fullmedia_part02.zip
+          compression-level: 0
+          retention-days: 30
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: batch30-fullmedia-part03
+          path: packages/batch30_fullmedia_part03.zip
+          compression-level: 0
+          retention-days: 30
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: batch30-fullmedia-part04
+          path: packages/batch30_fullmedia_part04.zip
+          compression-level: 0
+          retention-days: 30
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: batch30-fullmedia-part05
+          path: packages/batch30_fullmedia_part05.zip
+          compression-level: 0
+          retention-days: 30
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: batch30-fullmedia-part06
+          path: packages/batch30_fullmedia_part06.zip
+          compression-level: 0
+          retention-days: 30
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: batch30-fullmedia-part07
+          path: packages/batch30_fullmedia_part07.zip
+          compression-level: 0
+          retention-days: 30
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: batch30-fullmedia-part08
+          path: packages/batch30_fullmedia_part08.zip
+          compression-level: 0
+          retention-days: 30
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: batch30-fullmedia-part09
+          path: packages/batch30_fullmedia_part09.zip
+          compression-level: 0
+          retention-days: 30
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: batch30-fullmedia-part10
+          path: packages/batch30_fullmedia_part10.zip
+          compression-level: 0
+          retention-days: 30
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: batch30-package-manifest
+          path: packages/package_manifest.json
           retention-days: 30
