@@ -1,0 +1,70 @@
+name: Verify public promotions batch thirty-eight supplement 2026-11-07
+on:
+  push:
+    paths: ['.github/workflows/verify-public-promotions-20261107-batch38_supplement.yml', 'batches/public_promotions_20261107_batch38_supplement.json']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install collector dependencies
+        run: timeout 180s python -m pip install --timeout 30 --retries 1 -r requirements.txt
+      - name: Run collector checks
+        run: python -m unittest discover -s tests -v
+      - name: Retrieve publication dates and original complete media
+        run: python collect_other_platforms.py --config batches/public_promotions_20261107_batch38_supplement.json --out public_promotions_batch38_supplement
+      - name: Package whole media files in bounded groups
+        if: always()
+        run: |
+          python - <<'PY'
+          import json,pathlib,shutil,os
+          root=pathlib.Path('public_promotions_batch38_supplement')
+          pack=pathlib.Path('batch38_supplement_packages');(pack/'metadata').mkdir(parents=True,exist_ok=True)
+          for name in ('candidates.json','latest_run.json'):
+              if (root/name).exists():shutil.copyfile(root/name,pack/'metadata'/name)
+          cfg=json.loads(pathlib.Path('batches/public_promotions_20261107_batch38_supplement.json').read_text())
+          index={s['url']:i for i,s in enumerate(cfg['sources'])}
+          rows=json.loads((root/'candidates.json').read_text()) if (root/'candidates.json').exists() else []
+          for r in rows:
+              part=index[r['source']['url']]//3+1
+              dest=pack/f'media-{part:02d}'/'media';dest.mkdir(parents=True,exist_ok=True)
+              os.link(root/r['media_path'],dest/pathlib.Path(r['media_path']).name)
+          (pack/'metadata'/'packaging.json').write_text(json.dumps({'max_sources_per_media_artifact':3,'whole_files_only':True,'per_source_limit_mib':150,'expected_media_parts':2},indent=2))
+          PY
+      - name: Save metadata evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-promotions-20261107-batch38_supplement-metadata
+          path: batch38_supplement_packages/metadata/
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: warn
+      - name: Save media-01 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-promotions-20261107-batch38_supplement-media-01
+          path: batch38_supplement_packages/media-01/
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: warn
+      - name: Save media-02 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-promotions-20261107-batch38_supplement-media-02
+          path: batch38_supplement_packages/media-02/
+          retention-days: 30
+          compression-level: 0
+          if-no-files-found: warn

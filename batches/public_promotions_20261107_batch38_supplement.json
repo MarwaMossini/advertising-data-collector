@@ -1,0 +1,93 @@
+{
+  "batch": "public_promotions_20261107_batch38_supplement",
+  "sources": [
+    {
+      "publisher": "emirates",
+      "id": "2118297275369746809",
+      "publication_label": "5:00 PM · Nov 5, 2026",
+      "ui_observed_at_utc": "2026-11-06T19:45:50.007Z",
+      "metrics": {
+        "comments": 15,
+        "reposts": 50,
+        "likes": 348,
+        "saves": 18,
+        "views": 26295
+      },
+      "product_or_offer": "Emirates Economy onboard service promotion",
+      "language": "English",
+      "platform": "X",
+      "ad_id": "X_2118297275369746809",
+      "url": "https://x.com/emirates/status/2118297275369746809",
+      "published_date": "2026-11-05",
+      "publication_date_source": "original_ui_exact_date",
+      "selection_priority": 0
+    },
+    {
+      "publisher": "qatarairways",
+      "id": "2118682439103262818",
+      "publication_label": "6:30 PM · Nov 6, 2026",
+      "ui_observed_at_utc": "2026-11-06T19:46:15.740Z",
+      "metrics": {
+        "comments": 10,
+        "reposts": 28,
+        "likes": 190,
+        "saves": 53,
+        "views": 90970
+      },
+      "product_or_offer": "Qatar Airways Burgundy Symphony onboard experience",
+      "language": "English",
+      "platform": "X",
+      "ad_id": "X_2118682439103262818",
+      "url": "https://x.com/qatarairways/status/2118682439103262818",
+      "published_date": "2026-11-06",
+      "publication_date_source": "original_ui_exact_date",
+      "selection_priority": 0
+    },
+    {
+      "publisher": "qatarairways",
+      "id": "2118681436974907420",
+      "publication_label": "6:26 PM · Nov 6, 2026",
+      "ui_observed_at_utc": "2026-11-06T19:46:16.382Z",
+      "metrics": {
+        "comments": 2,
+        "reposts": 18,
+        "likes": 78,
+        "saves": 12,
+        "views": 13986
+      },
+      "product_or_offer": "Qatar Airways onboard signature music launch",
+      "language": "English",
+      "media_url": "https://pbs.twimg.com/media/HWcRhILbkAAN4G9?format=webp&name=large",
+      "caption": "Qatar Airways today unveiled its new onboard signature music, created in partnership with world-renowned composer @HansZimmer. \n\nInspired by Qatar and its culture, Qatar Airways’ new onboard music brings a distinctive sound identity to the passenger experience through its collaboration with the iconic composition of Hans Zimmer. The music is also featured on the ‘Burgundy Symphony’ album, a bespoke five-track album that encapsulates the airline’s wider sound identity and signature sound elements.\n\nRead more:\nhttps://t.co/gGxYhaWkrJ",
+      "platform": "X",
+      "ad_id": "X_2118681436974907420",
+      "url": "https://x.com/qatarairways/status/2118681436974907420",
+      "published_date": "2026-11-06",
+      "publication_date_source": "original_ui_exact_date",
+      "selection_priority": 0
+    },
+    {
+      "publisher": "qatarairways",
+      "id": "2117931891135258770",
+      "publication_label": "4:48 PM · Nov 4, 2026",
+      "ui_observed_at_utc": "2026-11-06T19:46:16.933Z",
+      "metrics": {
+        "comments": 33,
+        "reposts": 235,
+        "likes": 1024,
+        "saves": 41,
+        "views": 58174
+      },
+      "product_or_offer": "Qatar Airways Doha Caracas Bogotá route launch",
+      "language": "English",
+      "media_url": "https://pbs.twimg.com/media/HWRnzF_WEAAKja8?format=webp&name=large",
+      "caption": "Qatar Airways today has inaugurated its new twice-weekly service connecting Doha with Caracas and Bogotá. The service represents a significant milestone, as Qatar Airways becomes the first Gulf carrier to serve Venezuela, and the first airline to operate nonstop services from the Middle East to both Bogotá and Caracas.\n\nThe new route underscores our commitment to strengthening global connectivity for the region and is operated on Boeing 777-200LR aircraft.\n\nRead more:\nhttps://t.co/ct8Aok0DLV",
+      "platform": "X",
+      "ad_id": "X_2117931891135258770",
+      "url": "https://x.com/qatarairways/status/2117931891135258770",
+      "published_date": "2026-11-04",
+      "publication_date_source": "original_ui_exact_date",
+      "selection_priority": 0
+    }
+  ]
+}
