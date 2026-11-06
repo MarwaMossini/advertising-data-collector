@@ -1,0 +1,299 @@
+{
+  "batch": 37,
+  "date": "2026-11-07",
+  "collection_calendar_timezone": "Asia/Dhaka",
+  "run_id": 42279702555,
+  "records_added": 10,
+  "total_records": 786,
+  "master_file_id": "1vzXBlvO-ckqJ6U9-ypNA-cSy3yK4BV-s",
+  "workbook_rows": "778:787",
+  "master_sha256": "92bd7ff80dc6ba4ef0d0a406e27792388e14273a1278155f598d2fbf9545908a",
+  "accepted": [
+    {
+      "ad_id": "X_2118614401615868352",
+      "sha256": "9ed14779287c314a96f791303416d1eff70c97c64ed080064417f6913fd92cc4",
+      "bytes": 253822,
+      "media_path": "media/X_2118614401615868352.webp",
+      "published_date": "2026-11-06",
+      "publication_evidence": "Original X post UI: 2:00 PM · Nov 6, 2026; timezone unspecified; observed 2026-11-06T19:23:32.031Z",
+      "details": {
+        "format": "WEBP",
+        "width": 1080,
+        "height": 1080
+      },
+      "original_post_url": "https://x.com/weverseshop/status/2118614401615868352",
+      "platform": "X",
+      "publication_label": "2:00 PM · Nov 6, 2026",
+      "ui_observed_at_utc": "2026-11-06T19:23:32.031Z",
+      "metrics": {
+        "comments": 0,
+        "reposts": 129,
+        "likes": 200,
+        "saves": 12,
+        "views": 34356
+      },
+      "language": "Korean and English",
+      "product_or_offer": "Mark Lee WINDMILL studio album pre-order",
+      "drive_file_id": "1aRRu0TDMXrUmFS-F6kBy_QAEZbPxeYe0"
+    },
+    {
+      "ad_id": "X_2118569390950006990",
+      "sha256": "f4769fb1131b969629212a694a44970177e942d2beb8f038807d0c42aae7a99e",
+      "bytes": 46198,
+      "media_path": "media/X_2118569390950006990.webp",
+      "published_date": "2026-11-06",
+      "publication_evidence": "Original X post UI: 11:01 AM · Nov 6, 2026; timezone unspecified; observed 2026-11-06T19:23:32.844Z",
+      "details": {
+        "format": "WEBP",
+        "width": 1080,
+        "height": 1080
+      },
+      "original_post_url": "https://x.com/weverseshop/status/2118569390950006990",
+      "platform": "X",
+      "publication_label": "11:01 AM · Nov 6, 2026",
+      "ui_observed_at_utc": "2026-11-06T19:23:32.844Z",
+      "metrics": {
+        "comments": 0,
+        "reposts": 6,
+        "likes": 48,
+        "saves": 4,
+        "views": 36158
+      },
+      "language": "Korean and English",
+      "product_or_offer": "AMPERS&ONE PATHFINDER album pre-order and buyer benefits",
+      "drive_file_id": "1pSblH3Bto-vvMFaSUqKtBrKi_LBB2rPQ"
+    },
+    {
+      "ad_id": "X_2118569192907514040",
+      "sha256": "16b7e1e5c8d80236ef8ea98d6991258222a14873dbc938d7e15031a605074bad",
+      "bytes": 92594,
+      "media_path": "media/X_2118569192907514040.webp",
+      "published_date": "2026-11-06",
+      "publication_evidence": "Original X post UI: 11:00 AM · Nov 6, 2026; timezone unspecified; observed 2026-11-06T19:23:40.411Z",
+      "details": {
+        "format": "WEBP",
+        "width": 1080,
+        "height": 1080
+      },
+      "original_post_url": "https://x.com/weverseshop/status/2118569192907514040",
+      "platform": "X",
+      "publication_label": "11:00 AM · Nov 6, 2026",
+      "ui_observed_at_utc": "2026-11-06T19:23:40.411Z",
+      "metrics": {
+        "comments": 2,
+        "reposts": 111,
+        "likes": 349,
+        "saves": 16,
+        "views": 45610
+      },
+      "language": "Korean and English",
+      "product_or_offer": "PLAVE HYPERDRIVE official merchandise and purchase benefits",
+      "drive_file_id": "1vXwbEV-Y9WJx9at3lWvfeSAei20Cdvxv"
+    },
+    {
+      "ad_id": "X_2118539043579249063",
+      "sha256": "d3d9ffaa7a97d668bcbbf7f28818abb1d3771ad57d36e77e5467a01943ee3b32",
+      "bytes": 94834,
+      "media_path": "media/X_2118539043579249063.webp",
+      "published_date": "2026-11-06",
+      "publication_evidence": "Original X post UI: 9:00 AM · Nov 6, 2026; timezone unspecified; observed 2026-11-06T19:23:41.114Z",
+      "details": {
+        "format": "WEBP",
+        "width": 1080,
+        "height": 1080
+      },
+      "original_post_url": "https://x.com/weverseshop/status/2118539043579249063",
+      "platform": "X",
+      "publication_label": "9:00 AM · Nov 6, 2026",
+      "ui_observed_at_utc": "2026-11-06T19:23:41.114Z",
+      "metrics": {
+        "comments": 0,
+        "reposts": 6,
+        "likes": 51,
+        "saves": 5,
+        "views": 37252
+      },
+      "language": "English with Korean hashtag",
+      "product_or_offer": "KATSEYE WILDWORLD tour AU/NZ VIP experience merchandise packages",
+      "drive_file_id": "1FfqqsglDakCrOJuwonDNAsE-zXqvj-yx"
+    },
+    {
+      "ad_id": "X_2117844455717748851",
+      "sha256": "6d7a74b06566c7be1d24460edefb7ae62ec5f35c0bf6a1cafcaf913eab954310",
+      "bytes": 87826,
+      "media_path": "media/X_2117844455717748851.webp",
+      "published_date": "2026-11-04",
+      "publication_evidence": "Original X post UI: 11:00 AM · Nov 4, 2026; timezone unspecified; observed 2026-11-06T19:23:41.696Z",
+      "details": {
+        "format": "WEBP",
+        "width": 1080,
+        "height": 1080
+      },
+      "original_post_url": "https://x.com/weverseshop/status/2117844455717748851",
+      "platform": "X",
+      "publication_label": "11:00 AM · Nov 4, 2026",
+      "ui_observed_at_utc": "2026-11-06T19:23:41.696Z",
+      "metrics": {
+        "comments": 14,
+        "reposts": 537,
+        "likes": 1548,
+        "saves": 179,
+        "views": 116109
+      },
+      "language": "Korean and English",
+      "product_or_offer": "DICON D’FESTA THE ORIGIN first pre-order and exclusive photo benefits",
+      "drive_file_id": "1upcVMBRg2nHrwnEiPDEK9gwWiPpiSWnn"
+    },
+    {
+      "ad_id": "X_2118750432277229731",
+      "sha256": "829657c462d03d8fd743fd6d547aab535391727a00ccd18414203e34c676430f",
+      "bytes": 159804,
+      "media_path": "media/X_2118750432277229731.webp",
+      "published_date": "2026-11-06",
+      "publication_evidence": "Original X post UI: 11:00 PM · Nov 6, 2026; timezone unspecified; observed 2026-11-06T19:24:06.088Z",
+      "details": {
+        "format": "WEBP",
+        "width": 1080,
+        "height": 1442
+      },
+      "original_post_url": "https://x.com/shopculturefly/status/2118750432277229731",
+      "platform": "X",
+      "publication_label": "11:00 PM · Nov 6, 2026",
+      "ui_observed_at_utc": "2026-11-06T19:24:06.088Z",
+      "metrics": {
+        "comments": 14,
+        "reposts": 196,
+        "likes": 734,
+        "saves": 72,
+        "views": 14733
+      },
+      "language": "English",
+      "product_or_offer": "Dandy’s World Smiling Astro deluxe plush pre-order",
+      "drive_file_id": "1SYTbH-GglkZs1J91S_7XgE0nDnwPl-bp"
+    },
+    {
+      "ad_id": "X_2116198229650100414",
+      "sha256": "79cc06a5f0f2fc1147de1c7313e243be973178fafb2ce46ae45ff17e91babfb3",
+      "bytes": 281268,
+      "media_path": "media/X_2116198229650100414.webp",
+      "published_date": "2026-10-30",
+      "publication_evidence": "Original X post UI: 9:59 PM · Oct 30, 2026; timezone unspecified; observed 2026-11-06T19:24:06.619Z",
+      "details": {
+        "format": "WEBP",
+        "width": 1536,
+        "height": 2048
+      },
+      "original_post_url": "https://x.com/shopculturefly/status/2116198229650100414",
+      "platform": "X",
+      "publication_label": "9:59 PM · Oct 30, 2026",
+      "ui_observed_at_utc": "2026-11-06T19:24:06.619Z",
+      "metrics": {
+        "comments": 5,
+        "reposts": 184,
+        "likes": 1604,
+        "saves": 100,
+        "views": 11202
+      },
+      "language": "English",
+      "product_or_offer": "Dandy’s World Gourdy plant pot product showcase",
+      "drive_file_id": "1bLgLwNqGVNYIw2dwa794PhkWvJR-_5r-"
+    },
+    {
+      "ad_id": "X_2118311130124685335",
+      "sha256": "4cfc43d312770b10ca333ebabe20031392420b066977094d6741731bca1943d8",
+      "bytes": 208858,
+      "media_path": "media/X_2118311130124685335.webp",
+      "published_date": "2026-11-05",
+      "publication_evidence": "Original X post UI: 5:55 PM · Nov 5, 2026; timezone unspecified; observed 2026-11-06T19:25:02.283Z",
+      "details": {
+        "format": "WEBP",
+        "width": 1638,
+        "height": 2048
+      },
+      "original_post_url": "https://x.com/ShopandShip/status/2118311130124685335",
+      "platform": "X",
+      "publication_label": "5:55 PM · Nov 5, 2026",
+      "ui_observed_at_utc": "2026-11-06T19:25:02.283Z",
+      "metrics": {
+        "comments": 4,
+        "reposts": 0,
+        "likes": 0,
+        "saves": 0,
+        "views": 748
+      },
+      "language": "Arabic",
+      "product_or_offer": "Shop & Ship international shopping delivery service",
+      "drive_file_id": "1mS-pfNml5xm0gNw4cYptPbP3zKsv9V0j"
+    },
+    {
+      "ad_id": "X_2115432245729067211",
+      "sha256": "fb7da64a9abe70a77ce5af36322bc34ed0d43331e9ccb8bc06c6137fa6e7bdb6",
+      "bytes": 309028,
+      "media_path": "media/X_2115432245729067211.mp4",
+      "published_date": "2026-10-28",
+      "publication_evidence": "Original-platform extractor timestamp (UTC): 1793193324",
+      "details": {
+        "duration_seconds": 6.101333,
+        "width": 720,
+        "height": 900,
+        "streams": [
+          "video",
+          "audio"
+        ]
+      },
+      "original_post_url": "https://x.com/ShopandShip/status/2115432245729067211",
+      "platform": "X",
+      "publication_label": "7:15 PM · Oct 28, 2026",
+      "ui_observed_at_utc": "2026-11-06T19:25:02.865Z",
+      "metrics": {
+        "comments": 11,
+        "reposts": 0,
+        "likes": 1,
+        "saves": 0,
+        "views": 1494
+      },
+      "language": "English and Arabic",
+      "product_or_offer": "Shop & Ship worldwide shopping and delivery service",
+      "drive_file_id": "1gBru9gq7F6Rxu--JOGHtLsvc0TqDNVtK"
+    },
+    {
+      "ad_id": "X_2113602449021821302",
+      "sha256": "6450447a053411d1da8b5c551b1ee43fd9dd7ccd70243f0380c4f5cf86c8de4c",
+      "bytes": 1807278,
+      "media_path": "media/X_2113602449021821302.mp4",
+      "published_date": "2026-10-23",
+      "publication_evidence": "Original-platform extractor timestamp (UTC): 1792757067",
+      "details": {
+        "duration_seconds": 13.056,
+        "width": 720,
+        "height": 1280,
+        "streams": [
+          "video",
+          "audio"
+        ]
+      },
+      "original_post_url": "https://x.com/ShopandShip/status/2113602449021821302",
+      "platform": "X",
+      "publication_label": "6:04 PM · Oct 23, 2026",
+      "ui_observed_at_utc": "2026-11-06T19:25:03.606Z",
+      "metrics": {
+        "comments": 7,
+        "reposts": 0,
+        "likes": 0,
+        "saves": 0,
+        "views": 1432
+      },
+      "language": "English and Arabic",
+      "product_or_offer": "Shop & Ship pour-over coffee equipment delivery promotion",
+      "drive_file_id": "10fyziQLI4Kxb4jF8To7ssxKDg9OJh1Xg"
+    }
+  ],
+  "limitations": [
+    "Eight image dates use original UI calendar labels with unspecified timezone; two video dates use original-platform UTC timestamps.",
+    "Views mean post views, not confirmed video plays or unique users.",
+    "Explicitly displayed zeros are retained; unavailable metrics remain blank.",
+    "Rounded current follower labels are not exact follower counts or historical ad reach.",
+    "Reply counts may include complaints and are not measures of favorable sentiment.",
+    "Existing records and verification statuses are preserved, not all freshly reverified."
+  ]
+}
