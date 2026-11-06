@@ -1,0 +1,361 @@
+{
+  "status": "Completed: original Drive master updated and individual MP4s verified",
+  "new_records": 22,
+  "master_records": 697,
+  "rows": [
+    677,
+    698
+  ],
+  "collection_run": 42167570184,
+  "caption_languages": {
+    "English": 8,
+    "Japanese_or_mixed": 14
+  },
+  "views_source": "Original-platform extractor metadata; not an independent UI measurement",
+  "ui_source": "Original Facebook reactions, comments and shares observed 2026-11-06 UTC05:17–05:20",
+  "audit_url": "https://drive.google.com/file/d/1rBCrp0seX8Yq4na02xclFkOcpJYgZwi0/view?usp=drivesdk",
+  "accepted": [
+    {
+      "ad_id": "FB_684152294244181",
+      "published_date": "2025-05-27",
+      "reactions_display": "352",
+      "comments_display": "95",
+      "shares_display": "40",
+      "views_exact": null,
+      "views_display": "460K",
+      "media_path": "media/FB_684152294244181.mp4",
+      "sha256": "e18078da07596483a5509ad1b8b286102cff0778941f83db13b7d35597e4e7e8",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/684152294244181/",
+      "product_or_offer": "AIRism Bra Camisole",
+      "caption_language": "English"
+    },
+    {
+      "ad_id": "FB_2113793609086313",
+      "published_date": "2025-05-23",
+      "reactions_display": "687",
+      "comments_display": "51",
+      "shares_display": "85",
+      "views_exact": null,
+      "views_display": "2.3K",
+      "media_path": "media/FB_2113793609086313.mp4",
+      "sha256": "d6e21c44b664c203bb0f71de38984e381449609c889c93a5952446a45f55d503",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/2113793609086313/",
+      "product_or_offer": "Doraemon meets the Louvre UT collection",
+      "caption_language": "English"
+    },
+    {
+      "ad_id": "FB_3986572494822725",
+      "published_date": "2025-05-19",
+      "reactions_display": "267",
+      "comments_display": "24",
+      "shares_display": "21",
+      "views_exact": null,
+      "views_display": "2.4K",
+      "media_path": "media/FB_3986572494822725.mp4",
+      "sha256": "06b6fcc5c3d4d4340050ae26d175bd469dfddfa027cd05426112ce034ff55e18",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/3986572494822725/",
+      "product_or_offer": "Stretch Easy Ankle Pants",
+      "caption_language": "English"
+    },
+    {
+      "ad_id": "FB_2216409458790351",
+      "published_date": "2025-05-18",
+      "reactions_display": "259",
+      "comments_display": "9",
+      "shares_display": "14",
+      "views_exact": null,
+      "views_display": "1.4K",
+      "media_path": "media/FB_2216409458790351.mp4",
+      "sha256": "7f522cb688b872865138f2ca4a3e56050f70588b3daa43d81400285531f7db78",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/2216409458790351/",
+      "product_or_offer": "EZY Jeans",
+      "caption_language": "English"
+    },
+    {
+      "ad_id": "FB_679391938039301",
+      "published_date": "2025-05-16",
+      "reactions_display": "270",
+      "comments_display": "6",
+      "shares_display": "17",
+      "views_exact": null,
+      "views_display": "3.9K",
+      "media_path": "media/FB_679391938039301.mp4",
+      "sha256": "d8530d0370a2c4a5b112648a745b57148af216c8b89ba8f030a7e60e742ff6f9",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/679391938039301/",
+      "product_or_offer": "Roger Federer collection by UNIQLO, designed with Clare Waight Keller",
+      "caption_language": "English"
+    },
+    {
+      "ad_id": "FB_1969483686918007",
+      "published_date": "2025-05-15",
+      "reactions_display": "176",
+      "comments_display": "7",
+      "shares_display": "11",
+      "views_exact": null,
+      "views_display": "6.7K",
+      "media_path": "media/FB_1969483686918007.mp4",
+      "sha256": "7426f5532aa962f9e296242ec5d2529cba346bc736b47db473731a02f890d0b1",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/1969483686918007/",
+      "product_or_offer": "Roger Federer collection launch and May 16 retail availability",
+      "caption_language": "English"
+    },
+    {
+      "ad_id": "FB_683380131286106",
+      "published_date": "2025-05-14",
+      "reactions_display": "216",
+      "comments_display": "5",
+      "shares_display": "7",
+      "views_exact": null,
+      "views_display": "1.1K",
+      "media_path": "media/FB_683380131286106.mp4",
+      "sha256": "1bf4fe54597fd66188af3ffcea7109fab05e61963cab59243e5ecf11c3265f8f",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/683380131286106/",
+      "product_or_offer": "UNIQLO shorts pocket-storage demonstration",
+      "caption_language": "English"
+    },
+    {
+      "ad_id": "FB_1123918192524992",
+      "published_date": "2025-01-17",
+      "reactions_display": "173",
+      "comments_display": "3",
+      "shares_display": "12",
+      "views_exact": 7714,
+      "views_display": "7714",
+      "media_path": "media/FB_1123918192524992.mp4",
+      "sha256": "382af9f001a71f44c296040df840cad95142c12d2063f83c955b0c981990afc4",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/1123918192524992/",
+      "product_or_offer": "2025 Spring/Summer Sunny Moments collection",
+      "caption_language": "Japanese with English collection title"
+    },
+    {
+      "ad_id": "FB_618195390765878",
+      "published_date": "2025-01-10",
+      "reactions_display": "1.2K",
+      "comments_display": "8",
+      "shares_display": "43",
+      "views_exact": 26399,
+      "views_display": "26399",
+      "media_path": "media/FB_618195390765878.mp4",
+      "sha256": "5c9854d1f6d0b51ffd82caef8e5d316dee58991201a19b3474cb82e1bf58d354",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/618195390765878/",
+      "product_or_offer": "Wide Straight Jeans television commercial",
+      "caption_language": "Japanese"
+    },
+    {
+      "ad_id": "FB_617090920984515",
+      "published_date": "2024-12-20",
+      "reactions_display": "350",
+      "comments_display": "8",
+      "shares_display": "24",
+      "views_exact": 13191,
+      "views_display": "13191",
+      "media_path": "media/FB_617090920984515.mp4",
+      "sha256": "38ced4f89cb8b8597d428420d672170842cbad13b728a11602a60696a196b426",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/617090920984515/",
+      "product_or_offer": "UNIQLO year-end seasonal retail campaign television commercial",
+      "caption_language": "Japanese"
+    },
+    {
+      "ad_id": "FB_3880741672203728",
+      "published_date": "2024-11-18",
+      "reactions_display": "312",
+      "comments_display": "4",
+      "shares_display": "23",
+      "views_exact": 10300,
+      "views_display": "10300",
+      "media_path": "media/FB_3880741672203728.mp4",
+      "sha256": "88045183afee590b7e5b4f3f8630c40ec6c36def8d217179258aa2bba4798d55",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/3880741672203728/",
+      "product_or_offer": "UNIQLO 40th anniversary appreciation festival television commercial",
+      "caption_language": "Japanese"
+    },
+    {
+      "ad_id": "FB_1264758441328557",
+      "published_date": "2024-11-05",
+      "reactions_display": "172",
+      "comments_display": "4",
+      "shares_display": "6",
+      "views_exact": 5658,
+      "views_display": "5658",
+      "media_path": "media/FB_1264758441328557.mp4",
+      "sha256": "96fb9425e5d4418f50007408568f222b10ee13543d7df4eebc6b9f9d85fbcde5",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/1264758441328557/",
+      "product_or_offer": "UNIQLO x ANYA HINDMARCH 2024 winter knitwear collection",
+      "caption_language": "Japanese with English brand names"
+    },
+    {
+      "ad_id": "FB_1928259204316056",
+      "published_date": "2024-10-09",
+      "reactions_display": "202",
+      "comments_display": "3",
+      "shares_display": "7",
+      "views_exact": 4511,
+      "views_display": "4511",
+      "media_path": "media/FB_1928259204316056.mp4",
+      "sha256": "0ea30283416e34cd67159af4ae533d027cac36f2011456b61602f1f0c45f33cc",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/1928259204316056/",
+      "product_or_offer": "UNIQLO fleece T television commercial",
+      "caption_language": "Japanese"
+    },
+    {
+      "ad_id": "FB_1063469295152043",
+      "published_date": "2024-10-06",
+      "reactions_display": "169",
+      "comments_display": "1",
+      "shares_display": "7",
+      "views_exact": 5632,
+      "views_display": "5632",
+      "media_path": "media/FB_1063469295152043.mp4",
+      "sha256": "d4158f6ab62cd34be9bd0426c40b689f91ca2f5fd63f079d3e89e69e0ab6da70",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/1063469295152043/",
+      "product_or_offer": "HEATTECH television commercial",
+      "caption_language": "Japanese"
+    },
+    {
+      "ad_id": "FB_1946615055799413",
+      "published_date": "2024-09-16",
+      "reactions_display": "131",
+      "comments_display": "4",
+      "shares_display": "4",
+      "views_exact": 4590,
+      "views_display": "4590",
+      "media_path": "media/FB_1946615055799413.mp4",
+      "sha256": "2c0825e09518d2e74dcf2c2ea2c5dec77b8a4d2cd89c16f7223958f3bd667e5e",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/1946615055799413/",
+      "product_or_offer": "UNIQLO kids and baby clothing television commercial",
+      "caption_language": "Japanese"
+    },
+    {
+      "ad_id": "FB_867185512032772",
+      "published_date": "2024-09-15",
+      "reactions_display": "212",
+      "comments_display": "5",
+      "shares_display": "13",
+      "views_exact": 7591,
+      "views_display": "7591",
+      "media_path": "media/FB_867185512032772.mp4",
+      "sha256": "8c77a9914e816c5e4c6b540a52bdd6e85e502b555aba1373d26734d26d70f90d",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/867185512032772/",
+      "product_or_offer": "UNIQLO sweatshirt television commercial",
+      "caption_language": "Japanese"
+    },
+    {
+      "ad_id": "FB_1648031025765581",
+      "published_date": "2024-09-10",
+      "reactions_display": "164",
+      "comments_display": "2",
+      "shares_display": "3",
+      "views_exact": 5833,
+      "views_display": "5833",
+      "media_path": "media/FB_1648031025765581.mp4",
+      "sha256": "9ecf78d2fb76778912cfa8ee22d0e22aa0228ee58f17325113f4832fa6458b59",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/1648031025765581/",
+      "product_or_offer": "Uniqlo U Fall/Winter 2024 collection",
+      "caption_language": "Japanese with English collection title"
+    },
+    {
+      "ad_id": "FB_3821917538084276",
+      "published_date": "2024-09-01",
+      "reactions_display": "159",
+      "comments_display": "3",
+      "shares_display": "2",
+      "views_exact": 5229,
+      "views_display": "5229",
+      "media_path": "media/FB_3821917538084276.mp4",
+      "sha256": "367de4d845d84c945400d2a7d7a2f580fb57acc138cdb6dea18bc67ccf455e74",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/3821917538084276/",
+      "product_or_offer": "AIRism Cotton Crew Neck T-shirt television commercial",
+      "caption_language": "Japanese with English campaign text"
+    },
+    {
+      "ad_id": "FB_1045072497049584",
+      "published_date": "2024-08-21",
+      "reactions_display": "177",
+      "comments_display": "3",
+      "shares_display": "6",
+      "views_exact": 5090,
+      "views_display": "5090",
+      "media_path": "media/FB_1045072497049584.mp4",
+      "sha256": "f6d1b55055317d858c274d809f20bc2a33c94cc3251fd5385c800e409a6c56a1",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/1045072497049584/",
+      "product_or_offer": "UNIQLO:C Fall/Winter 2024 collection by Clare Waight Keller",
+      "caption_language": "Japanese and English"
+    },
+    {
+      "ad_id": "FB_706320595007921",
+      "published_date": "2024-08-20",
+      "reactions_display": "133",
+      "comments_display": "4",
+      "shares_display": "4",
+      "views_exact": 4746,
+      "views_display": "4746",
+      "media_path": "media/FB_706320595007921.mp4",
+      "sha256": "ecf5b0ada13d8a5bc40ead23daaeebab92585d35a0e6737320050c830e1056e2",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/706320595007921/",
+      "product_or_offer": "UNIQLO:C Fall/Winter 2024 collection teaser",
+      "caption_language": "English"
+    },
+    {
+      "ad_id": "FB_1530672614204003",
+      "published_date": "2024-07-30",
+      "reactions_display": "173",
+      "comments_display": "1",
+      "shares_display": "5",
+      "views_exact": 4340,
+      "views_display": "4340",
+      "media_path": "media/FB_1530672614204003.mp4",
+      "sha256": "677cb7a6f4354bff385cfef9c3b7eb3f3509b4b6794bfbca8c3101608e85b2b5",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/1530672614204003/",
+      "product_or_offer": "Invitation for 130 children to a UNIQLO-sponsored baseball exhibition through Ichiro POST",
+      "caption_language": "Japanese"
+    },
+    {
+      "ad_id": "FB_1009547740896772",
+      "published_date": "2024-07-28",
+      "reactions_display": "144",
+      "comments_display": "2",
+      "shares_display": "2",
+      "views_exact": 3735,
+      "views_display": "3735",
+      "media_path": "media/FB_1009547740896772.mp4",
+      "sha256": "92f01c27cf96194f06be5ae0742be143089b308be01d7bf3025c66daa3049266",
+      "original_post_url": "https://www.facebook.com/uniqlo/videos/1009547740896772/",
+      "product_or_offer": "UNIQLO jeans Hello New Denim television commercial",
+      "caption_language": "Japanese with English campaign text"
+    }
+  ],
+  "excluded": [
+    {
+      "ad_id": "FB_860378996297412",
+      "reason": "Community/athlete visit story without a clear clothing or offer promotion"
+    },
+    {
+      "ad_id": "FB_792163716274661",
+      "reason": "Past exhibition recap without a clear product offer or attendance call to action"
+    },
+    {
+      "ad_id": "FB_1074877360816644",
+      "reason": "No independently visible numeric comment count in original Facebook UI; missing is not zero"
+    },
+    {
+      "ad_id": "FB_3555670758026038",
+      "reason": "No independently visible numeric comment count in original Facebook UI; missing is not zero"
+    },
+    {
+      "ad_id": "FB_864594791966365",
+      "reason": "Sports partnership thank-you and medal recap without a product or offer promotion"
+    },
+    {
+      "ad_id": "FB_1065139025155440",
+      "reason": "No independently visible numeric comment count in original Facebook UI; missing is not zero"
+    },
+    {
+      "ad_id": "FB_1634476153952576",
+      "reason": "No independently visible numeric comment count in original Facebook UI; missing is not zero"
+    },
+    {
+      "ad_id": "FB_1409930970409831",
+      "reason": "No independently visible numeric comment count in original Facebook UI; missing is not zero"
+    }
+  ]
+}
