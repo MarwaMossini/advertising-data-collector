@@ -1,5 +1,5 @@
 {
-  "status": "Pending editorial and UI engagement review, not yet imported into Drive master",
+  "status": "Review completed 2026-11-06. 29 imported into original Drive master; 5 excluded.",
   "original_master_ads": 616,
   "source_runs": [
     42081829513,
@@ -40,9 +40,14 @@
       "sha256": "4d470faaa3eb331cdc332f1911035e147c3563d8867f071ffbea74f229013bac",
       "full_video_bytes": 4186325,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DSLlqXICZUi.mp4",
+      "reviewed_utc": "2026-11-06T04:12:57.134Z",
+      "ui_likes_display": "571",
+      "ui_comments_display": "481",
+      "ui_publication_label": "December 12, 2025",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DSK4O1pEU-8",
@@ -60,9 +65,14 @@
       "sha256": "3c920fda4cb9ddffc569a75e5ae9a3f0132c6669fdbaa21047a9f49c293a8fc5",
       "full_video_bytes": 2881283,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DSK4O1pEU-8.mp4",
+      "reviewed_utc": "2026-11-06T04:13:10.277Z",
+      "ui_likes_display": "482",
+      "ui_comments_display": "10",
+      "ui_publication_label": "December 12, 2025",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DSKRTK6CGtZ",
@@ -80,9 +90,14 @@
       "sha256": "0e896a0e9058517675e2faacd36c6f2e4bb55d3b6d1ed594381952fd3568d7a3",
       "full_video_bytes": 1160914,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DSKRTK6CGtZ.mp4",
+      "reviewed_utc": "2026-11-06T04:13:13.071Z",
+      "ui_likes_display": "875",
+      "ui_comments_display": "222",
+      "ui_publication_label": "December 12, 2025",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DSJA0QWExpg",
@@ -100,9 +115,14 @@
       "sha256": "ccb69dc575b6e7a798e248b3d2dc89be1168cd3466511a0ff7456b99a91b1489",
       "full_video_bytes": 5995539,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DSJA0QWExpg.mp4",
+      "reviewed_utc": "2026-11-06T04:13:15.525Z",
+      "ui_likes_display": "665",
+      "ui_comments_display": "762",
+      "ui_publication_label": "December 12, 2025",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DbzIfKOgWPf",
@@ -120,9 +140,14 @@
       "sha256": "4811848f6fc655f85dea31ca1557c62cde67aa3d36b178d2468db7f94cd9ecdf",
       "full_video_bytes": 6327003,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DbzIfKOgWPf.mp4",
+      "reviewed_utc": "2026-11-06T04:13:41.418Z",
+      "ui_likes_display": "2.3K",
+      "ui_comments_display": "32",
+      "ui_publication_label": "August 9",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_Daf_0azRrvg",
@@ -140,9 +165,14 @@
       "sha256": "c057d5310b7a561a586d352e13bf2a25cc2b3669028ffb067f5c90da09ee6a43",
       "full_video_bytes": 11555618,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "Unusual likes/comments relationship; independently review UI and extractor",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Excluded from this append",
+      "engagement_status": "Excluded: numeric likes not publicly visible; suspect extractor 3-likes value rejected",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_Daf_0azRrvg.mp4",
+      "reviewed_utc": "2026-11-06T04:13:43.824Z",
+      "ui_likes_display": null,
+      "ui_comments_display": "67",
+      "ui_publication_label": "July 7",
+      "review_status": "Excluded"
     },
     {
       "ad_id": "IG_DaU-KH9h3w_",
@@ -160,9 +190,14 @@
       "sha256": "766727fb159bb11b9022bc2d5fe8f78d86c154039921bc93db87abeb4d0b351c",
       "full_video_bytes": 3316515,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DaU-KH9h3w_.mp4",
+      "reviewed_utc": "2026-11-06T04:13:46.090Z",
+      "ui_likes_display": "712",
+      "ui_comments_display": "21",
+      "ui_publication_label": "July 3",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DV1LB4QjfK5",
@@ -180,9 +215,14 @@
       "sha256": "b7fa0394b50e33037fdd796def93cc7c13de0620c62121e41386af22fd6b5bc0",
       "full_video_bytes": 25455439,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DV1LB4QjfK5.mp4",
+      "reviewed_utc": "2026-11-06T04:13:49.308Z",
+      "ui_likes_display": "900",
+      "ui_comments_display": "32",
+      "ui_publication_label": "March 13",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DVEjb8CD4tH",
@@ -200,9 +240,14 @@
       "sha256": "82e5d1a8d219bccfcfd2777f30bd070ce1430e1ed0f896b6538135f42868ff06",
       "full_video_bytes": 4350342,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DVEjb8CD4tH.mp4",
+      "reviewed_utc": "2026-11-06T04:13:59.487Z",
+      "ui_likes_display": "1.1K",
+      "ui_comments_display": "71",
+      "ui_publication_label": "February 22",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DRiFMt2CY9t",
@@ -220,9 +265,14 @@
       "sha256": "c3a4aa26438398548e4fa90aa50b34ba712af965f422de131bf5eeba891f5524",
       "full_video_bytes": 625914,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "Unusual likes/comments relationship; independently review UI and extractor",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Excluded from this append",
+      "engagement_status": "Excluded: numeric likes not publicly visible; suspect extractor 3-likes value rejected",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DRiFMt2CY9t.mp4",
+      "reviewed_utc": "2026-11-06T04:14:01.950Z",
+      "ui_likes_display": null,
+      "ui_comments_display": "61",
+      "ui_publication_label": "November 26, 2025",
+      "review_status": "Excluded"
     },
     {
       "ad_id": "IG_DadK7xwo49l",
@@ -240,9 +290,14 @@
       "sha256": "76910461f3c6709cb084cfacf1d6d0cbe3de16bf36803f5c0ab74baecb052f10",
       "full_video_bytes": 3687420,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DadK7xwo49l.mp4",
+      "reviewed_utc": "2026-11-06T04:14:04.402Z",
+      "ui_likes_display": "805",
+      "ui_comments_display": "24",
+      "ui_publication_label": "July 6",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DZ5sMtzPnaJ",
@@ -260,9 +315,14 @@
       "sha256": "ea3771c10a6c449b8b5eb7e131b87d3252f8d6d31e2d3aea0517704fdb4bc0ba",
       "full_video_bytes": 9588227,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DZ5sMtzPnaJ.mp4",
+      "reviewed_utc": "2026-11-06T04:14:19.385Z",
+      "ui_likes_display": "364",
+      "ui_comments_display": "48",
+      "ui_publication_label": "June 23",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DZavuZ9prUT",
@@ -280,9 +340,14 @@
       "sha256": "a902002966244c428f572de4d98740029d8063fe899b5d85524391bcd8e0644e",
       "full_video_bytes": 5996484,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DZavuZ9prUT.mp4",
+      "reviewed_utc": "2026-11-06T04:14:21.956Z",
+      "ui_likes_display": "480",
+      "ui_comments_display": "106",
+      "ui_publication_label": "June 10",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DXkvT8QDbe8",
@@ -300,9 +365,14 @@
       "sha256": "e2171d77ea625897d54e77451369e812a983424943599cc9a3e58e595b1d1f6a",
       "full_video_bytes": 21352707,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DXkvT8QDbe8.mp4",
+      "reviewed_utc": "2026-11-06T04:14:24.302Z",
+      "ui_likes_display": "914",
+      "ui_comments_display": "3",
+      "ui_publication_label": "April 26",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DbwGGD4OQC2",
@@ -320,9 +390,14 @@
       "sha256": "43a2c6459fb251584d1eb5d51fc8f4b0aad3958feffc2f95e0dc4f557c375872",
       "full_video_bytes": 4240225,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "Unusual likes/comments relationship; independently review UI and extractor",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Excluded from this append",
+      "engagement_status": "Excluded: numeric likes not publicly visible; suspect extractor 3-likes value rejected",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DbwGGD4OQC2.mp4",
+      "reviewed_utc": "2026-11-06T04:14:26.515Z",
+      "ui_likes_display": null,
+      "ui_comments_display": null,
+      "ui_publication_label": "August 8",
+      "review_status": "Excluded"
     },
     {
       "ad_id": "IG_DbvfVJzN6xB",
@@ -340,9 +415,14 @@
       "sha256": "ebf2663575d80351ab10b7df353dd1ecd215f4ecf9bb03ec8a0f5f8c4fb9f0ff",
       "full_video_bytes": 9393363,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DbvfVJzN6xB.mp4",
+      "reviewed_utc": "2026-11-06T04:14:34.549Z",
+      "ui_likes_display": "1.4K",
+      "ui_comments_display": "34",
+      "ui_publication_label": "August 7",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DbroBsQRqd5",
@@ -360,9 +440,14 @@
       "sha256": "66210f97719b02f8c828731032c80f795da67dcee7ed58bfe0d8cd3be04f5d48",
       "full_video_bytes": 10029288,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DbroBsQRqd5.mp4",
+      "reviewed_utc": "2026-11-06T04:14:36.849Z",
+      "ui_likes_display": "1.1K",
+      "ui_comments_display": "8",
+      "ui_publication_label": "August 6",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DbqtqRwquOa",
@@ -380,9 +465,14 @@
       "sha256": "08e60c234fc79d5c92156941d31e0a83c9115de6e16c10e12fbdd41f332a4f93",
       "full_video_bytes": 3304137,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DbqtqRwquOa.mp4",
+      "reviewed_utc": "2026-11-06T04:14:39.306Z",
+      "ui_likes_display": "907",
+      "ui_comments_display": "10",
+      "ui_publication_label": "August 5",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DbqO4UHAh_H",
@@ -400,9 +490,14 @@
       "sha256": "188228921f5f780a07923ea8e9f29855018dbf4e95423a9d11d5ba4c19d14e0b",
       "full_video_bytes": 34226108,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DbqO4UHAh_H.mp4",
+      "reviewed_utc": "2026-11-06T04:14:41.657Z",
+      "ui_likes_display": "1.5K",
+      "ui_comments_display": "30",
+      "ui_publication_label": "August 5",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DblCcZ9oB_J",
@@ -420,9 +515,14 @@
       "sha256": "f97c24f114c6462c4a4b03d297fd09dd8cc38ba7b0d5569f18824d594b52cff2",
       "full_video_bytes": 12014370,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DblCcZ9oB_J.mp4",
+      "reviewed_utc": "2026-11-06T04:14:44.225Z",
+      "ui_likes_display": "988",
+      "ui_comments_display": "17",
+      "ui_publication_label": "August 3",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DbdgEvyMk5C",
@@ -440,9 +540,14 @@
       "sha256": "ff0be6ee7f43d19f0ac774117d981e5231c27f7eb71379d2b369b019a9c03148",
       "full_video_bytes": 7013135,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DbdgEvyMk5C.mp4",
+      "reviewed_utc": "2026-11-06T04:14:55.784Z",
+      "ui_likes_display": "34.1K",
+      "ui_comments_display": "377",
+      "ui_publication_label": "July 31",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DbcBLbJt75i",
@@ -460,9 +565,14 @@
       "sha256": "1b2c6474c863fa8520abb43735d8f552f397d54f7cc2ef11b6a37348df738828",
       "full_video_bytes": 4821524,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DbcBLbJt75i.mp4",
+      "reviewed_utc": "2026-11-06T04:14:58.220Z",
+      "ui_likes_display": "834",
+      "ui_comments_display": "20",
+      "ui_publication_label": "July 31",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DbbAO6ttQtk",
@@ -480,9 +590,14 @@
       "sha256": "a141af6afd2e71d9ccd7bde6440f35a091a279e8f71167bf7ffd98e8ae200e65",
       "full_video_bytes": 42407699,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DbbAO6ttQtk.mp4",
+      "reviewed_utc": "2026-11-06T04:15:00.713Z",
+      "ui_likes_display": "2.2K",
+      "ui_comments_display": "406",
+      "ui_publication_label": "July 30",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DbY7rl4yTHH",
@@ -500,9 +615,14 @@
       "sha256": "81191add3aafa3782c65db384e658df4b42417511fd48302aa8d1f5b0f9af248",
       "full_video_bytes": 5847183,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DbY7rl4yTHH.mp4",
+      "reviewed_utc": "2026-11-06T04:15:03.140Z",
+      "ui_likes_display": "778",
+      "ui_comments_display": "4",
+      "ui_publication_label": "July 30",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DaVzWyExeB-",
@@ -520,9 +640,14 @@
       "sha256": "546afc72e20f269c8682ce5138276f6099f864c82e02fc4a31f84052c4bb2ce6",
       "full_video_bytes": 9176187,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DaVzWyExeB-.mp4",
+      "reviewed_utc": "2026-11-06T04:15:05.641Z",
+      "ui_likes_display": "30.8K",
+      "ui_comments_display": "125",
+      "ui_publication_label": "July 3",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DaAu54KozwU",
@@ -540,9 +665,14 @@
       "sha256": "72daa032d8504106303d9aa67ccd1f9ffe3a783305b2ec66977dc7b2fa58b7b2",
       "full_video_bytes": 5632843,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DaAu54KozwU.mp4",
+      "reviewed_utc": "2026-11-06T04:15:19.408Z",
+      "ui_likes_display": "396",
+      "ui_comments_display": "25",
+      "ui_publication_label": "June 25",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DZL5babuNTP",
@@ -560,9 +690,14 @@
       "sha256": "617a4a8c20c4e777058c47f1118210de476a75e7c27d8769c8d1314c3a5ff30b",
       "full_video_bytes": 14606124,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DZL5babuNTP.mp4",
+      "reviewed_utc": "2026-11-06T04:15:21.883Z",
+      "ui_likes_display": "563",
+      "ui_comments_display": "61",
+      "ui_publication_label": "June 4",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DZLyexCRCE6",
@@ -580,9 +715,14 @@
       "sha256": "4ee9fcc5760e6be4de737af7f8f076d65a52f1b6f746e4af3fa59045050fbc33",
       "full_video_bytes": 11470022,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DZLyexCRCE6.mp4",
+      "reviewed_utc": "2026-11-06T04:15:24.868Z",
+      "ui_likes_display": "617",
+      "ui_comments_display": "36",
+      "ui_publication_label": "June 5",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DZnRg-ooYdy",
@@ -600,9 +740,14 @@
       "sha256": "adcea6de7d838dadec18387c2fd6b2ee3cc404abf2d0be1d92f1ebd194fcaeec",
       "full_video_bytes": 5615542,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "Unusual likes/comments relationship; independently review UI and extractor",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Excluded from this append",
+      "engagement_status": "Excluded: numeric likes not publicly visible; suspect extractor 3-likes value rejected",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DZnRg-ooYdy.mp4",
+      "reviewed_utc": "2026-11-06T04:15:27.387Z",
+      "ui_likes_display": null,
+      "ui_comments_display": "18",
+      "ui_publication_label": "June 15",
+      "review_status": "Excluded"
     },
     {
       "ad_id": "IG_DZQHtuLMtaQ",
@@ -620,9 +765,14 @@
       "sha256": "b61349b62de3b2262115a7bf326fc14a200dafbd9f9d7bc88d4479850e8cb3b8",
       "full_video_bytes": 8279528,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Excluded from this append",
+      "engagement_status": "Excluded: general event recap without a clear product/offer call to action",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DZQHtuLMtaQ.mp4",
+      "reviewed_utc": "2026-11-06T04:15:33.990Z",
+      "ui_likes_display": "1.4K",
+      "ui_comments_display": "37",
+      "ui_publication_label": "June 6",
+      "review_status": "Excluded"
     },
     {
       "ad_id": "IG_DScvvkhCLr_",
@@ -640,9 +790,14 @@
       "sha256": "df5f8fdad15c778466d537fc135152775878389a14cb73b0c99ccfdb3b4fc601",
       "full_video_bytes": 11876427,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DScvvkhCLr_.mp4",
+      "reviewed_utc": "2026-11-06T04:15:36.574Z",
+      "ui_likes_display": "1.8K",
+      "ui_comments_display": "14",
+      "ui_publication_label": "December 19, 2025",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DScqO11DT3k",
@@ -660,9 +815,14 @@
       "sha256": "56ef5328bac8acca7fd4dc2c62f111d2139140cd310f4d09cc072701a2fe2653",
       "full_video_bytes": 11349285,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DScqO11DT3k.mp4",
+      "reviewed_utc": "2026-11-06T04:15:39.115Z",
+      "ui_likes_display": "1.6K",
+      "ui_comments_display": "12",
+      "ui_publication_label": "December 19, 2025",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DR5g3shkoJR",
@@ -680,9 +840,14 @@
       "sha256": "a6066782ee00e1cbd9e056dfa64c668612652ad52e25664e84d4f3b95af0a5b4",
       "full_video_bytes": 14774425,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DR5g3shkoJR.mp4",
+      "reviewed_utc": "2026-11-06T04:15:41.727Z",
+      "ui_likes_display": "3.5K",
+      "ui_comments_display": "140",
+      "ui_publication_label": "December 5, 2025",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     },
     {
       "ad_id": "IG_DRypwWNk3z2",
@@ -700,9 +865,18 @@
       "sha256": "9c2f8620796e61ef826d9b43bb8fca0daea07c52e856e8dc2f38c8326c26eb77",
       "full_video_bytes": 8532047,
       "integrity_checked": true,
-      "promotion_status": "creative/caption needs independent editorial review",
-      "engagement_status": "UI metric counts not independently observed",
-      "media_archive": "GitHub batches 28/29 artifacts; use source URL to resolve"
+      "promotion_status": "Promotional caption and downloaded creative reviewed",
+      "engagement_status": "Visible likes/comments independently checked in original Instagram UI; rounded values kept as display text",
+      "media_archive": "Original MP4 retained in prior five ZIP backups; accepted files also uploaded individually as IG_DRypwWNk3z2.mp4",
+      "reviewed_utc": "2026-11-06T04:15:44.509Z",
+      "ui_likes_display": "2.6K",
+      "ui_comments_display": "82",
+      "ui_publication_label": "December 3, 2025",
+      "review_status": "Accepted into original Drive master with full individual MP4"
     }
-  ]
+  ],
+  "master_records_after_update": 645,
+  "accepted_records": 29,
+  "excluded_records": 5,
+  "drive_audit_url": "https://drive.google.com/file/d/1qV-ioRQOsh7_clsvFCCIJn0mTHlr8VCM/view?usp=drivesdk"
 }

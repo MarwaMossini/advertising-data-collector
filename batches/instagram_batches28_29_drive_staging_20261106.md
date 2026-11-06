@@ -1,6 +1,10 @@
 # Instagram promotional collection and Drive staging, 6 November 2026 (Bangladesh)
 
-## Status
+## Completed follow-through, 6 November 2026
+
+The pending review below has now been completed. Twenty-nine of the 34 originals were accepted after direct Instagram UI and creative review, and their individual MP4s were uploaded to the existing media folder. The same master now contains 645 records. Four hidden-like cases and one general event recap were excluded. See [completed review and Drive update](instagram_batches28_29_drive_update_20261106.md) for dates, current counts, limitations and readback evidence. The remaining staging notes describe the earlier state.
+
+## Earlier staging status
 
 - Original master [Master_Ads.xlsx](https://docs.google.com/spreadsheets/d/1vzXBlvO-ckqJ6U9-ypNA-cSy3yK4BV-s/edit) remains **616 records** (49 columns, one Ads worksheet) because the 34 new posts are pending independent editorial/Instagram-UI engagement review and individual-media import.
 - New source discovery: **40 Instagram creator promotional URLs** from eight brands; batches 28 and 29 attempted all 40. Collector yielded **34 intact original MP4-backed posts**; six failures excluded (4 in batch 28, 2 in batch 29). No platform restriction bypass attempted.
