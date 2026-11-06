@@ -73,15 +73,14 @@ def run(config,out):
             elif platform=='X':
                 if host!='x.com' or not re.search(r'/status/\d+$',url):raise ValueError('Expected original X post')
                 aid='X_'+url.rsplit('/',1)[-1]
-                if s.get('media_url'):
-                    day=s['published_date'];r.update(published_date=day,publication_evidence=s['publication_evidence'],caption=s['caption'])
-                else:
-                    with yt_dlp.YoutubeDL({**opts,'outtmpl':str(out/'media'/(aid+'.%(ext)s'))}) as y:info=y.extract_info(url,download=True)
-                    if info.get('_type') in ('playlist','multi_video') or info.get('entries') or info.get('is_live'):raise ValueError('Not one complete original creative')
-                    ts=info.get('timestamp')
-                    if not isinstance(ts,(int,float)):raise ValueError('No original-platform publication timestamp')
-                    day=datetime.fromtimestamp(ts,timezone.utc).date().isoformat()
-                    r.update(published_date=day,publication_evidence='Original-platform extractor timestamp (UTC): '+str(ts),caption=info.get('description') or '',extractor_metadata={k:info.get(k) for k in ('id','title','uploader','timestamp','duration','like_count','comment_count','repost_count','view_count')})
+                with yt_dlp.YoutubeDL({**opts,'ignore_no_formats_error':bool(s.get('media_url')),'outtmpl':str(out/'media'/(aid+'.%(ext)s'))}) as y:
+                    info=y.extract_info(url,download=not bool(s.get('media_url')))
+                if info.get('_type') in ('playlist','multi_video') or info.get('entries') or info.get('is_live'):
+                    raise ValueError('Not one complete original creative')
+                ts=info.get('timestamp')
+                if not isinstance(ts,(int,float)):raise ValueError('No original-platform publication timestamp')
+                day=datetime.fromtimestamp(ts,timezone.utc).date().isoformat()
+                r.update(published_date=day,publication_evidence='Original-platform extractor timestamp (UTC): '+str(ts),caption=info.get('description') or '',extractor_metadata={k:info.get(k) for k in ('id','title','uploader','timestamp','duration','like_count','comment_count','repost_count','view_count')})
             else:raise ValueError('Unsupported platform')
             if not '2021-01-01'<=day<=datetime.now(timezone.utc).date().isoformat():raise ValueError('Publication date outside scope')
             if s.get('media_url'):
