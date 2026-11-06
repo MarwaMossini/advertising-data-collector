@@ -1,0 +1,49 @@
+name: Package Facebook batch30 full videos
+on:
+  push:
+    paths: ['.github/workflows/package-facebook-20261106-batch30.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: public-promotions-20261106-batch30
+          run-id: 42162818408
+          github-token: ${{ github.token }}
+          path: raw30
+      - name: Package full original files without modifying videos
+        shell: python
+        run: |
+          from pathlib import Path
+          import zipfile, json, hashlib
+          root=Path('raw30'); out=Path('packages'); out.mkdir()
+          media=sorted((root/'media').glob('*'))
+          groups=[]; group=[]; size=0
+          for f in media:
+              n=f.stat().st_size
+              if group and size+n>120*1024*1024:
+                  groups.append(group); group=[]; size=0
+              group.append(f); size+=n
+          if group: groups.append(group)
+          report=[]
+          for i,files in enumerate(groups,1):
+              p=out/f'batch30_fullmedia_part{i:02d}.zip'
+              with zipfile.ZipFile(p,'w',compression=zipfile.ZIP_STORED) as z:
+                  for f in root.iterdir():
+                      if f.is_file(): z.write(f,f.name)
+                  for f in files: z.write(f,'media/'+f.name)
+              report.append({'name':p.name,'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'files':[f.name for f in files]})
+          (out/'package_manifest.json').write_text(json.dumps(report,indent=2))
+          print(json.dumps({'media_files':len(media),'packages':report},indent=2))
+      - uses: actions/upload-artifact@v4
+        with:
+          name: batch30-fullmedia-packages
+          path: packages/
+          compression-level: 6
+          retention-days: 30
