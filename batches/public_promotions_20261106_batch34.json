@@ -1,0 +1,60 @@
+{
+  "sources": [
+    {
+      "url": "https://www.linkedin.com/posts/samsungmobile_samsungknox-technology-activity-7518838563376029696-ka0K",
+      "platform": "LinkedIn",
+      "company": "Samsung",
+      "industry": "Consumer electronics and enterprise mobility",
+      "media_url": "https://media.licdn.com/dms/image/v2/D5622AQFwgdHmAQCVWg/feedshare-shrink_800/B56aFYkqFRIEAc-/0/1792487367253?e=2147483647&v=beta&t=iza6lOxmwA05oztDDWODPG88QFDnN2B1yFGPpaFcjkc"
+    },
+    {
+      "url": "https://www.linkedin.com/posts/samsungmobile_galaxyai-samsungknox-technology-activity-7508072966081953792-RSgz",
+      "platform": "LinkedIn",
+      "company": "Samsung",
+      "industry": "Consumer electronics and enterprise mobility",
+      "media_url": "https://media.licdn.com/dms/image/v2/D4E22AQFLBeXwuv2ocw/feedshare-shrink_1280/B4EaDHjY6lHoAM-/0/1790054338490?e=2147483647&v=beta&t=_loF4uT1TFSeqdC9kfS_kNcvwbI9YM6rs9l4nPnxvOY"
+    },
+    {
+      "url": "https://x.com/SamsungMobile/status/2118297271360184560",
+      "platform": "X",
+      "company": "Samsung",
+      "industry": "Consumer electronics"
+    },
+    {
+      "url": "https://x.com/NintendoAmerica/status/2110355190935151081",
+      "platform": "X",
+      "company": "Nintendo",
+      "industry": "Video games and entertainment"
+    },
+    {
+      "url": "https://x.com/NintendoAmerica/status/2118387871518167509",
+      "platform": "X",
+      "company": "Nintendo",
+      "industry": "Video games and entertainment"
+    },
+    {
+      "url": "https://x.com/PlayStation/status/2118357795330293795",
+      "platform": "X",
+      "company": "Sony Interactive Entertainment / PlayStation",
+      "industry": "Video games and entertainment"
+    },
+    {
+      "url": "https://x.com/PlayStation/status/2118342795983282480",
+      "platform": "X",
+      "company": "Sony Interactive Entertainment / PlayStation",
+      "industry": "Video games and entertainment"
+    },
+    {
+      "url": "https://x.com/PlayStation/status/2118119223247417580",
+      "platform": "X",
+      "company": "Sony Interactive Entertainment / PlayStation",
+      "industry": "Video games and entertainment"
+    },
+    {
+      "url": "https://x.com/PlayStation/status/2118046242374599167",
+      "platform": "X",
+      "company": "Sony Interactive Entertainment / PlayStation",
+      "industry": "Video games and entertainment"
+    }
+  ]
+}
