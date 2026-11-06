@@ -73,14 +73,33 @@ def run(config,out):
             elif platform=='X':
                 if host!='x.com' or not re.search(r'/status/\d+$',url):raise ValueError('Expected original X post')
                 aid='X_'+url.rsplit('/',1)[-1]
-                with yt_dlp.YoutubeDL({**opts,'ignore_no_formats_error':bool(s.get('media_url')),'outtmpl':str(out/'media'/(aid+'.%(ext)s'))}) as y:
-                    info=y.extract_info(url,download=not bool(s.get('media_url')))
-                if info.get('_type') in ('playlist','multi_video') or info.get('entries') or info.get('is_live'):
-                    raise ValueError('Not one complete original creative')
-                ts=info.get('timestamp')
-                if not isinstance(ts,(int,float)):raise ValueError('No original-platform publication timestamp')
-                day=datetime.fromtimestamp(ts,timezone.utc).date().isoformat()
-                r.update(published_date=day,publication_evidence='Original-platform extractor timestamp (UTC): '+str(ts),caption=info.get('description') or '',extractor_metadata={k:info.get(k) for k in ('id','title','uploader','timestamp','duration','like_count','comment_count','repost_count','view_count')})
+                if s.get('media_url') and s.get('publication_date_source')=='original_ui_exact_date':
+                    # Curated original-post calendar label, recorded during manual review.
+                    # The UI does not declare a timezone; never present this as UTC.
+                    day=str(s.get('published_date',''))
+                    label=str(s.get('publication_label',''))
+                    if not re.fullmatch(r'\d{4}-\d{2}-\d{2}',day):
+                        raise ValueError('Expected an explicit ISO calendar date')
+                    parsed=datetime.strptime(label,'%I:%M %p · %b %d, %Y')
+                    if parsed.date().isoformat()!=day:
+                        raise ValueError('Original UI publication label disagrees with calendar date')
+                    observed=datetime.fromisoformat(str(s.get('ui_observed_at_utc','')).replace('Z','+00:00'))
+                    if observed.tzinfo is None or observed>datetime.now(timezone.utc):
+                        raise ValueError('Expected a past timezone-aware UI observation timestamp')
+                    if not s.get('caption'):raise ValueError('Expected the observed original-post caption')
+                    r.update(published_date=day,date_status='verified_original_ui_calendar_date_timezone_unspecified',
+                             publication_evidence='Original X post UI: '+label+'; timezone unspecified; observed '+s['ui_observed_at_utc'],
+                             caption=s['caption'])
+                else:
+                    with yt_dlp.YoutubeDL({**opts,'ignore_no_formats_error':bool(s.get('media_url')),'outtmpl':str(out/'media'/(aid+'.%(ext)s'))}) as y:
+                        info=y.extract_info(url,download=not bool(s.get('media_url')))
+                    if info.get('_type') in ('playlist','multi_video') or info.get('entries') or info.get('is_live'):
+                        raise ValueError('Not one complete original creative')
+                    ts=info.get('timestamp')
+                    if not isinstance(ts,(int,float)):raise ValueError('No original-platform publication timestamp')
+                    day=datetime.fromtimestamp(ts,timezone.utc).date().isoformat()
+                    r.update(published_date=day,date_status='verified_original_platform_timestamp_utc',
+                             publication_evidence='Original-platform extractor timestamp (UTC): '+str(ts),caption=info.get('description') or '',extractor_metadata={k:info.get(k) for k in ('id','title','uploader','timestamp','duration','like_count','comment_count','repost_count','view_count')})
             else:raise ValueError('Unsupported platform')
             if not '2021-01-01'<=day<=datetime.now(timezone.utc).date().isoformat():raise ValueError('Publication date outside scope')
             if s.get('media_url'):

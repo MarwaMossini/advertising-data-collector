@@ -1,0 +1,155 @@
+{
+  "batch": "public_promotions_20261107_batch36",
+  "sources": [
+    {
+      "platform": "X",
+      "url": "https://x.com/Starbucks/status/1888733671663993010",
+      "ad_id": "X_1888733671663993010",
+      "published_date": "2025-02-10",
+      "publication_label": "5:36 AM · Feb 10, 2025",
+      "publication_date_source": "original_ui_exact_date",
+      "ui_observed_at_utc": "2026-11-06T18:59:18.003Z",
+      "caption": "If you needed a reason to look forward to Monday, this is it. Starbucks® Rewards members get a free tall hot or iced coffee on 2.10.25. https://t.co/fsRcQKeTKb",
+      "media_url": "https://pbs.twimg.com/media/GjYhJITa0AAT2l-?format=webp&name=large",
+      "metrics": {
+        "comments": 134,
+        "reposts": 444,
+        "likes": 1370,
+        "saves": 90,
+        "views": 541791
+      },
+      "publisher": "Starbucks"
+    },
+    {
+      "platform": "X",
+      "url": "https://x.com/Starbucks/status/1887644358511321371",
+      "ad_id": "X_1887644358511321371",
+      "published_date": "2025-02-07",
+      "publication_label": "5:27 AM · Feb 7, 2025",
+      "publication_date_source": "original_ui_exact_date",
+      "ui_observed_at_utc": "2026-11-06T18:59:18.634Z",
+      "caption": "PSA: Enjoy a free tall hot or iced coffee on the Mondayest Monday of the year. 2.10.25. Learn more at https://t.co/k05kutXxpC",
+      "media_url": "https://pbs.twimg.com/media/GjJAmTdWwAAtP91?format=webp&name=large",
+      "metrics": {
+        "comments": 799,
+        "reposts": 378,
+        "likes": 1503,
+        "saves": 144,
+        "views": 590038
+      },
+      "publisher": "Starbucks"
+    },
+    {
+      "platform": "X",
+      "url": "https://x.com/PokemonTCG/status/2094272546375901526",
+      "ad_id": "X_2094272546375901526",
+      "published_date": "2026-08-31",
+      "publication_label": "9:54 AM · Aug 31, 2026",
+      "publication_date_source": "original_ui_exact_date",
+      "ui_observed_at_utc": "2026-11-06T18:59:30.327Z",
+      "caption": "Some mega-huge news is coming to the #PokemonTCG! 📰 \n\nICYMI: get ready for Mega Lucario Z’s debut as a powerful Mega Evolution Pokémon ex. Plus, look out for a new Pokémon TCG series: ex★! ⭐ #PokemonXP (cont) https://t.co/lRdH5sbkQN",
+      "metrics": {
+        "comments": 55,
+        "reposts": 473,
+        "likes": 3908,
+        "saves": 417,
+        "views": 496958
+      },
+      "publisher": "PokemonTCG"
+    },
+    {
+      "platform": "X",
+      "url": "https://x.com/PokemonTCG/status/2116204807849443683",
+      "ad_id": "X_2116204807849443683",
+      "published_date": "2026-10-30",
+      "publication_label": "10:25 PM · Oct 30, 2026",
+      "publication_date_source": "original_ui_exact_date",
+      "ui_observed_at_utc": "2026-11-06T18:59:30.909Z",
+      "caption": "The excitement is REAL! 🗣️🎺🗣️🎺\n\nGet ready for this stunning Mega Rayquaza ex card to land in the Pokémon TCG: Mega Evolution—Delta Reign expansion, out November 6!",
+      "metrics": {
+        "comments": 39,
+        "reposts": 34,
+        "likes": 231,
+        "saves": 12,
+        "views": 25420
+      },
+      "publisher": "PokemonTCG"
+    },
+    {
+      "platform": "X",
+      "url": "https://x.com/PokemonTCG/status/2115156578026279118",
+      "ad_id": "X_2115156578026279118",
+      "published_date": "2026-10-28",
+      "publication_label": "1:00 AM · Oct 28, 2026",
+      "publication_date_source": "original_ui_exact_date",
+      "ui_observed_at_utc": "2026-11-06T18:59:37.244Z",
+      "caption": "Thinking caps are out and Mega Rayquaza Cap is in! 🐉🧢\n\nMore fashionable Pokémon Tools and cards await you in the upcoming #DeltaReign expansion, coming November 6",
+      "media_url": "https://pbs.twimg.com/media/HVpq4K8XgAAa92q?format=webp&name=large",
+      "metrics": {
+        "comments": 25,
+        "reposts": 22,
+        "likes": 295,
+        "saves": 17,
+        "views": 31905
+      },
+      "publisher": "PokemonTCG"
+    },
+    {
+      "platform": "X",
+      "url": "https://x.com/PokemonTCG/status/2113344638199197789",
+      "ad_id": "X_2113344638199197789",
+      "published_date": "2026-10-23",
+      "publication_label": "1:00 AM · Oct 23, 2026",
+      "publication_date_source": "original_ui_exact_date",
+      "ui_observed_at_utc": "2026-11-06T18:59:37.727Z",
+      "caption": "This colorful Kecleon dazzles in newly revealed illustration rare #PokemonTCG card from the #DeltaReign expansion! 🌈",
+      "media_url": "https://pbs.twimg.com/media/HVQSRpdWAAA-XDx?format=webp&name=large",
+      "metrics": {
+        "comments": 82,
+        "reposts": 177,
+        "likes": 1808,
+        "saves": 102,
+        "views": 77746
+      },
+      "publisher": "PokemonTCG"
+    },
+    {
+      "platform": "X",
+      "url": "https://x.com/XiaomiIndia/status/2102747821556510917",
+      "ad_id": "X_2102747821556510917",
+      "published_date": "2026-09-23",
+      "publication_label": "7:12 PM · Sep 23, 2026",
+      "publication_date_source": "original_ui_exact_date",
+      "ui_observed_at_utc": "2026-11-06T18:59:38.294Z",
+      "caption": "#Xiaomi18Pro is going global. Coming soon.\n\nGet ready!",
+      "media_url": "https://pbs.twimg.com/media/HS51EwqakAAk0N8?format=webp&name=large",
+      "metrics": {
+        "comments": 113,
+        "reposts": 225,
+        "likes": 1064,
+        "saves": 40,
+        "views": 41591
+      },
+      "publisher": "XiaomiIndia"
+    },
+    {
+      "platform": "X",
+      "url": "https://x.com/XiaomiIndia/status/2117942438320890326",
+      "ad_id": "X_2117942438320890326",
+      "published_date": "2026-11-04",
+      "publication_label": "5:30 PM · Nov 4, 2026",
+      "publication_date_source": "original_ui_exact_date",
+      "ui_observed_at_utc": "2026-11-06T19:00:02.037Z",
+      "caption": "Knock, knock. Who’s there? Pure, fresh air for your festive home at ₹6,999.\n\nExperience the #MijiaSmartAirPurifier4Compact as part of #DiwaliWithXiaomi2026. Breathe easy and celebrate big.\n\nBuy Now: https://t.co/xKLz9e6ga9",
+      "media_url": "https://pbs.twimg.com/media/HWRWMjoacAA4ASF?format=webp&name=large",
+      "metrics": {
+        "comments": 8,
+        "reposts": 41,
+        "likes": 94,
+        "saves": 1,
+        "views": 5787
+      },
+      "publisher": "XiaomiIndia"
+    }
+  ]
+}
