@@ -1,0 +1,227 @@
+{
+  "batch": 36,
+  "date": "2026-11-07",
+  "collection_calendar_timezone": "Asia/Dhaka",
+  "run_id": 42275999189,
+  "records_added": 8,
+  "total_records": 776,
+  "master_file_id": "1vzXBlvO-ckqJ6U9-ypNA-cSy3yK4BV-s",
+  "workbook_rows": "770:777",
+  "master_sha256": "4692cb93e5bdb3e93bb01fd11279df12c7b487f8e182c204a366558c097c674a",
+  "accepted": [
+    {
+      "ad_id": "X_1888733671663993010",
+      "platform": "X",
+      "original_post_url": "https://x.com/Starbucks/status/1888733671663993010",
+      "publication_label": "5:36 AM · Feb 10, 2025",
+      "published_date": "2025-02-10",
+      "publication_evidence": "Original X post UI: 5:36 AM · Feb 10, 2025; timezone unspecified; observed 2026-11-06T18:59:18.003Z",
+      "ui_observed_at_utc": "2026-11-06T18:59:18.003Z",
+      "metrics": {
+        "comments": 134,
+        "reposts": 444,
+        "likes": 1370,
+        "saves": 90,
+        "views": 541791
+      },
+      "sha256": "a20fada951e3e431ba8769820c232a82ca571a0ea12d1c80bcad871775f07e4b",
+      "bytes": 72118,
+      "media_path": "media/X_1888733671663993010.webp",
+      "details": {
+        "format": "WEBP",
+        "width": 1080,
+        "height": 1350
+      },
+      "drive_file_id": "14K3rpDJjWcK-4yl5FXzMitXbY5NXX3LZ"
+    },
+    {
+      "ad_id": "X_1887644358511321371",
+      "platform": "X",
+      "original_post_url": "https://x.com/Starbucks/status/1887644358511321371",
+      "publication_label": "5:27 AM · Feb 7, 2025",
+      "published_date": "2025-02-07",
+      "publication_evidence": "Original X post UI: 5:27 AM · Feb 7, 2025; timezone unspecified; observed 2026-11-06T18:59:18.634Z",
+      "ui_observed_at_utc": "2026-11-06T18:59:18.634Z",
+      "metrics": {
+        "comments": 799,
+        "reposts": 378,
+        "likes": 1503,
+        "saves": 144,
+        "views": 590038
+      },
+      "sha256": "b76062d78edc4cf656e1b959acc4e04026a4397aa14dd962d27ac207ab0b6d5d",
+      "bytes": 75004,
+      "media_path": "media/X_1887644358511321371.webp",
+      "details": {
+        "format": "WEBP",
+        "width": 1080,
+        "height": 1350
+      },
+      "drive_file_id": "1z3SjM9eD32nv907HSZYNT23IlXSRjYrS"
+    },
+    {
+      "ad_id": "X_2094272546375901526",
+      "platform": "X",
+      "original_post_url": "https://x.com/PokemonTCG/status/2094272546375901526",
+      "publication_label": "9:54 AM · Aug 31, 2026",
+      "published_date": "2026-08-31",
+      "publication_evidence": "Original-platform extractor timestamp (UTC): 1788148459",
+      "ui_observed_at_utc": "2026-11-06T18:59:30.327Z",
+      "metrics": {
+        "comments": 55,
+        "reposts": 473,
+        "likes": 3908,
+        "saves": 417,
+        "views": 496958
+      },
+      "sha256": "7080bacd955af3abf37fcd86125445ce199a6f20d0d6b68344d936af4e6c6f84",
+      "bytes": 18798702,
+      "media_path": "media/X_2094272546375901526.mp4",
+      "details": {
+        "duration_seconds": 81.429333,
+        "width": 1280,
+        "height": 720,
+        "streams": [
+          "video",
+          "audio"
+        ]
+      },
+      "drive_file_id": "1fJ2VoYFY-QQBR9U_DqvedZfPn8iC8fyR"
+    },
+    {
+      "ad_id": "X_2116204807849443683",
+      "platform": "X",
+      "original_post_url": "https://x.com/PokemonTCG/status/2116204807849443683",
+      "publication_label": "10:25 PM · Oct 30, 2026",
+      "published_date": "2026-10-30",
+      "publication_evidence": "Original-platform extractor timestamp (UTC): 1793377518",
+      "ui_observed_at_utc": "2026-11-06T18:59:30.909Z",
+      "metrics": {
+        "comments": 39,
+        "reposts": 34,
+        "likes": 231,
+        "saves": 12,
+        "views": 25420
+      },
+      "sha256": "a6b92123d61bee43783582baebbaf692b2ba3870b3e89dfe30a6b3b4b7240181",
+      "bytes": 3411335,
+      "media_path": "media/X_2116204807849443683.mp4",
+      "details": {
+        "duration_seconds": 16.042667,
+        "width": 720,
+        "height": 1280,
+        "streams": [
+          "video",
+          "audio"
+        ]
+      },
+      "drive_file_id": "1nSKlCtGsWZwzeSQcyBJoF-QmtRsVT5te"
+    },
+    {
+      "ad_id": "X_2115156578026279118",
+      "platform": "X",
+      "original_post_url": "https://x.com/PokemonTCG/status/2115156578026279118",
+      "publication_label": "1:00 AM · Oct 28, 2026",
+      "published_date": "2026-10-28",
+      "publication_evidence": "Original X post UI: 1:00 AM · Oct 28, 2026; timezone unspecified; observed 2026-11-06T18:59:37.244Z",
+      "ui_observed_at_utc": "2026-11-06T18:59:37.244Z",
+      "metrics": {
+        "comments": 25,
+        "reposts": 22,
+        "likes": 295,
+        "saves": 17,
+        "views": 31905
+      },
+      "sha256": "d9eb3fc505678d42c6f0cc687a6cc96826030d35420cc6c13aa6c5d9c8aefbc1",
+      "bytes": 100262,
+      "media_path": "media/X_2115156578026279118.webp",
+      "details": {
+        "format": "WEBP",
+        "width": 660,
+        "height": 920
+      },
+      "drive_file_id": "1cH4KzVbXGswqiuYrZom5jOubcUAo3Nsm"
+    },
+    {
+      "ad_id": "X_2113344638199197789",
+      "platform": "X",
+      "original_post_url": "https://x.com/PokemonTCG/status/2113344638199197789",
+      "publication_label": "1:00 AM · Oct 23, 2026",
+      "published_date": "2026-10-23",
+      "publication_evidence": "Original X post UI: 1:00 AM · Oct 23, 2026; timezone unspecified; observed 2026-11-06T18:59:37.727Z",
+      "ui_observed_at_utc": "2026-11-06T18:59:37.727Z",
+      "metrics": {
+        "comments": 82,
+        "reposts": 177,
+        "likes": 1808,
+        "saves": 102,
+        "views": 77746
+      },
+      "sha256": "52664ff37b0b7bc2dfe764dd0d193528f0ade63f7b3a408056c7d95d629271a1",
+      "bytes": 288092,
+      "media_path": "media/X_2113344638199197789.webp",
+      "details": {
+        "format": "WEBP",
+        "width": 1080,
+        "height": 1440
+      },
+      "drive_file_id": "1QfbR9yHLDteU4mAzUVzIAds1Aqd4VxJg"
+    },
+    {
+      "ad_id": "X_2102747821556510917",
+      "platform": "X",
+      "original_post_url": "https://x.com/XiaomiIndia/status/2102747821556510917",
+      "publication_label": "7:12 PM · Sep 23, 2026",
+      "published_date": "2026-09-23",
+      "publication_evidence": "Original X post UI: 7:12 PM · Sep 23, 2026; timezone unspecified; observed 2026-11-06T18:59:38.294Z",
+      "ui_observed_at_utc": "2026-11-06T18:59:38.294Z",
+      "metrics": {
+        "comments": 113,
+        "reposts": 225,
+        "likes": 1064,
+        "saves": 40,
+        "views": 41591
+      },
+      "sha256": "f2979ce6f6ec34a9b6b336fbabcd5c6b166650153c54f66566cfdd63b0d3bf87",
+      "bytes": 87050,
+      "media_path": "media/X_2102747821556510917.webp",
+      "details": {
+        "format": "WEBP",
+        "width": 1080,
+        "height": 1350
+      },
+      "drive_file_id": "1OgFzc_UHtXwAk1ldlle54W4XHyp_pran"
+    },
+    {
+      "ad_id": "X_2117942438320890326",
+      "platform": "X",
+      "original_post_url": "https://x.com/XiaomiIndia/status/2117942438320890326",
+      "publication_label": "5:30 PM · Nov 4, 2026",
+      "published_date": "2026-11-04",
+      "publication_evidence": "Original X post UI: 5:30 PM · Nov 4, 2026; timezone unspecified; observed 2026-11-06T19:00:02.037Z",
+      "ui_observed_at_utc": "2026-11-06T19:00:02.037Z",
+      "metrics": {
+        "comments": 8,
+        "reposts": 41,
+        "likes": 94,
+        "saves": 1,
+        "views": 5787
+      },
+      "sha256": "0c666151f216c332d861525f4f24d6ba5f4a6dff9e6bee276f3b2307ca1523d7",
+      "bytes": 100774,
+      "media_path": "media/X_2117942438320890326.webp",
+      "details": {
+        "format": "WEBP",
+        "width": 1080,
+        "height": 1080
+      },
+      "drive_file_id": "1lBxGEnGHvZ-Sj22sj822tFPhE-CgMR61"
+    }
+  ],
+  "limitations": [
+    "Image dates are original UI calendar dates with unspecified timezone; video dates derive from original-platform UTC timestamps.",
+    "Reposts and bookmarks are displayed original UI counters. Views are post views.",
+    "Unavailable metrics remain blank. Rounded follower labels remain text.",
+    "Previous records retain their existing verification statuses."
+  ]
+}
