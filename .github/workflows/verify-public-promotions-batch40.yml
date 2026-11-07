@@ -1,0 +1,29 @@
+name: Verify public promotions batch 40
+on:
+  push:
+    branches: [collection/batch-40]
+    paths:
+      - .github/workflows/verify-public-promotions-batch40.yml
+      - batches/batch40_sources.json
+      - batches/verify_images_batch40.py
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt Pillow==12.0.0
+      - run: python -m unittest discover -s tests -v
+      - run: python batches/verify_images_batch40.py batches/batch40_sources.json batch40_output
+      - uses: actions/upload-artifact@v4
+        with:
+          name: promotions-batch40
+          path: batch40_output/
+          retention-days: 14
+          compression-level: 0
+          if-no-files-found: error
