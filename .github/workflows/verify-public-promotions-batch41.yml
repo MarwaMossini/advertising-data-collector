@@ -1,0 +1,30 @@
+name: Verify public promotions batch 41
+on:
+  push:
+    branches: [collection/batch-41]
+    paths:
+      - .github/workflows/verify-public-promotions-batch41.yml
+      - batches/batch41_sources.json
+      - batches/verify_media_batch41.py
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: ffmpeg -version && ffprobe -version
+      - run: python -m pip install -r requirements.txt Pillow==12.0.0
+      - run: python -m unittest discover -s tests -v
+      - run: python batches/verify_media_batch41.py batches/batch41_sources.json batch41_output
+      - uses: actions/upload-artifact@v4
+        with:
+          name: promotions-batch41
+          path: batch41_output/
+          retention-days: 14
+          compression-level: 0
+          if-no-files-found: error
