@@ -1,0 +1,65 @@
+name: Recheck batch 49 media
+on:
+  push:
+    branches: [collection/batch-49]
+    paths: [.github/workflows/recheck-batch49-media.yml]
+permissions: {}
+jobs:
+  register:
+    runs-on: ubuntu-latest
+    permissions:
+      statuses: write
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/statuses/$GITHUB_SHA" \
+            -f state=pending -f context=collection/batch-49-media \
+            -f description="Checking original Steam and Mastodon assets" \
+            -f target_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+  recheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      actions: read
+      contents: read
+    strategy:
+      matrix:
+        part: [a, b]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install Pillow==12.0.0
+      - uses: actions/download-artifact@v4
+        with:
+          name: promotions-batch49-images-${{ matrix.part }}
+          run-id: 42493080935
+          github-token: ${{ github.token }}
+          path: input
+      - name: Keep candidates whose media was rejected
+        run: |
+          mkdir output
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          source = Path("input")
+          rows = json.loads((source / "candidates.json").read_text())
+          failed = {item["ad_id"] for item in json.loads((source / "manifest.json").read_text()) if item["status"] != "complete"}
+          selected = [row for row in rows if row["ad_id"] in failed and row["platform"] in {"Steam", "Mastodon"}]
+          assert selected
+          Path("output/candidates.json").write_text(json.dumps(selected))
+          Path("output/feed_errors.json").write_text("[]")
+          PY
+      - name: Verify original media
+        run: python batches/verify_media_batch49.py output/candidates.json output || test -s output/manifest.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: promotions-batch49-retry-${{ matrix.part }}
+          path: output/
+          retention-days: 14
+          compression-level: 0
+          if-no-files-found: error
