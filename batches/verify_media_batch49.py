@@ -14,7 +14,7 @@ import urllib.request
 
 from PIL import Image
 
-MEDIA_HOSTS = {'pbs.twimg.com', 'clan.cloudflare.steamstatic.com', 'clan.akamai.steamstatic.com', 'cdn.cloudflare.steamstatic.com', 'cdn.akamai.steamstatic.com', 'shared.cloudflare.steamstatic.com', 'shared.akamai.steamstatic.com', 'steamcdn-a.akamaihd.net', 'cdn.fastly.steamstatic.com', 'cdn.masto.host', 'cdn.mastodon.gamedev.place', 'mastodon.gamedev.place', 'files.gamedev.place', 'peertube.uno', 'video.twimg.com', 'cdn.bsky.app', 'files.mastodon.social', 'cdn.masto.host', 'social-cdn.vivaldi.net', 'video.blender.org', 'framatube.org', 'media.fosstodon.org', 'fosstodon.org', 'files.mastodon.online', 'media.mstdn.social', 'media.hachyderm.io', 'media.techhub.social', 'cdn.masto.host'}
+MEDIA_HOSTS = {'pbs.twimg.com', 'clan.cloudflare.steamstatic.com', 'clan.akamai.steamstatic.com', 'cdn.cloudflare.steamstatic.com', 'cdn.akamai.steamstatic.com', 'shared.cloudflare.steamstatic.com', 'shared.akamai.steamstatic.com', 'steamcdn-a.akamaihd.net', 'cdn.fastly.steamstatic.com', 'cdn.masto.host', 'cdn.fosstodon.org', 'cdn.mastodon.gamedev.place', 'mastodon.gamedev.place', 'files.gamedev.place', 'peertube.uno', 'video.twimg.com', 'cdn.bsky.app', 'files.mastodon.social', 'cdn.masto.host', 'social-cdn.vivaldi.net', 'video.blender.org', 'framatube.org', 'media.fosstodon.org', 'fosstodon.org', 'files.mastodon.online', 'media.mstdn.social', 'media.hachyderm.io', 'media.techhub.social', 'cdn.masto.host'}
 MAX_BYTES = 30 * 1024 * 1024
 EXTENSIONS = {'JPEG': '.jpg', 'PNG': '.png', 'WEBP': '.webp'}
 
@@ -23,8 +23,10 @@ def validate_media_url(url):
     parsed = urllib.parse.urlparse(url)
     host = parsed.hostname or ''
     is_bsky_blob = (host == 'bsky.social' or host.endswith('.bsky.network')) and parsed.path == '/xrpc/com.atproto.sync.getBlob'
-    if parsed.scheme != 'https' or (host not in MEDIA_HOSTS and not is_bsky_blob) or parsed.username or parsed.password:
-        raise ValueError('Expected an original platform media URL')
+    is_steam_asset = (host == 'steamstatic.com' or host.endswith('.steamstatic.com')) and bool(
+        re.search(r'/[0-9a-f]{40}\.(?:png|jpe?g|webp)$', parsed.path, re.I))
+    if parsed.scheme != 'https' or (host not in MEDIA_HOSTS and not is_bsky_blob and not is_steam_asset) or parsed.username or parsed.password:
+        raise ValueError(f'Expected an original platform media URL, got {parsed.scheme}://{host}')
 
 
 class PlatformRedirect(urllib.request.HTTPRedirectHandler):
